@@ -1,5 +1,7 @@
 package view
 
+import cats.effect.IO
+
 trait Views {
 
   def inputReadFromUser(): IO[SimulationSettings]
