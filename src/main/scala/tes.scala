@@ -1,3 +1,3 @@
 object tes {
-sdsd
+//sdsd
 }
