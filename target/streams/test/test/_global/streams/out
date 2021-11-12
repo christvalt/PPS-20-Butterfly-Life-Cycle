@@ -1,0 +1,23 @@
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(EatingReactionTest, org.scalatest.tools.Framework$$anon$1@72884965, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mEatingReactionTest:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31mEatingReactionTest *** ABORTED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  scala.NotImplementedError: an implementation is missing[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.Predef$.$qmark$qmark$qmark(Predef.scala:344)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at model.Point2D$.<clinit>(BoundingBox.scala:16)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at model.BoundingBox$Triangle$.apply$default$3(BoundingBox.scala:38)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at EatingReactionTest.<init>(EatingReactionTest.scala:42)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.lang.reflect.Constructor.newInstance(Constructor.java:423)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.lang.Class.newInstance(Class.java:442)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.tools.Framework$ScalaTestTask.execute(Framework.scala:450)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 1 second, 550 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 0, aborted 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 0, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m*** 1 SUITE ABORTED ***[0m[0m
+[0m[[0m[31merror[0m] [0m[0mError during tests:[0m
+[0m[[0m[31merror[0m] [0m[0m	EatingReactionTest[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m

@@ -1,0 +1,13 @@
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\camerum\Documents\pro\src\main\scala\view\SettingsView.scala:19:16: method without a parameter list overrides a method with a single empty one[0m
+[0m[[0m[33mwarn[0m] [0m[0m  override def createAndShow: Option[SimulationSettings] = {[0m
+[0m[[0m[33mwarn[0m] [0m[0m               ^[0m
+[0m[[0m[0minfo[0m] [0m[0mCleaning datadir [C:\Users\camerum\Documents\pro\target\scala-2.13/scoverage-data][0m
+[0m[[0m[0minfo[0m] [0m[0mBeginning coverage instrumentation[0m
+[0m[[0m[0minfo[0m] [0m[0mInstrumentation completed [449 statements][0m
+[0m[[0m[0minfo[0m] [0m[0mWrote instrumentation file [C:\Users\camerum\Documents\pro\target\scala-2.13\scoverage-data\scoverage.coverage][0m
+[0m[[0m[0minfo[0m] [0m[0mWill write measurement data to [C:\Users\camerum\Documents\pro\target\scala-2.13/scoverage-data][0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\camerum\Documents\pro\src\main\scala\model\reaction\BeingEatenEffect.scala:18:43: unreachable code[0m
+[0m[[0m[33mwarn[0m] [0m[0m    case creture:flourPlant=>creture.life - REDUCE_LIFE[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m2 deprecations (since 2.13.3); re-run with -deprecation for details[0m
+[0m[[0m[33mwarn[0m] [0m[0mthree warnings found[0m

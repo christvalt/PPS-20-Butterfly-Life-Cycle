@@ -1,6 +1,5 @@
 package model
 
-import com.sun.javafx.scene.traversal.Direction
 import model.BoundingBox.{Circle, Triangle}
 import model.creature.creatureStructure
 import model.creature.creatureStructure.Domain.{DegradationEffect, Life, Velocity}

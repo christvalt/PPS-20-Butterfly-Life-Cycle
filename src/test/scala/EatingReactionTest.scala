@@ -1,4 +1,3 @@
-import javafx.beans.binding.Bindings
 import model.{BoundingBox, Point2D}
 import model.CreatureImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
 import model.creature.creatureStructure.Butterfly
