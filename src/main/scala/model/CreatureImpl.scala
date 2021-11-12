@@ -48,7 +48,7 @@ object CreatureImpl {
 
 
   case class ButterflyImpl(override val name: String,
-                           override val  boundingBox: Triangle,
+                           override val  boundingBox: Circle,
                            override val direction:Int=DEF_NEXT_DIRECTION ,
                            override val fieldOfViewRadius: Int=DEF_BLOB_FOV_RADIUS,
                            override val velocity: Velocity=DEF_BLOB_VELOCITY ,
