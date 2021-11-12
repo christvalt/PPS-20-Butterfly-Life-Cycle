@@ -72,4 +72,6 @@ object CreatureImpl {
 
 }
 
+///config final
+
 
