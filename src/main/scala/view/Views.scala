@@ -3,6 +3,7 @@ package view
 import cats.effect.IO
 
 trait Views {
+  //ststus
 
   def inputReadFromUser(): IO[SimulationSettings]
   def simulationresult():Int

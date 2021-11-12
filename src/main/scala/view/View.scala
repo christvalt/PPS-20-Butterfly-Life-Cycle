@@ -11,7 +11,7 @@ import scala.concurrent.Promise
 
 object View {
 
-
+//testing
   //
   def settingsView:Option[SimulationSettings]=SettingsView.createAndShow
   //def settingsView:IO[JPanel]=inputviewSwing.inputView(Promise[SimulationSettings])

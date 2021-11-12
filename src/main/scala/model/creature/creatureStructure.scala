@@ -1,7 +1,7 @@
 package model.creature
 
-import com.sun.javafx.scene.traversal.Direction
-import model.creature.creatureStructure.Domain.{CollisionEffect, DegradationEffect, Life, LifeCycle, ToChange, Velocity}
+
+import model.creature.creatureStructure.Domain.{EatingEffect, DegradationEffect, Life, LifeCycle, ToChange, Velocity}
 import model.BoundingBox
 import model.BoundingBox.{Circle, Rectangle}
 
@@ -15,7 +15,7 @@ object creatureStructure {
     type ToChange = Int
     type LifeCycle = Int
     type DegradationEffect[A] = A => Life
-    type CollisionEffect = Butterfly => Set[Creature]
+    type EatingEffect = Butterfly => Set[Creature]
     // type MovementStrategy = (Intelligent, World, Entity => Boolean) => Position
   }
 
@@ -37,11 +37,9 @@ object creatureStructure {
     def velocity: Velocity
   }
 
-
-
   // trait that represent entity that react to an evenmemt in the environemt
-  sealed trait Reacts extends Creature {
-    def collisionEffect: CollisionEffect
+  sealed trait eating extends Creature {
+    def eatingEffect: EatingEffect
   }
 
   /*
@@ -60,8 +58,8 @@ object creatureStructure {
   }
 
   trait Butterfly extends Creature with Living with Moving with Intelligent {
-    override def boundingBox: Circle
-    //def degradationEffect: DegradationEffect[Butterfly]
+    override def boundingBox: BoundingBox
+    def degradationEffect: DegradationEffect[Butterfly]
   }
 
   trait ButterflyWithTemporaryStatus extends Butterfly {
@@ -71,21 +69,24 @@ object creatureStructure {
 
   trait Food extends Creature with Living {
     override def boundingBox: Circle
-    //def degradationEffect: DegradationEffect[Food]
+    def degradationEffect: DegradationEffect[Food]
   }
-
-
-
-
 
 
   trait Predator extends Creature{
     override def boundingBox: Rectangle
   }
-  trait Plant extends Creature {
+
+  trait Plant extends Creature with Living  {
+    override def boundingBox: Circle
+    def degradationEffect: DegradationEffect[Plant]
+  }
+
+/*
+*   trait Plant extends Creature {
     override def boundingBox: Rectangle
     def lifeCycle: LifeCycle
-  }
+  }*/
 
 
 
