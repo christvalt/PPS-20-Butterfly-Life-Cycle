@@ -9,4 +9,5 @@ libraryDependencies += "org.scalanlp"           %% "breeze-viz"                 
 libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "0.2.0"
 libraryDependencies += "org.scalatest"          %% "scalatest"                  % "3.2.0" % "test"
 libraryDependencies += "org.scalatest"          %% "scalatest"                  % "3.0.5" % Test
+libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.14.1" % "test"
 scalacOptions ++= Seq("-language:postfixOps", "-language:implicitConversions")
