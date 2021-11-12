@@ -39,7 +39,7 @@ class EatingReactionTest extends AnyFunSuite {
   )
   val adultB: ButterflyImpl = ButterflyImpl(
     name = "egg2",
-    boundingBox = BoundingBox.Triangle(point = Point2D(100, 100), height = 10),
+    boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = 14,
     fieldOfViewRadius = 10,
     velocity = 3,
