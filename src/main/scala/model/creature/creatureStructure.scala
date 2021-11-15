@@ -1,7 +1,7 @@
 package model.creature
 
 
-import model.creature.creatureStructure.Domain.{EatingEffect, DegradationEffect, Life, LifeCycle, ToChange, Velocity}
+import model.creature.creatureStructure.Domain.{EatingEffect, Degeneration, Life, LifeCycle, ToChange, Velocity}
 import model.BoundingBox
 import model.BoundingBox.{Circle, Rectangle}
 
@@ -14,7 +14,7 @@ object creatureStructure {
     //type Position = Movement
     type ToChange = Int
     type LifeCycle = Int
-    type DegradationEffect[A] = A => Life
+    type Degeneration[A] = A => Life
     type EatingEffect = Butterfly => Set[Creature]
     // type MovementStrategy = (Intelligent, World, Entity => Boolean) => Position
   }
@@ -59,7 +59,7 @@ object creatureStructure {
 
   trait Butterfly extends Creature with Living with Moving with Intelligent {
     override def boundingBox: BoundingBox
-    def degradationEffect: DegradationEffect[Butterfly]
+    def degradationEffect: Degeneration[Butterfly]
   }
 
   trait ButterflyWithTemporaryStatus extends Butterfly {
@@ -67,19 +67,20 @@ object creatureStructure {
   }
 
 
+  /*
   trait Food extends Creature with Living {
     override def boundingBox: Circle
-    def degradationEffect: DegradationEffect[Food]
-  }
+    def degradationEffect: Degeneration[Food]
+  }*/
 
 
   trait Predator extends Creature{
     override def boundingBox: Rectangle
   }
 
-  trait Plant extends Creature with Living  {
+  trait Plant extends Creature with Living  with  eating{
     override def boundingBox: Circle
-    def degradationEffect: DegradationEffect[Plant]
+    def degradationEffect: Degeneration[Plant]
   }
 
 /*

@@ -14,8 +14,8 @@ object EatingEffect {
   var MIN_BLOB_RADIUS: Int = 444
   val MIN_BLOB_FOV_RADIUS: Int = 222
   var INTERVAL: Int = 1
-  val DEF_FOOD_ENERGY = 222
-  val REDUCE_LIFE = 250
+  val DEF_FOOD_ENERGY = 50
+  val REDUCE_LIFE = 25
   val DEF_NECTARD_ENERGY = 222
 
   private def randomValueChange(value: Int): Int = {
@@ -33,7 +33,7 @@ object EatingEffect {
     case _ => Set()
   }
   //---->FOODS    II FOndamnetal 2
-  def eatingReproducingOrNectarFoodEffect[A <:Butterfly](adults :A): Set[Butterfly] = adults match{
+  def iscollidedWithNectarPlant[A <:Butterfly](adults :A): Set[Butterfly] = adults match{
     case adults:ButterflyImpl  => Set(adults.copy(life = adults.life +DEF_NECTARD_ENERGY),spwanEggs(adults))
     case _ => Set()
   }
@@ -45,7 +45,7 @@ object EatingEffect {
   }
 
 //to eat and augment life     ---->FOODS   I Fondamental 1
-  def eatingStandardPLantEffect[A <:Butterfly](butterfly: Butterfly):Set[Butterfly]= butterfly match {
+  def iscollidedWithSimplePlant[A <:Butterfly](butterfly: Butterfly):Set[Butterfly]= butterfly match {
     case butterfly : EggsImpl =>Set(butterfly.copy(life=butterfly.life+DEF_FOOD_ENERGY))
     case butterfly : PuppaImpl =>Set(butterfly.copy(life=butterfly.life+DEF_FOOD_ENERGY))
     case butterfly : LarvaImpl =>Set(butterfly.copy(life=butterfly.life+DEF_FOOD_ENERGY))
@@ -53,7 +53,7 @@ object EatingEffect {
     case _ => Set()
   }
 
-  def collisionWithPredactor[A <:Butterfly](eggs: A) :Set[Butterfly] = eggs  match{
+  def iscollidedWithPredactor[A <:Butterfly](eggs: A) :Set[Butterfly] = eggs  match{
     case e:EggsImpl => Set(e.copy(life = e.life - REDUCE_LIFE))
     case e :PuppaImpl => Set(e.copy(life = e.life - REDUCE_LIFE))
     case e: LarvaImpl => Set(e.copy(life = e.life - REDUCE_LIFE))
