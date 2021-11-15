@@ -4,10 +4,11 @@ import model.creature.creatureStructure.Butterfly
 import model.creature.creatureStructure.Domain.DegradationEffect
 import model.reaction.{BeingEatenEffect, EatingEffect}
 import model.reaction.EatingEffect.{DEF_FOOD_ENERGY, REDUCE_LIFE, eatingReproducingOrNectarFoodEffect}
+import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.funsuite.AnyFunSuite
 
 
-class EatingReactionTest extends AnyFunSuite {
+class EatingReactionTest extends AnyFunSpec {
 
   val eggs: EggsImpl = EggsImpl(
     name = "egg1",
@@ -47,17 +48,29 @@ class EatingReactionTest extends AnyFunSuite {
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect
   )
 
-  test("Test Butterfly reaction  when eating plant  with plants entities ") {
-    //test.unsafeRunSync()
-    assert(EatingEffect.eatingStandardPLantEffect(eggs).equals(Set(eggs.copy(life = eggs.life + DEF_FOOD_ENERGY))))
-    assert(EatingEffect.collisionWithPredactor(eggs).equals(Set(eggs.copy(life =eggs.life- REDUCE_LIFE))))
-    assert(EatingEffect.collisionREceptivePLan(eggs).equals(Set(eggs)))
-    //assert(reaction.reproducingFoodForAdultButterfly(egg).equals(Set(eggs.copy())))
-    //  assert(reaction.reproducingFoodForAdultButterfly(adultB).exists(Set(adultB.copy(life = adultB.life + DEF_FOOD_ENERGY))))
+  describe("A Set") {
+    describe("when empty") {
+      it("should have size 0") {
+        assert(EatingEffect.eatingStandardPLantEffect(eggs).equals(Set(eggs.copy(life = eggs.life + DEF_FOOD_ENERGY))))
+      }
 
-  }
-  test("Adult Butterfly  should increase life  and create a adultbuterfly child(Eggs)"){
-    //assert(reaction.reproducingFoodForAdultButterfly(adultB).equals().count()
+      it("Test Butterfly reaction  when eating plant  with plants entities ") {
+        assert(EatingEffect.collisionWithPredactor(eggs).equals(Set(eggs.copy(life =eggs.life- REDUCE_LIFE))))
 
+      }
+
+      it("should produce NoSuchElementException when head is invoked") {
+        assert(EatingEffect.collisionREceptivePLan(eggs).equals(Set(eggs)))
+        //Adult Butterfly  should increase life  and create a adultbuterfly child(Eggs)
+        //assert(reaction.reproducingFoodForAdultButterfly(egg).equals(Set(eggs.copy())))
+        // assert(EatingEffect.collisionREceptivePLan(adultB).exists(Set(adultB.copy(life = adultB.life + DEF_FOOD_ENERGY))))
+        //assert(reaction.reproducingFoodForAdultButterfly(adultB).equals().count()
+
+      }
+    }
+
+    //assert(collisionREceptivePLan().exists(_.isEmpty))
   }
+
+
 }
