@@ -2,9 +2,10 @@ package model
 
 import model.BoundingBox.{Circle, Triangle}
 import model.creature.creatureStructure
-import model.creature.creatureStructure.Domain.{Degeneration, EatingEffect, Life, Velocity}
+import model.creature.creatureStructure.Domain.{Collision, Degeneration, Life, Velocity}
 import model.creature.creatureStructure.{Butterfly, Creature, Plant}
 import model.reaction.DegenerationE
+import model.reaction.EatingEffect.butterflyBehavior
 
 object CreatureImpl {
   val DEF_BLOB_LIFE = 1250
@@ -19,7 +20,7 @@ object CreatureImpl {
                       override val velocity: Velocity=DEF_BLOB_VELOCITY ,
                       override val life: Life=DEF_BLOB_LIFE,
                       override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect
-                     )extends Butterfly {
+                     )extends Butterfly  {
 
   }
 
@@ -52,21 +53,21 @@ object CreatureImpl {
                            override val velocity: Velocity=DEF_BLOB_VELOCITY ,
                            override val life: Life=DEF_BLOB_LIFE,
                            override val degradationEffect: Degeneration[Butterfly] =  DegenerationE.deacreaseLifeEffect
-                          )extends Butterfly
+                          )extends Butterfly with butterflyBehavior
 
 
   case class flourPlant(override val boundingBox: Circle,
                         override val degradationEffect: Degeneration[Plant] = DegenerationE.deacreaseLifeEffect,
                         override val life: Life=DEF_BLOB_LIFE,
                         override val name: String,
-                        override val  eatingEffect: EatingEffect)extends Plant {
+                        override val  collisionEffect: Collision)extends Plant {
   }
 
   case class NectarPlant(override val boundingBox: Circle,
                          override val degradationEffect: Degeneration[Plant] = DegenerationE.deacreaseLifeEffect,
                          override val life: Life=DEF_BLOB_LIFE,
                          override val name: String,
-                         override val  eatingEffect: EatingEffect)extends Plant {
+                         override val  collisionEffect: Collision)extends Plant {
 
   }
 }

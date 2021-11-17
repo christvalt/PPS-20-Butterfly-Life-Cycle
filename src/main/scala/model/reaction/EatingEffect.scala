@@ -3,7 +3,7 @@ package model.reaction
 import model.BoundingBox.Circle
 import model.CreatureImpl
 import model.CreatureImpl.{ButterflyImpl, DEF_BLOB_FOV_RADIUS, EggsImpl, LarvaImpl, PuppaImpl}
-import model.creature.creatureStructure.Butterfly
+import model.creature.creatureStructure.{Butterfly, Creature, Plant, Predator}
 import model.{BoundingBox, Point2D}
 
 import scala.Byte.MaxValue
@@ -24,7 +24,6 @@ object EatingEffect {
     new java.util.Random().nextInt(max + 1 - min) - min
   }
 
-  //stat to the corect place ---->FOODS
   def collisionREceptivePLan[A <:Butterfly] (butterfly: A):Set[Butterfly]= butterfly match {
     case butterfly : EggsImpl =>Set(butterfly.copy())
     case butterfly : PuppaImpl =>Set(butterfly.copy())
@@ -32,7 +31,6 @@ object EatingEffect {
     case butterfly : ButterflyImpl =>Set(butterfly.copy())
     case _ => Set()
   }
-  //---->FOODS    II FOndamnetal 2
   def iscollidedWithNectarPlant[A <:Butterfly](adults :A): Set[Butterfly] = adults match{
     case adults:ButterflyImpl  => Set(adults.copy(life = adults.life +DEF_NECTARD_ENERGY),spwanEggs(adults))
     case _ => Set()
@@ -44,7 +42,6 @@ object EatingEffect {
       case _ =>  ???
   }
 
-//to eat and augment life     ---->FOODS   I Fondamental 1
   def iscollidedWithSimplePlant[A <:Butterfly](butterfly: Butterfly):Set[Butterfly]= butterfly match {
     case butterfly : EggsImpl =>Set(butterfly.copy(life=butterfly.life+DEF_FOOD_ENERGY))
     case butterfly : PuppaImpl =>Set(butterfly.copy(life=butterfly.life+DEF_FOOD_ENERGY))
@@ -59,7 +56,6 @@ object EatingEffect {
     case e: LarvaImpl => Set(e.copy(life = e.life - REDUCE_LIFE))
     case e: ButterflyImpl => Set(e.copy(life = e.life - REDUCE_LIFE))
     case _ => Set()
-
   }
 
   object Counter {
@@ -72,10 +68,23 @@ object EatingEffect {
     }
   }
 
-  // def toBloom(butterfly: Butterfly): Set[Butterfly] = ???
-  //def plantFoodEffect(eggs: CreatureImpl.EggsImpl) = ???
+ trait butterflyBehavior{
+   self: ButterflyImpl =>
+   def collision(other: Creature):Creature = other match{
+     case  plant: Plant => plant.collisionEffect(self)
+     case  creature: ButterflyImpl => if (creature)
+     case _ => Set(self)
+   }
+
+ }
+
 }
 
+
+//if (creature.boundingBox.radius >= self.boundingBox.radius)
+//       Set(self.copy(life =22)) else Set(self.copy())
+//if (blob.boundingBox.radius >= self.boundingBox.radius)
+//        Set(self.copy(life = Constants.DEF_BLOB_DEAD)) else Set(self.copy())
 
 
 

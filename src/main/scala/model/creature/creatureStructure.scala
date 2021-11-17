@@ -1,7 +1,7 @@
 package model.creature
 
 
-import model.creature.creatureStructure.Domain.{EatingEffect, Degeneration, Life, LifeCycle, ToChange, Velocity}
+import model.creature.creatureStructure.Domain.{Collision, Degeneration, Life, LifeCycle, ToChange, Velocity}
 import model.BoundingBox
 import model.BoundingBox.{Circle, Rectangle}
 
@@ -15,7 +15,7 @@ object creatureStructure {
     type ToChange = Int
     type LifeCycle = Int
     type Degeneration[A] = A => Life
-    type EatingEffect = Butterfly => Set[Creature]
+    type Collision = Butterfly => Creature
     // type MovementStrategy = (Intelligent, World, Entity => Boolean) => Position
   }
 
@@ -39,7 +39,7 @@ object creatureStructure {
 
   // trait that represent entity that react to an evenmemt in the environemt
   sealed trait eating extends Creature {
-    def eatingEffect: EatingEffect
+    def collisionEffect: Collision
   }
 
   /*
@@ -75,7 +75,7 @@ object creatureStructure {
 
 
   trait Predator extends Creature{
-    override def boundingBox: Rectangle
+    override def boundingBox: Circle
   }
 
   trait Plant extends Creature with Living  with  eating{
