@@ -13,7 +13,7 @@ object Point2D{
   val WORLD_WIDTH = 1280
 
   val WORLD_HEIGHT = 720
-  val DEF_EQUILATERAL_ANGLE= ???
+  val DEF_EQUILATERAL_ANGLE= 20
 
   /**
    * @return a new Point2D in a random position within the World boundary.

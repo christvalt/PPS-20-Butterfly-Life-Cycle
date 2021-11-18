@@ -3,7 +3,7 @@ import model.CreatureImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
 import model.creature.creatureStructure.Butterfly
 import model.creature.creatureStructure.Domain.Degeneration
 import model.reaction.{BeingEatenEffect, EatingEffect}
-import model.reaction.EatingEffect.{DEF_FOOD_ENERGY, REDUCE_LIFE, iscollidedWithSimplePlant}
+import model.reaction.EatingEffect.{DEF_FOOD_ENERGY, REDUCE_LIFE, simplePlantCollidedwithButterflyEntity}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.funsuite.AnyFunSuite
 
@@ -53,7 +53,7 @@ class CollitionTest extends AnyFunSpec {
   describe("PLant Effect appy to a butterfly") {
     describe("when  eating standars plant and when collide with a predactor ") {
       it("increase the life of the creature and would be greatheet that the previeos value") {
-        assert(EatingEffect.iscollidedWithSimplePlant(eggs).equals(Set(eggs.copy(life = eggs.life + DEF_FOOD_ENERGY))))
+        assert(EatingEffect.simplePlantCollidedwithButterflyEntity(eggs).equals(Set(eggs.copy(life = eggs.life + DEF_FOOD_ENERGY))))
       }
       it("dicrease the life of the creature and would be greatheet that the previeos value ") {
         assert(EatingEffect.iscollidedWithPredactor(eggs).equals(Set(eggs.copy(life =eggs.life- REDUCE_LIFE))))

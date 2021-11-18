@@ -3,7 +3,9 @@ package model.creature
 
 import model.creature.creatureStructure.Domain.{Collision, Degeneration, Life, LifeCycle, ToChange, Velocity}
 import model.BoundingBox
-import model.BoundingBox.{Circle, Rectangle}
+import model.BoundingBox.{Circle, Rectangle, Triangle}
+import model.creature.Behavior.SimulableEntity
+
 
 object creatureStructure {
 
@@ -15,7 +17,7 @@ object creatureStructure {
     type ToChange = Int
     type LifeCycle = Int
     type Degeneration[A] = A => Life
-    type Collision = Butterfly => Creature
+    type Collision = Butterfly => Set[SimulableEntity]
     // type MovementStrategy = (Intelligent, World, Entity => Boolean) => Position
   }
 
@@ -42,14 +44,6 @@ object creatureStructure {
     def collisionEffect: Collision
   }
 
-  /*
-  *
-  * sealed trait Perceptive extends Creature {
-    def fieldOfViewRadius : Int
-  }*/
-
-  //trait that represent entity that is inteligent so can see within a certain range (fieldOfViewRadius)
-  //and can move with a selected direction
 
   sealed trait Intelligent extends Creature with Moving {
     //def movementStrategy: MovementStrategy
@@ -67,19 +61,12 @@ object creatureStructure {
   }
 
 
-  /*
-  trait Food extends Creature with Living {
-    override def boundingBox: Circle
-    def degradationEffect: Degeneration[Food]
-  }*/
-
-
-  trait Predator extends Creature{
-    override def boundingBox: Circle
+  trait Predator extends Creature with Living with Moving with eating {
+    override def boundingBox: BoundingBox
   }
 
-  trait Plant extends Creature with Living  with  eating{
-    override def boundingBox: Circle
+  trait Plant extends Creature with Living  with eating{
+    override def boundingBox: Triangle
     def degradationEffect: Degeneration[Plant]
   }
 
@@ -95,3 +82,5 @@ object creatureStructure {
 
 
 }
+
+

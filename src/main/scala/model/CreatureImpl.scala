@@ -1,11 +1,12 @@
 package model
 
 import model.BoundingBox.{Circle, Triangle}
+import model.creature.Behavior.{EggsBehavior, LarvaBehavior, NectarPlantBehavior, PlantBehavior, PredatorBehavior, PuppaImplBehavior, butterflyBehavior}
 import model.creature.creatureStructure
 import model.creature.creatureStructure.Domain.{Collision, Degeneration, Life, Velocity}
-import model.creature.creatureStructure.{Butterfly, Creature, Plant}
+import model.creature.creatureStructure.{Butterfly, Creature, Plant, Predator}
 import model.reaction.DegenerationE
-import model.reaction.EatingEffect.butterflyBehavior
+
 
 object CreatureImpl {
   val DEF_BLOB_LIFE = 1250
@@ -20,9 +21,7 @@ object CreatureImpl {
                       override val velocity: Velocity=DEF_BLOB_VELOCITY ,
                       override val life: Life=DEF_BLOB_LIFE,
                       override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect
-                     )extends Butterfly  {
-
-  }
+                     )extends Butterfly with EggsBehavior
 
 
   case class PuppaImpl(override val name: String,
@@ -32,7 +31,7 @@ object CreatureImpl {
                        override val velocity: Velocity=DEF_BLOB_VELOCITY ,
                        override val life: Life=DEF_BLOB_LIFE,
                        override val degradationEffect: Degeneration[Butterfly] =  DegenerationE.deacreaseLifeEffect
-                      )extends Butterfly
+                      )extends Butterfly with  PuppaImplBehavior
 
 
 
@@ -43,7 +42,7 @@ object CreatureImpl {
                        override val velocity: Velocity=DEF_BLOB_VELOCITY ,
                        override val life: Life=DEF_BLOB_LIFE,
                        override val degradationEffect: Degeneration[Butterfly] =  DegenerationE.deacreaseLifeEffect
-                      )extends Butterfly
+                      )extends Butterfly with LarvaBehavior
 
 
   case class ButterflyImpl(override val name: String,
@@ -56,18 +55,27 @@ object CreatureImpl {
                           )extends Butterfly with butterflyBehavior
 
 
-  case class flourPlant(override val boundingBox: Circle,
+  case class flourPlant(override val boundingBox: Triangle,
                         override val degradationEffect: Degeneration[Plant] = DegenerationE.deacreaseLifeEffect,
                         override val life: Life=DEF_BLOB_LIFE,
                         override val name: String,
-                        override val  collisionEffect: Collision)extends Plant {
+                        override val  collisionEffect: Collision)extends Plant with PlantBehavior {
   }
 
-  case class NectarPlant(override val boundingBox: Circle,
+  case class NectarPlant(override val boundingBox: Triangle,
                          override val degradationEffect: Degeneration[Plant] = DegenerationE.deacreaseLifeEffect,
                          override val life: Life=DEF_BLOB_LIFE,
                          override val name: String,
-                         override val  collisionEffect: Collision)extends Plant {
+                         override val  collisionEffect: Collision)extends Plant with NectarPlantBehavior{
+
+  }
+
+  case class PredatorImpl( override val name: String,
+                           override val boundingBox: Circle,
+                           override val life: Life=DEF_BLOB_LIFE,
+                           override val velocity: Velocity =DEF_BLOB_VELOCITY,
+                           override val collisionEffect: Collision
+                          )extends Predator with PredatorBehavior {
 
   }
 }

@@ -2,11 +2,10 @@ package model.reaction
 
 import model.BoundingBox.Circle
 import model.CreatureImpl
-import model.CreatureImpl.{ButterflyImpl, DEF_BLOB_FOV_RADIUS, EggsImpl, LarvaImpl, PuppaImpl}
+import model.CreatureImpl.{ButterflyImpl, DEF_BLOB_FOV_RADIUS, EggsImpl, LarvaImpl, PredatorImpl, PuppaImpl}
+import model.creature.Behavior.SimulableEntity
 import model.creature.creatureStructure.{Butterfly, Creature, Plant, Predator}
-import model.{BoundingBox, Point2D}
 
-import scala.Byte.MaxValue
 
 object EatingEffect {
 
@@ -24,33 +23,33 @@ object EatingEffect {
     new java.util.Random().nextInt(max + 1 - min) - min
   }
 
-  def collisionREceptivePLan[A <:Butterfly] (butterfly: A):Set[Butterfly]= butterfly match {
+  def collisionREceptivePLan[A <:Butterfly] (butterfly: A):Set[SimulableEntity]= butterfly match {
     case butterfly : EggsImpl =>Set(butterfly.copy())
     case butterfly : PuppaImpl =>Set(butterfly.copy())
     case butterfly : LarvaImpl =>Set(butterfly.copy())
     case butterfly : ButterflyImpl =>Set(butterfly.copy())
     case _ => Set()
   }
-  def iscollidedWithNectarPlant[A <:Butterfly](adults :A): Set[Butterfly] = adults match{
+  def iscollidedWithNectarPlant[A <:Butterfly](adults :A): Set[SimulableEntity] = adults match{
     case adults:ButterflyImpl  => Set(adults.copy(life = adults.life +DEF_NECTARD_ENERGY),spwanEggs(adults))
     case _ => Set()
   }
 
-  def spwanEggs(adults: ButterflyImpl): EggsImpl =  adults match {
+  def spwanEggs[A <:Butterfly](adults :A): SimulableEntity =  adults match {
     case adults :ButterflyImpl => EggsImpl(name = adults.name + "-son"+Counter.nextValue, boundingBox = Circle(adults.boundingBox.point, randomValueChange(DEF_BLOB_RADIUS).max(MIN_BLOB_RADIUS)),
       fieldOfViewRadius = randomValueChange(DEF_BLOB_FOV_RADIUS).max(MIN_BLOB_FOV_RADIUS))
-      case _ =>  ???
+      case _ => ???//Set()
   }
 
-  def iscollidedWithSimplePlant[A <:Butterfly](butterfly: Butterfly):Set[Butterfly]= butterfly match {
-    case butterfly : EggsImpl =>Set(butterfly.copy(life=butterfly.life+DEF_FOOD_ENERGY))
-    case butterfly : PuppaImpl =>Set(butterfly.copy(life=butterfly.life+DEF_FOOD_ENERGY))
-    case butterfly : LarvaImpl =>Set(butterfly.copy(life=butterfly.life+DEF_FOOD_ENERGY))
-    case butterfly : ButterflyImpl =>Set(butterfly.copy(life=butterfly.life+DEF_FOOD_ENERGY))
+  def simplePlantCollidedwithButterflyEntity[A <: Butterfly](butterfly: A):Set[SimulableEntity]= butterfly match {
+    case egg : EggsImpl =>Set(egg.copy(life=butterfly.life+DEF_FOOD_ENERGY))
+    case lava : PuppaImpl =>Set(lava.copy(life=butterfly.life+DEF_FOOD_ENERGY))
+    case catepillar : LarvaImpl =>Set(catepillar.copy(life=butterfly.life+DEF_FOOD_ENERGY))
+    case adult : ButterflyImpl =>Set(adult.copy(life=butterfly.life+DEF_FOOD_ENERGY))
     case _ => Set()
   }
 
-  def iscollidedWithPredactor[A <:Butterfly](eggs: A) :Set[Butterfly] = eggs  match{
+  def iscollidedWithPredactor[A <:Butterfly](eggs: A) :Set[SimulableEntity] = eggs  match{
     case e:EggsImpl => Set(e.copy(life = e.life - REDUCE_LIFE))
     case e :PuppaImpl => Set(e.copy(life = e.life - REDUCE_LIFE))
     case e: LarvaImpl => Set(e.copy(life = e.life - REDUCE_LIFE))
@@ -67,24 +66,7 @@ object EatingEffect {
       index
     }
   }
-
- trait butterflyBehavior{
-   self: ButterflyImpl =>
-   def collision(other: Creature):Creature = other match{
-     case  plant: Plant => plant.collisionEffect(self)
-     case  creature: ButterflyImpl => if (creature)
-     case _ => Set(self)
-   }
-
- }
-
 }
-
-
-//if (creature.boundingBox.radius >= self.boundingBox.radius)
-//       Set(self.copy(life =22)) else Set(self.copy())
-//if (blob.boundingBox.radius >= self.boundingBox.radius)
-//        Set(self.copy(life = Constants.DEF_BLOB_DEAD)) else Set(self.copy())
 
 
 
