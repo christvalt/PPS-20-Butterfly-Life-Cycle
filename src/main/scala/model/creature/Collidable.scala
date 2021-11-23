@@ -1,7 +1,7 @@
 package model.creature
 
 import model.creature.Behavior.{Simulable, SimulableEntity}
-import model.creature.creatureStructure.Creature
+import model.creature.CreatureObject.Creature
 
 //collidable interface with it's compagnio object  tht represent the creature that collide in the system
 trait  Collidable{

@@ -1,4 +1,4 @@
-import model.CreatureImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
 import model.{BoundingBox, Point2D}
 import model.reaction.{BeingEatenEffect, DegenerationE}
 import org.scalatest.funspec.AnyFunSpec

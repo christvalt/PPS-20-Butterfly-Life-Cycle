@@ -1,7 +1,7 @@
 package model.reaction
 
-import model.creature.creatureStructure.Domain.Life
-import model.creature.creatureStructure.Living
+import model.creature.CreatureObject.Domain.Life
+import model.creature.CreatureObject.Living
 
 
 

@@ -1,6 +1,6 @@
-import model.CreatureImpl.{ButterflyImpl, NectarPlant, flourPlant}
+import model.SimulationObjectImpl.{ButterflyImpl, NectarPlant, flourPlant}
 import model.{BoundingBox, Point2D}
-import model.creature.creatureStructure.Butterfly
+import model.creature.CreatureObject.Butterfly
 import model.reaction.EatingEffect.DEF_FOOD_ENERGY
 import model.reaction.{BeingEatenEffect, DegenerationE, EatingEffect}
 import org.scalatest.funspec.AnyFunSpec
