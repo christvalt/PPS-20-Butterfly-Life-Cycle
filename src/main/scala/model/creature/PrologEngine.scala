@@ -1,4 +1,4 @@
-package evo_sim.prolog
+package model.creature
 
 import alice.tuprolog.{Prolog, SolveInfo, Term, Theory}
 

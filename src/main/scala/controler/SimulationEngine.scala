@@ -18,14 +18,13 @@ import scala.sys.env
 object SimulationEngine {
 
 
-  def setup(params:Environment):IO[Unit] =IO pure {
+  def setup(params:Environment):IO[Unit] ={
       println("setup1")
     for{
       environement <- IO pure {Environment(params.temperature,params.plant  ,params.buttefly ,params.predator , params.days)}
       model  <- mainLoop(World(environement))
       _ <-  IO pure {println("test setup input"+model)}
     }yield model
-    println("setup fin" )
   }
 
   def mainLoop(world: World): IO[World] = for {
@@ -33,11 +32,11 @@ object SimulationEngine {
     //a <- updateState(world)
     x <- processInput
     c <- updateGame(world)
-    d <- IO {println("mainloop")}
-   // d <- render(c)
+   //d <- IO {println("mainloop")}
+    d <- render(c)
 
   } yield{
-
+  println("mainLoop")
       c
 
   }

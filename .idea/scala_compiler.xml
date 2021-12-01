@@ -4,6 +4,7 @@
     <profile name="sbt 1" modules="pro">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />
+      <option name="featureWarnings" value="true" />
     </profile>
   </component>
 </project>

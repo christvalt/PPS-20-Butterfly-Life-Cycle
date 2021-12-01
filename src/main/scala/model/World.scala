@@ -1,14 +1,15 @@
 package model
 
 import cats.Traverse.ops.toAllTraverseOps
-import model.BoundingBox.{Circle, Rectangle}
+import model.BoundingBox.{Circle, Rectangle, Triangle}
 import model.Intersection.isCollidingWith
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl, flourPlant}
-import model.common.Environment
+import model.common.{Environment, Point2D}
 import model.common.Point2D.randomPosition
 import model.creature.Behavior.SimulableEntity
 import model.creature.CreatureObject.Creature
 import model.creature.CreatureObject.Domain.Collision
+import model.reaction.{DegenerationE, EatingEffect}
 import model.reaction.EatingEffect.Counter.nextValue
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal
 
@@ -44,16 +45,16 @@ object  World{
     val eggs: Set[EggsImpl] = Set(EggsImpl(name = "blob" + nextValue(),
       boundingBox = BoundingBox.Circle(point = randomPosition(), radius = DEF_BLOB_RADIUS)))
 
-    val catepilar: Set[PuppaImpl] = Set(PuppaImpl(name = "blob" + nextValue(),
+    val puppa: Set[PuppaImpl] = Set(PuppaImpl(name = "blob" + nextValue(),
       boundingBox = BoundingBox.Circle(point = randomPosition(), radius = DEF_BLOB_RADIUS)))
 
-    val predador : Set[PredatorImpl] = Set(PredatorImpl(name = "predator", boundingBox = Rectangle(point =randomPosition, width = DEF_PREDATOR_PLANT_WIDTH, height = DEF_PREDATOR_PLANT_HEIGHT), life = ???, velocity = ???, collisionEffect = ???))
+    val predador : Set[PredatorImpl] = Set(PredatorImpl(name = "predator", boundingBox = Rectangle(point =randomPosition, width = DEF_PREDATOR_PLANT_WIDTH, height = DEF_PREDATOR_PLANT_HEIGHT),collisionEffect =EatingEffect.iscollidedWithPredactor,degradationEffect =DegenerationE.deacreaseLifeEffect,life = 22))
 
-    val nectarPlant: Set[NectarPlant] = Set(NectarPlant(boundingBox = ???, degradationEffect = ???, life = ???, name = ???, collisionEffect = ???))
+    val nectarPlant: Set[NectarPlant] =  Set(NectarPlant(name = "predator", boundingBox = Triangle(point = Point2D(100, 100), height = 10),collisionEffect =EatingEffect.iscollidedWithPredactor,degradationEffect =DegenerationE.deacreaseLifeEffect,life = 22))
 
-    val simplePlan:Set[flourPlant] = Set(flourPlant(boundingBox = ???, degradationEffect = ???, life = ???, name = ???, collisionEffect = ???))
+    val simplePlan:Set[flourPlant] =  Set(flourPlant(name = "predator", boundingBox = Triangle(point = Point2D(100, 100), height = 10),collisionEffect =EatingEffect.iscollidedWithPredactor,degradationEffect =DegenerationE.deacreaseLifeEffect,life = 22))
 
-    val creature : Set [SimulableEntity]  = buttefly ++ larva ++ eggs ++ catepilar++ predador ++ nectarPlant++ simplePlan
+    val creature : Set [SimulableEntity]  = buttefly ++ larva ++ eggs ++ puppa++ predador ++ nectarPlant++ simplePlan
 
 
 
@@ -63,6 +64,7 @@ object  World{
 case class ParameterEnv(temperature: Int)
 
   def updateStateOfWorldParameter(world: World): ParameterEnv = {
+    println("world")
 
     val temperatureUpdated: ((Int, Float)) => Int ={
       case (temperature, timeOfTheDay) =>

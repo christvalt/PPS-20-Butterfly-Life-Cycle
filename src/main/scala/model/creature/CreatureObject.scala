@@ -1,7 +1,7 @@
 package model.creature
 
 
-import model.creature.CreatureObject.Domain.{Collision, Degeneration, Life, LifeCycle, ToChange, Velocity}
+import model.creature.CreatureObject.Domain.{Collision, Degeneration, Life, LifeCycle, MovementStrategy, ToChange, Velocity}
 import model.{BoundingBox, World}
 import model.BoundingBox.{Circle, Rectangle, Triangle}
 import model.creature.Behavior.SimulableEntity
@@ -13,12 +13,12 @@ object CreatureObject {
   object Domain {
     type Life = Int
     type Velocity = Int
-    //type Position = Movement
+    type Position = Movement
     type ToChange = Int
     type LifeCycle = Int
     type Degeneration[A] = A => Life
     type Collision = Butterfly => Set[SimulableEntity]
-    // type MovementStrategy = (Intelligent, World, Entity => Boolean) => Position
+     type MovementStrategy = (Intelligent, World, Creature => Boolean) => Position
   }
 
 
@@ -47,8 +47,8 @@ object CreatureObject {
 
 
   sealed trait Intelligent extends Creature with Moving {
-    //def movementStrategy: MovementStrategy
-    def direction: Int//Direction
+    def movementStrategy: MovementStrategy
+    def direction: Direction
     def fieldOfViewRadius : Int
   }
 
@@ -61,9 +61,13 @@ object CreatureObject {
     def tochange: ToChange
   }
 
+//trait Predator extends Creature with Living with Moving with eating {
+//    override def boundingBox: Rectangle
+//  }
 
-  trait Predator extends Creature with Living with Moving with eating {
+  trait Predator extends Creature with Living  with eating{
     override def boundingBox: Rectangle
+    def degradationEffect: Degeneration[Predator]
   }
 
   trait Plant extends Creature with Living  with eating{

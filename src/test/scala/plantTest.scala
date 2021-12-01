@@ -2,6 +2,7 @@ import model.SimulationObjectImpl.{ButterflyImpl, NectarPlant, flourPlant}
 import model.common.Point2D
 import model.BoundingBox
 import model.creature.CreatureObject.Butterfly
+import model.creature.Direction
 import model.reaction.EatingEffect.DEF_FOOD_ENERGY
 import model.reaction.{BeingEatenEffect, DegenerationE, EatingEffect}
 import org.scalatest.funspec.AnyFunSpec
@@ -14,7 +15,7 @@ class plantTest extends AnyFunSpec {
   val adultB: ButterflyImpl = ButterflyImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
-    direction = 14,
+    direction = Direction(0, 15),
     fieldOfViewRadius = 10,
     velocity = 3,
     life = 100,

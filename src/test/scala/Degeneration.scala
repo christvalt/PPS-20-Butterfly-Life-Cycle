@@ -1,6 +1,7 @@
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
 import model.common.Point2D
 import model.BoundingBox
+import model.creature.Direction
 import model.reaction.{BeingEatenEffect, DegenerationE}
 import org.scalatest.funspec.AnyFunSpec
 
@@ -11,7 +12,7 @@ class Degeneration  extends AnyFunSpec {
   val eggs: EggsImpl = EggsImpl(
     name = "egg1",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
-    direction = 14,
+    direction = Direction(0, 15),
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
@@ -20,7 +21,7 @@ class Degeneration  extends AnyFunSpec {
   val puppa: PuppaImpl = PuppaImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
-    direction = 14,
+    direction = Direction(0, 15),
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
@@ -30,7 +31,7 @@ class Degeneration  extends AnyFunSpec {
   val Larva: LarvaImpl = LarvaImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
-    direction = 14,
+    direction = Direction(0, 15),
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
@@ -39,7 +40,7 @@ class Degeneration  extends AnyFunSpec {
   val adultB: ButterflyImpl = ButterflyImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
-    direction = 14,
+    direction = Direction(0, 15),
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,

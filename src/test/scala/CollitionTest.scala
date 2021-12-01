@@ -3,6 +3,7 @@ import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl
 import model.common.Point2D
 import model.creature.CreatureObject.Butterfly
 import model.creature.CreatureObject.Domain.Degeneration
+import model.creature.Direction
 import model.reaction.{BeingEatenEffect, EatingEffect}
 import model.reaction.EatingEffect.{DEF_FOOD_ENERGY, REDUCE_LIFE, simplePlantCollidedwithButterflyEntity}
 import org.scalatest.funspec.AnyFunSpec
@@ -16,7 +17,7 @@ class CollitionTest extends AnyFunSpec {
   val eggs: EggsImpl = EggsImpl(
     name = "egg1",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
-    direction = 14,
+    direction = Direction(0, 15),
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
@@ -25,7 +26,7 @@ class CollitionTest extends AnyFunSpec {
   val puppa: PuppaImpl = PuppaImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
-    direction = 14,
+    direction = Direction(0, 15),
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
@@ -35,7 +36,7 @@ class CollitionTest extends AnyFunSpec {
   val Larva: LarvaImpl = LarvaImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
-    direction = 14,
+    direction = Direction(0, 15),
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
@@ -44,7 +45,7 @@ class CollitionTest extends AnyFunSpec {
   val adultB: ButterflyImpl = ButterflyImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
-    direction = 14,
+    direction = Direction(0, 15),
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
@@ -61,9 +62,12 @@ class CollitionTest extends AnyFunSpec {
 
       }
 
+
+
+      /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   Test after*/
       it("should produce NoSuchElementException when head is invoked") {
        // assert(EatingEffect.collisionREceptivePLan(eggs).equals(Set(eggs)))
-        assert(EatingEffect.iscollidedWithNectarPlant(eggs).equals(Set(eggs)))
+        //assert(EatingEffect.iscollidedWithNectarPlant(eggs).equals(Set(eggs)))
         //Adult Butterfly  should increase life  and create a adultbuterfly child(Eggs)
         //assert(reaction.reproducingFoodForAdultButterfly(egg).equals(Set(eggs.copy())))
         // assert(EatingEffect.collisionREceptivePLan(adultB).exists(Set(adultB.copy(life = adultB.life + DEF_FOOD_ENERGY))))

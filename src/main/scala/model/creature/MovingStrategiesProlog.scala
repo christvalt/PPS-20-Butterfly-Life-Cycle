@@ -1,14 +1,15 @@
-package evo_sim.model.entities.entityStructure.movement
+package model.creature
 
 import alice.tuprolog.{Double, Int, Struct, Term, Var}
-import evo_sim.model.entities.entityStructure.EntityStructure.Intelligent
-import evo_sim.model.entities.entityStructure.{Point2D, movement}
-import evo_sim.model.world.Constants.{ITERATION_LAPSE, MAX_STEP_FOR_ONE_DIRECTION}
-import evo_sim.prolog.PrologEngine.engine
+import model.common.Point2D
+import model.creature.CreatureObject.Intelligent
+import model.creature.PrologEngine.engine
 
 import scala.language.implicitConversions
 
 object MovingStrategiesProlog {
+  val MAX_STEP_FOR_ONE_DIRECTION = 50
+  val ITERATION_LAPSE: Double = 0.05
 
   /** Implicit to convert a [[Term]] into a [[scala.Int]].
    *
@@ -92,18 +93,11 @@ object MovingStrategiesProlog {
     newPosition(goal, pointVal, directionVal)
   }
 
-  /** Create a [[Movement]] containing the new position and direction using the values contained in the
-   * variables passed as parameters after solving the [[Term]] with the [[evo_sim.prolog.PrologEngine]]
-   *
-   * @param goal         the term to solve.
-   * @param pointVar     the [[Var]] containing the information regarding the new [[Point2D]] position.
-   * @param directionVar the [[Var]] containing the information regarding the new [[Direction]].
-   * @return a [[Movement]] that contains the new position and the new direction.
-   */
+
   private def newPosition(goal: Term, pointVar: Var, directionVar: Var): Movement = {
     val solution = engine(goal)
     val solveInfo = solution.iterator.next()
-    movement.Movement(solveInfo.getVarValue(pointVar.getName), solveInfo.getVarValue(directionVar.getName))
+    Movement(solveInfo.getVarValue(pointVar.getName), solveInfo.getVarValue(directionVar.getName))
   }
 
   private def simulationConstantTerm(worldDimension: (scala.Int, scala.Int)): Term =
