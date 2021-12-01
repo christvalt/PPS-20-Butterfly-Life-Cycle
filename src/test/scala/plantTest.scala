@@ -1,5 +1,6 @@
 import model.SimulationObjectImpl.{ButterflyImpl, NectarPlant, flourPlant}
-import model.{BoundingBox, Point2D}
+import model.common.Point2D
+import model.BoundingBox
 import model.creature.CreatureObject.Butterfly
 import model.reaction.EatingEffect.DEF_FOOD_ENERGY
 import model.reaction.{BeingEatenEffect, DegenerationE, EatingEffect}

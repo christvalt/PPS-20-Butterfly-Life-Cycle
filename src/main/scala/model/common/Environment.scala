@@ -1,5 +1,7 @@
 package model.common
 
-class Environment {
-
-}
+case class Environment(temperature: Int,
+                       buttefly: Int,
+                       plant: Int,
+                       predator: Int,
+                       days: Int)

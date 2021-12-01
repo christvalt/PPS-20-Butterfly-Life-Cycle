@@ -1,7 +1,7 @@
 import org.scalatest._
 import funspec._
 import model.World
-import model.World.Environment
+import model.common.Environment
 import model.reaction.EatingEffect.collisionREceptivePLan
 
 class WordTest extends AnyFunSpec {

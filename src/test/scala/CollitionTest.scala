@@ -1,5 +1,6 @@
-import model.{BoundingBox, Point2D}
+import model.BoundingBox
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
+import model.common.Point2D
 import model.creature.CreatureObject.Butterfly
 import model.creature.CreatureObject.Domain.Degeneration
 import model.reaction.{BeingEatenEffect, EatingEffect}

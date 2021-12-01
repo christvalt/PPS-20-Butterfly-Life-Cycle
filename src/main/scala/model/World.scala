@@ -1,18 +1,29 @@
 package model
 
+import cats.Traverse.ops.toAllTraverseOps
 import model.BoundingBox.{Circle, Rectangle}
+import model.Intersection.isCollidingWith
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl, flourPlant}
-import model.Point2D.randomPosition
+import model.common.Environment
+import model.common.Point2D.randomPosition
 import model.creature.Behavior.SimulableEntity
 import model.creature.CreatureObject.Creature
 import model.creature.CreatureObject.Domain.Collision
 import model.reaction.EatingEffect.Counter.nextValue
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal
 
-case class  World(temperature:Int, width :Int, height :Int, creature: Set[SimulableEntity], currentIteration :Int, totalIterations: Int)
+
+
+case class  World(temperature:Int,
+                  width :Int,
+                  height :Int,
+                  creature: Set[SimulableEntity],
+                  currentIteration :Int,
+                  totalIterations: Int)
 
 
 object  World{
+
   val WORLD_WIDTH = 1280
   val WORLD_HEIGHT = 720
   val TEMPERATURE_AMPLITUDE = 1.0125f
@@ -21,14 +32,6 @@ object  World{
   val ITERATIONS_PER_DAY = 100
   val DEF_BLOB_RADIUS = 5
 
-
-  case class EnvironmentParameters(temperature: Int)
-
-  case class Environment(temperature: Int,
-                         buttefly: Int,
-                         plant: Int,
-                         predator: Int,
-                         days: Int)
 
   def apply(env:Environment):World={
 
@@ -71,6 +74,12 @@ case class ParameterEnv(temperature: Int)
       temperatureUpdated(world.temperature, time))
   }
 
+  def worldStteTotal(world: World): World= {
+
+    updateState(world)
+    checkCollision(world)
+  }
+
   def updateState(world: World):World= {
 
     val updateWorldParameters = updateStateOfWorldParameter(world)
@@ -81,6 +90,33 @@ case class ParameterEnv(temperature: Int)
       currentIteration = world.currentIteration + 1,
     )
 
+    // call the update of thr collision afther the update of different entities in the system
+
+    // checkCollision
+  }
+
+
+  def checkCollision(world: World):World = {
+
+    val  toTuple = Tuple2( world.creature,world.creature)
+    val  collisionBoundiBox = for{
+      i <- toTuple._1
+      j <- toTuple._2
+
+      if i!=j && isCollidingWith(i.boundingBox,j.boundingBox)
+    } yield (i,j)
+    println("test"+collisionBoundiBox)
+
+    def allcreatureCollided = collisionBoundiBox.map(_._1)
+    def newCreatureEntitiesAfterCollision = collisionBoundiBox.foldLeft(world.creature -- allcreatureCollided)((entitiesAfterCollision, collision) => entitiesAfterCollision ++ collision._1.collision(collision._2))
+
+
+    println("after" +newCreatureEntitiesAfterCollision)
+    println("size" +newCreatureEntitiesAfterCollision.size)
+
+    world.copy(
+      creature=newCreatureEntitiesAfterCollision,
+    )
   }
 
 

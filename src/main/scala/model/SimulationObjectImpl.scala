@@ -1,7 +1,7 @@
 package model
 
 import model.BoundingBox.{Circle, Rectangle, Triangle}
-import model.creature.Behavior.{EggsBehavior, LarvaBehavior, NectarPlantBehavior, PlantBehavior, PredatorBehavior, PuppaImplBehavior, butterflyBehavior}
+import model.creature.Behavior.{EggsBehavior, LarvaBehavior, NectarPlantBehavior, PlantBehavior, PredatorBehavior, PuppaImplBehavior, SimulableEntity, butterflyBehavior}
 import model.creature.CreatureObject
 import model.creature.CreatureObject.Domain.{Collision, Degeneration, Life, Velocity}
 import model.creature.CreatureObject.{Butterfly, Creature, Plant, Predator}
@@ -42,7 +42,9 @@ object SimulationObjectImpl {
                        override val velocity: Velocity=DEF_BLOB_VELOCITY ,
                        override val life: Life=DEF_BLOB_LIFE,
                        override val degradationEffect: Degeneration[Butterfly] =  DegenerationE.deacreaseLifeEffect
-                      )extends Butterfly with LarvaBehavior
+                      )extends Butterfly with LarvaBehavior {
+    override def collision(other: SimulableEntity): Set[SimulableEntity] = ???
+  }
 
 
   case class ButterflyImpl(override val name: String,
@@ -60,6 +62,7 @@ object SimulationObjectImpl {
                         override val life: Life=DEF_BLOB_LIFE,
                         override val name: String,
                         override val  collisionEffect: Collision)extends Plant with PlantBehavior {
+    override def collision(other: SimulableEntity): Set[SimulableEntity] = ???
   }
 
   case class NectarPlant(override val boundingBox: Triangle,
@@ -67,7 +70,7 @@ object SimulationObjectImpl {
                          override val life: Life=DEF_BLOB_LIFE,
                          override val name: String,
                          override val  collisionEffect: Collision)extends Plant with NectarPlantBehavior{
-
+    override def collision(other: SimulableEntity): Set[SimulableEntity] = ???
   }
 
   case class PredatorImpl(override val name: String,
@@ -76,7 +79,7 @@ object SimulationObjectImpl {
                           override val velocity: Velocity =DEF_BLOB_VELOCITY,
                           override val collisionEffect: Collision
                           )extends Predator with PredatorBehavior {
-
+    override def collision(other: SimulableEntity): Set[SimulableEntity] = ???
   }
 }
 

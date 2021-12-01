@@ -1,5 +1,6 @@
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
-import model.{BoundingBox, Point2D}
+import model.common.Point2D
+import model.BoundingBox
 import model.reaction.{BeingEatenEffect, DegenerationE}
 import org.scalatest.funspec.AnyFunSpec
 
