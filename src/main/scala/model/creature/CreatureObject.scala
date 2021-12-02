@@ -1,9 +1,9 @@
 package model.creature
 
 
-import model.creature.CreatureObject.Domain.{Collision, Degeneration, Life, LifeCycle, MovementStrategy, ToChange, Velocity}
+import model.creature.CreatureObject.Domain.{Collision, Degeneration, Life, MovementStrategy, ToChange, Velocity}
 import model.{BoundingBox, World}
-import model.BoundingBox.{Circle, Rectangle, Triangle}
+import model.BoundingBox.{ Rectangle, Triangle}
 import model.creature.Behavior.SimulableEntity
 
 

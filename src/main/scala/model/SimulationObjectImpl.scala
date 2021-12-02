@@ -1,10 +1,10 @@
 package model
 
 import model.BoundingBox.{Circle, Rectangle, Triangle}
-import model.creature.Behavior.{EggsBehavior, EggsBehavior2LarvaBehavior, LarvaBehavior, NectarPlantBehavior, PlantBehavior, PredatorBehavior, PuppaImplBehavior, SimulableEntity, butterflyBehavior}
-import model.creature.{CreatureObject, Direction, MovingStrategies}
+import model.creature.Behavior.{EggsBehavior, LarvaBehavior, NectarPlantBehavior, PlantBehavior, PredatorBehavior, PuppaImplBehavior, SimulableEntity, butterflyBehavior}
+import model.creature.{ Direction, MovingStrategies}
 import model.creature.CreatureObject.Domain.{Collision, Degeneration, Life, MovementStrategy, Velocity}
-import model.creature.CreatureObject.{Butterfly, Creature, Plant, Predator}
+import model.creature.CreatureObject.{Butterfly, Plant, Predator}
 import model.reaction.DegenerationE
 
 

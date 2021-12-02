@@ -16,7 +16,7 @@ private[view] object SettingsView extends Views {
   private val DefaultColoniesNumber = 1
   private val DefaultTemporalGranularity = 1
 
-  override def createAndShow: Option[SimulationSettings] = {
+   def createAndShow: Option[SimulationSettings] = {
 
     //val frame = new Frame(("Butterfly-Life-cycle"))
     val panel = new JPanel(new GridLayout(0, 1))

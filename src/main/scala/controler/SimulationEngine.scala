@@ -1,19 +1,11 @@
 package controler
 
-import breeze.numerics.log
-import cats.data.State
 import cats.effect.IO
-import jdk.nashorn.internal.objects.NativeDate
 import model.World
-import model.World.{checkCollision, updateState, updateStateOfWorldParameter, worldStteTotal}
+import model.World.{ worldStteTotal}
 import model.common.Environment
-import spire.random.Seed
+import java.util.logging.{Level}
 
-import java.util
-import java.util.logging.Logger.getLogger
-import java.util.logging.{Level, Logger}
-import scala.concurrent.Promise
-import scala.sys.env
 
 object SimulationEngine {
 

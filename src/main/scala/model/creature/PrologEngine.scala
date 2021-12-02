@@ -4,15 +4,12 @@ import alice.tuprolog.{Prolog, SolveInfo, Term, Theory}
 
 object PrologEngine {
 
-  /** The prolog engine */
+
   private val engine = new Prolog()
   engine.setTheory(new Theory(getClass.getResource("/movementTheory.pl").openStream()))
 
 
-  /** Function that solves a Prolog goal.
-   * @param goal the [[Term]] to solve.
-   * @return an iterable of solutions.
-   */
+
   def engine(goal : Term): Iterable[SolveInfo] = {
     new Iterable[SolveInfo]{
       override def iterator: Iterator[SolveInfo] = new Iterator[SolveInfo]{

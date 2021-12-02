@@ -10,7 +10,6 @@ import scala.math.hypot
 case class Movement(point: Point2D, direction: Direction)
 case class Direction(angle: Int, stepToNextDirection: Int)
 
-/** Contains utilities used to update the position of [[Intelligent]] entity. */
 object MovingStrategies {
 
 

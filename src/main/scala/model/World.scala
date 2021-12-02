@@ -1,14 +1,11 @@
 package model
 
-import cats.Traverse.ops.toAllTraverseOps
-import model.BoundingBox.{Circle, Rectangle, Triangle}
+import model.BoundingBox.{ Rectangle, Triangle}
 import model.Intersection.isCollidingWith
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl, flourPlant}
 import model.common.{Environment, Point2D}
 import model.common.Point2D.randomPosition
 import model.creature.Behavior.SimulableEntity
-import model.creature.CreatureObject.Creature
-import model.creature.CreatureObject.Domain.Collision
 import model.reaction.{DegenerationE, EatingEffect}
 import model.reaction.EatingEffect.Counter.nextValue
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal

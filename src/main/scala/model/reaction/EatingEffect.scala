@@ -1,10 +1,10 @@
 package model.reaction
 
 import model.BoundingBox.Circle
-import model.SimulationObjectImpl
-import model.SimulationObjectImpl.{ButterflyImpl, DEF_BLOB_FOV_RADIUS, EggsImpl, LarvaImpl, PredatorImpl, PuppaImpl}
+
+import model.SimulationObjectImpl.{ButterflyImpl, DEF_BLOB_FOV_RADIUS, EggsImpl, LarvaImpl, PuppaImpl}
 import model.creature.Behavior.SimulableEntity
-import model.creature.CreatureObject.{Butterfly, Creature, Plant, Predator}
+import model.creature.CreatureObject.{Butterfly}
 
 
 object EatingEffect {

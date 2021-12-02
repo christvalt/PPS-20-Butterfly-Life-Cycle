@@ -1,8 +1,7 @@
 package model.reaction
 
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl, flourPlant}
-import model.creature.CreatureObject
-import model.creature.CreatureObject.{Butterfly, Creature}
+import model.creature.CreatureObject.{Creature}
 import model.creature.CreatureObject.Domain.Life
 
 object BeingEatenEffect {

@@ -2,8 +2,6 @@ package model.creature
 
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl, flourPlant}
 import model.{TemperatureEffect, World}
-import model.creature.Behavior.SimulableEntity
-import model.creature.Collidable.NeutralCollidable
 import model.creature.CreatureObject.{Butterfly, Creature, Plant, Predator}
 import model.reaction.EatingEffect.MIN_BLOB_FOV_RADIUS
 

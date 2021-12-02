@@ -1,4 +1,3 @@
-import cats.effect.IO
 import controler.SimulationEngine
 import model.common.Environment
 
