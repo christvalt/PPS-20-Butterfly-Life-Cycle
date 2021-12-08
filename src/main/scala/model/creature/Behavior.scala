@@ -1,9 +1,12 @@
 package model.creature
 
+import model.BoundingBox.Circle
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl, flourPlant}
 import model.{TemperatureEffect, World}
 import model.creature.CreatureObject.{Butterfly, Creature, Plant, Predator}
 import model.reaction.EatingEffect.MIN_BLOB_FOV_RADIUS
+
+import scala.math.Ordered.orderingToOrdered
 
 object Behavior {
   val DEF_BLOB_VELOCITY = 50
@@ -21,15 +24,26 @@ object Behavior {
 
   }
 
+
+
+
   trait EggsBehavior extends Simulable {
     self: EggsImpl =>
+  //  val size :Int
 
     override def updateState(world:World): Set[SimulableEntity]={
-      val newState = self.degradationEffect(self)
-      newState match {
-        case n if n < 0 => Set(EggsImpl(self.name,self.boundingBox,self.direction,self.fieldOfViewRadius))
-        case _ =>Set()
-      }
+      val newState = self.movementStrategy(self, world)
+
+      Set(self.copy(
+        boundingBox = Circle(newState.point, self.boundingBox.radius),
+        direction = newState.direction,
+        /*movementDirection = movement.angle,
+        stepToNextDirection = movement.stepToNextDirection,*/
+        life = self.degradationEffect(self),
+        fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
+      ))
+
+
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)
@@ -45,7 +59,7 @@ object Behavior {
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.degradationEffect(self)
       newState match {
-        case n if n < 0 => Set(LarvaImpl(self.name,self.boundingBox,self.direction,self.fieldOfViewRadius))
+       // case n if n > 0 => Set(LarvaImpl(self.name,self.boundingBox,self.direction,self.fieldOfViewRadius))
         case _ =>Set()
       }
     }
@@ -63,11 +77,18 @@ object Behavior {
     self: LarvaImpl =>
 
     override def updateState(world:World): Set[SimulableEntity]={
-      val newState = self.degradationEffect(self)
-      newState match {
-        case n if n < 0 => Set(LarvaImpl(self.name,self.boundingBox,self.direction,self.fieldOfViewRadius))
-        case _ =>Set()
-      }
+      val newState = self.movementStrategy(self, world)
+
+      Set(self.copy(
+        boundingBox = Circle(newState.point, self.boundingBox.radius),
+        direction = newState.direction,
+        /*movementDirection = movement.angle,
+        stepToNextDirection = movement.stepToNextDirection,*/
+        life = self.degradationEffect(self),
+        fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
+      ))
+
+
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)
@@ -82,11 +103,18 @@ object Behavior {
     self: PuppaImpl =>
 
     override def updateState(world:World): Set[SimulableEntity]={
-      val newState = self.degradationEffect(self)
-      newState match {
-        case n if n < 0 => Set(PuppaImpl(self.name,self.boundingBox,self.direction,self.fieldOfViewRadius))
-        case _ =>Set()
-      }
+      val newState = self.movementStrategy(self, world)
+
+      Set(self.copy(
+        boundingBox = Circle(newState.point, self.boundingBox.radius),
+        direction = newState.direction,
+        /*movementDirection = movement.angle,
+        stepToNextDirection = movement.stepToNextDirection,*/
+        life = self.degradationEffect(self),
+        fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
+      ))
+
+
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)
@@ -100,11 +128,18 @@ object Behavior {
     self: ButterflyImpl =>
 
     override def updateState(world:World): Set[SimulableEntity]={
-      val newState = self.degradationEffect(self)
-      newState match {
-        case n if n < 0 => Set(ButterflyImpl(self.name,self.boundingBox,self.direction,self.fieldOfViewRadius))
-        case _ =>Set()
-      }
+      val newState = self.movementStrategy(self, world)
+
+      Set(self.copy(
+        boundingBox = Circle(newState.point, self.boundingBox.radius),
+        direction = newState.direction,
+        /*movementDirection = movement.angle,
+        stepToNextDirection = movement.stepToNextDirection,*/
+        life = self.degradationEffect(self),
+        fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
+      ))
+
+
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)
@@ -121,7 +156,7 @@ object Behavior {
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.degradationEffect(self)
       newState match {
-        case n if n < 0 => Set(flourPlant(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect))
+        case n if n > 0 => Set(flourPlant(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect))
         case _ =>Set()
       }
     }
@@ -136,7 +171,7 @@ object Behavior {
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.degradationEffect(self)
       newState match {
-        case n if n < 0 => Set(NectarPlant(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect))
+        case n if n > 0 => Set(NectarPlant(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect))
         case _ =>Set()
       }
     }
@@ -152,7 +187,7 @@ object Behavior {
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.degradationEffect(self)
       newState match {
-        case n if n < 0 => Set(PredatorImpl(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect))
+        case n if n > 0 => Set(PredatorImpl(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect))
         case _ =>Set()
       }
     }

@@ -1,7 +1,7 @@
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
 import model.common.Point2D
 import model.BoundingBox
-import model.creature.Direction
+import model.creature.{Direction, MovingStrategies}
 import model.reaction.{BeingEatenEffect, DegenerationE}
 import org.scalatest.funspec.AnyFunSpec
 
@@ -16,7 +16,8 @@ class Degeneration  extends AnyFunSpec {
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
   val puppa: PuppaImpl = PuppaImpl(
     name = "egg2",
@@ -25,7 +26,8 @@ class Degeneration  extends AnyFunSpec {
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
 
   val Larva: LarvaImpl = LarvaImpl(
@@ -35,7 +37,8 @@ class Degeneration  extends AnyFunSpec {
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
   val adultB: ButterflyImpl = ButterflyImpl(
     name = "egg2",
@@ -44,7 +47,8 @@ class Degeneration  extends AnyFunSpec {
     fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
   describe("Standard Degradation effect") {
     it("should produce the reduction of its life") {

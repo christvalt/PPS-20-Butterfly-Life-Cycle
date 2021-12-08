@@ -3,7 +3,7 @@ import model.creature.CreatureObject.Butterfly
 import model.reaction.EatingEffect.DEF_FOOD_ENERGY
 import model.BoundingBox
 import model.common.Point2D
-import model.creature.Direction
+import model.creature.{Direction, MovingStrategies}
 import model.reaction.{BeingEatenEffect, DegenerationE, EatingEffect}
 import org.scalatest.funspec.AnyFunSpec
 
@@ -19,7 +19,8 @@ class ButterflyTest extends AnyFunSpec {
     fieldOfViewRadius = 10,
     velocity = 3,
     life = 100,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
 
   private val food: flourPlant = flourPlant(

@@ -32,7 +32,6 @@ object SwingView extends Views {
 
   val panel = new JPanel
 
-  override def inputReadFromUser(): Environment = ???
 
   /*
   for {
@@ -59,9 +58,6 @@ object SwingView extends Views {
     implicit def numberFrom[T](component: JComboBox[T]): Int = component.getSelectedItem.toString toInt
   }*/
 
-  override def simulationresult(): Int = ???
-
-  override def statisticRisult(): Int = ???
 
 
   object inputviewSwing{
@@ -189,9 +185,11 @@ object SwingView extends Views {
 
   }
 
-  override def createAndShow(): Environment = ???
+  override def createAndShow():Unit = ???
 
-  override def simulationResult(world: World): Unit = ???
+  override def simulationViewCrateAndShowed(): Unit = ???
+
+  override def rendered(world: World): Unit = ???
 }
 
 

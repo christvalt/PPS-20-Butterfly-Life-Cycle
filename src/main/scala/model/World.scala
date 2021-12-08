@@ -1,11 +1,13 @@
 package model
 
-import model.BoundingBox.{ Rectangle, Triangle}
+import controler.TimingOps.{Simulation, toStateTWorld}
+import model.BoundingBox.{Rectangle, Triangle}
 import model.Intersection.isCollidingWith
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl, flourPlant}
 import model.common.{Environment, Point2D}
 import model.common.Point2D.randomPosition
 import model.creature.Behavior.SimulableEntity
+import model.creature.{Direction, MovingStrategies}
 import model.reaction.{DegenerationE, EatingEffect}
 import model.reaction.EatingEffect.Counter.nextValue
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal
@@ -28,22 +30,30 @@ object  World{
   val DEF_PREDATOR_PLANT_WIDTH = 8
   val DEF_PREDATOR_PLANT_HEIGHT = 8
   val ITERATIONS_PER_DAY = 100
-  val DEF_BLOB_RADIUS = 5
+  val BUTTERFLY_RADIUS = 5
+  val DEF_BLOB_FOW_RADIUS= 10
+  val BUTTERFLY_VELOCITY = 50
+  val BUTTERFLY_LIFE = 300
 
 
   def apply(env:Environment):World={
+    val iterationsPerDay =100
 
     val buttefly: Set[ButterflyImpl] = Set(ButterflyImpl(name = "blob" + nextValue(),
-      boundingBox = BoundingBox.Circle(point = randomPosition(), radius = DEF_BLOB_RADIUS)))
+      boundingBox = BoundingBox.Circle(point = randomPosition() , radius = BUTTERFLY_RADIUS),Direction(0, 20), fieldOfViewRadius=12,
+        velocity= BUTTERFLY_VELOCITY ,life=BUTTERFLY_LIFE , degradationEffect=DegenerationE.deacreaseLifeEffect , movementStrategy = MovingStrategies.baseMovement))
 
     val larva: Set[LarvaImpl] = Set(LarvaImpl(name = "blob" + nextValue(),
-      boundingBox = BoundingBox.Circle(point = randomPosition(), radius = DEF_BLOB_RADIUS)))
+      boundingBox = BoundingBox.Circle(point = randomPosition() , radius = BUTTERFLY_RADIUS),Direction(0, 20), fieldOfViewRadius=12,
+      velocity= BUTTERFLY_VELOCITY ,life=BUTTERFLY_LIFE , degradationEffect=DegenerationE.deacreaseLifeEffect , movementStrategy = MovingStrategies.baseMovement))
 
     val eggs: Set[EggsImpl] = Set(EggsImpl(name = "blob" + nextValue(),
-      boundingBox = BoundingBox.Circle(point = randomPosition(), radius = DEF_BLOB_RADIUS)))
+      boundingBox = BoundingBox.Circle(point = randomPosition() , radius = BUTTERFLY_RADIUS),Direction(0, 20), fieldOfViewRadius=12,
+      velocity= BUTTERFLY_VELOCITY ,life=BUTTERFLY_LIFE , degradationEffect=DegenerationE.deacreaseLifeEffect , movementStrategy = MovingStrategies.baseMovement))
 
     val puppa: Set[PuppaImpl] = Set(PuppaImpl(name = "blob" + nextValue(),
-      boundingBox = BoundingBox.Circle(point = randomPosition(), radius = DEF_BLOB_RADIUS)))
+      boundingBox = BoundingBox.Circle(point = randomPosition() , radius = BUTTERFLY_RADIUS),Direction(0, 20), fieldOfViewRadius=12,
+      velocity= BUTTERFLY_VELOCITY ,life=BUTTERFLY_LIFE , degradationEffect=DegenerationE.deacreaseLifeEffect , movementStrategy = MovingStrategies.baseMovement))
 
     val predador : Set[PredatorImpl] = Set(PredatorImpl(name = "predator", boundingBox = Rectangle(point =randomPosition, width = DEF_PREDATOR_PLANT_WIDTH, height = DEF_PREDATOR_PLANT_HEIGHT),collisionEffect =EatingEffect.iscollidedWithPredactor,degradationEffect =DegenerationE.deacreaseLifeEffect,life = 22))
 
@@ -55,7 +65,7 @@ object  World{
 
 
 
-    World(temperature = env.temperature , width = WORLD_WIDTH, height = WORLD_HEIGHT, creature = creature, currentIteration = 0,totalIterations=100)
+    World(temperature = env.temperature , width = WORLD_WIDTH, height = WORLD_HEIGHT, creature = creature, currentIteration = 0,totalIterations=env.days * iterationsPerDay)
   }
 
 case class ParameterEnv(temperature: Int)
@@ -73,11 +83,16 @@ case class ParameterEnv(temperature: Int)
       temperatureUpdated(world.temperature, time))
   }
 
-  def worldStteTotal(world: World): World= {
 
-    updateState(world)
-    checkCollision(world)
+  def wordUpdateToState():Simulation[World] = toStateTWorld{
+    updateState
   }
+
+  def checkCollisionToState():Simulation[World] = toStateTWorld{
+    checkCollision
+  }
+
+
 
   def updateState(world: World):World= {
 

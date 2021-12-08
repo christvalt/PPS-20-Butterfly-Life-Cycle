@@ -3,7 +3,8 @@ package model.creature
 
 import model.creature.CreatureObject.Domain.{Collision, Degeneration, Life, MovementStrategy, ToChange, Velocity}
 import model.{BoundingBox, World}
-import model.BoundingBox.{ Rectangle, Triangle}
+import model.BoundingBox.{Rectangle, Triangle}
+import model.common.Point2D
 import model.creature.Behavior.SimulableEntity
 
 
@@ -18,7 +19,7 @@ object CreatureObject {
     type LifeCycle = Int
     type Degeneration[A] = A => Life
     type Collision = Butterfly => Set[SimulableEntity]
-     type MovementStrategy = (Intelligent, World, Creature => Boolean) => Position
+    type MovementStrategy = (Intelligent, World) => Position
   }
 
 
