@@ -2,20 +2,20 @@ package controler
 
 import cats.effect.IO
 import model.World
-import model.World.{ worldStteTotal}
+import model.World.worldStteTotal
 import model.common.Environment
-import java.util.logging.{Level}
+import view.SettingsView.{createAndShow, simulationResult}
+
+import java.util.logging.Level
 
 
 object SimulationEngine {
 
 
-  def setup(params:Environment):IO[Unit] ={
-      println("setup1")
+  def setup():IO[Unit] ={
     for{
-      environement <- IO pure {Environment(params.temperature,params.plant  ,params.buttefly ,params.predator , params.days)}
-      model  <- mainLoop(World(environement))
-      _ <-  IO pure {println("test setup input"+model)}
+      params <- IO pure {createAndShow}
+      model  <- mainLoop(World(params))
     }yield model
   }
 
@@ -24,28 +24,28 @@ object SimulationEngine {
     //a <- updateState(world)
     x <- processInput
     c <- updateGame(world)
-   //d <- IO {println("mainloop")}
     d <- render(c)
 
   } yield{
-  println("mainLoop")
       c
 
   }
 
 
    def processInput(): IO[Unit] = IO pure {
-    print(Level.INFO, "..process input..")
+    print(Level.INFO, "..get input from user..")
+     createAndShow
   }
 
    def updateGame(world: World):  IO [World]=  IO pure {
-    println("..update game: elapsed " )
+    println("..update game2: elapsed " )
      //updateState(world)
      //checkCollision(world)
      worldStteTotal(world)
   }
   def render (newWorld : World): IO [Unit] = IO pure {
     println(Level.INFO, "....rendered")
+    simulationResult(newWorld)
   }
 
 

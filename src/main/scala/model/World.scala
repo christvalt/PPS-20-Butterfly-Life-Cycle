@@ -104,18 +104,22 @@ case class ParameterEnv(temperature: Int)
 
       if i!=j && isCollidingWith(i.boundingBox,j.boundingBox)
     } yield (i,j)
-    println("test"+collisionBoundiBox)
+    //println("test"+collisionBoundiBox)
 
     def allcreatureCollided = collisionBoundiBox.map(_._1)
     def newCreatureEntitiesAfterCollision = collisionBoundiBox.foldLeft(world.creature -- allcreatureCollided)((entitiesAfterCollision, collision) => entitiesAfterCollision ++ collision._1.collision(collision._2))
 
 
-    println("after" +newCreatureEntitiesAfterCollision)
-    println("size" +newCreatureEntitiesAfterCollision.size)
+   // println("after" +newCreatureEntitiesAfterCollision)
+    //println("size" +newCreatureEntitiesAfterCollision.size)
+
+
+    //println("MODEL"+world)
 
     world.copy(
       creature=newCreatureEntitiesAfterCollision,
     )
+
   }
 
 

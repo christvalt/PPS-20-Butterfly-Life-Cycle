@@ -2,6 +2,8 @@ package view
 
 import cats.data.EitherT.pure
 import cats.effect.IO
+import model.World
+import model.common.Environment
 
 import java.awt.FlowLayout
 import javax.swing._
@@ -30,7 +32,7 @@ object SwingView extends Views {
 
   val panel = new JPanel
 
-  override def inputReadFromUser(): IO[SimulationSettings] = ???
+  override def inputReadFromUser(): Environment = ???
 
   /*
   for {
@@ -187,7 +189,9 @@ object SwingView extends Views {
 
   }
 
-  override def createAndShow(): Option[SimulationSettings] = ???
+  override def createAndShow(): Environment = ???
+
+  override def simulationResult(world: World): Unit = ???
 }
 
 
