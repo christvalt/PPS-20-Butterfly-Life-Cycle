@@ -1,12 +1,17 @@
 package view
 
 import cats.effect.IO
+import model.World
+import model.common.Environment
 
-trait Views {
+import javax.swing.JPanel
+
+trait Views extends JPanel {
   //ststus
 
-  def inputReadFromUser(): IO[SimulationSettings]
+  def inputReadFromUser(): Environment
   def simulationresult():Int
   def statisticRisult():Int
-  def createAndShow():Option[SimulationSettings]
+  def createAndShow():Environment
+  def simulationResult(world : World) : Unit
 }

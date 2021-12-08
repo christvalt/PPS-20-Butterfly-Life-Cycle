@@ -1,8 +1,11 @@
 package view
 
 import cats.effect.IO
+import model.World
+import model.common.Environment
 
-import java.awt.{Frame, GridLayout}
+import java.awt.event.{WindowAdapter, WindowEvent}
+import java.awt.{BorderLayout, Dimension, Frame, GraphicsEnvironment, GridLayout, Toolkit}
 import javax.swing.JOptionPane._
 import javax.swing._
 
@@ -10,37 +13,23 @@ import javax.swing._
 /**
  * View for setup simulation.
  */
-private[view] object SettingsView extends Views {
+object SettingsView extends Views {
   private val MatrixSize = Array("100", "200", "300")
   private val Iterations = Array("1000", "5000", "infinite")
   private val DefaultColoniesNumber = 1
   private val DefaultTemporalGranularity = 1
 
-  override def createAndShow: Option[SimulationSettings] = {
+    override def createAndShow: Environment = {
 
-    //val frame = new Frame(("Butterfly-Life-cycle"))
     val panel = new JPanel(new GridLayout(0, 1))
-
-    panel.add(new JLabel("N° Eggs:"))
-    val Eggs = new JTextField(DefaultColoniesNumber toString)
-    panel.add(Eggs)
-
-    panel.add(new JLabel("N° Larva:"))
-    val Larva = new JTextField(DefaultColoniesNumber toString)
-    panel.add(Larva)
-
-    panel.add(new JLabel("N° Pupa:"))
-    val Pupa = new JTextField(DefaultColoniesNumber toString)
-    panel.add(Pupa)
-
 
     panel.add(new JLabel("N° Butterfly:"))
     val Butterfly = new JTextField(DefaultColoniesNumber toString)
     panel.add(Butterfly)
 
-    panel.add(new JLabel("N° Obstacle:"))
-    val Obstacle = new JTextField(DefaultColoniesNumber toString)
-    panel.add(Obstacle)
+    panel.add(new JLabel("N° predator:"))
+    val predator = new JTextField(DefaultColoniesNumber toString)
+    panel.add(predator)
 
     panel.add(new JLabel("N° Plan:"))
     val Plan = new JTextField(DefaultColoniesNumber toString)
@@ -54,17 +43,14 @@ private[view] object SettingsView extends Views {
     val comboIterations = new JComboBox(Iterations)
     panel.add(comboIterations)
 
-    panel.add(new JLabel("Environment size:"))
-    val comboMatrix = new JComboBox(MatrixSize)
-    panel.add(comboMatrix)
 
     showConfirmDialog(null, panel, "Settings", OK_CANCEL_OPTION, PLAIN_MESSAGE) match {
-      case OK_OPTION => Option(SimulationSettings(Butterfly, temporalGranularity,
+      case OK_OPTION => (Environment(Butterfly,predator,Plan, temporalGranularity,
         comboIterations.getSelectedItem match {
           case "infinite" => Int.MaxValue
           case value => value.toString.toInt
-        }, temporalGranularity,comboIterations,comboIterations,comboMatrix,comboIterations,comboIterations,(comboMatrix, comboMatrix)))
-      case _ => Option.empty
+        }))
+      case _ => ???
     }
   }
 
@@ -74,9 +60,29 @@ private[view] object SettingsView extends Views {
 
 
 
-  override def inputReadFromUser(): IO[SimulationSettings] = ???
+  override def inputReadFromUser(): Environment = ???
 
   override def simulationresult(): Int = ???
 
   override def statisticRisult(): Int = ???
+
+  override def simulationResult(world : World): Unit  =  {
+    val frame = new  JFrame ("tett")
+    frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit.getScreenSize.width, Toolkit.getDefaultToolkit.getScreenSize.width))
+    frame.setResizable(false)
+    val shape =  new ShapesPanel(world)
+    frame.getContentPane().add(shape)
+    frame.setDefaultCloseOperation(3)
+    frame.pack()
+    frame.setVisible(true)
+  }
+
+
+
+
+  object SimulationViewTeest extends  JPanel{
+
+
+
+  }
 }
