@@ -17,43 +17,39 @@ object SimulationObjectImpl {
   case class EggsImpl(override val name: String,
                       override val  boundingBox: Circle,
                       override val direction: Direction = Direction(DEF_NEXT_DIRECTION,DEF_NEXT_DIRECTION) ,
-                      override val fieldOfViewRadius: Int=DEF_BLOB_FOV_RADIUS,
                       override val velocity: Velocity=DEF_BLOB_VELOCITY ,
                       override val life: Life=DEF_BLOB_LIFE,
                       override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect,
-                      override val movementStrategy: MovementStrategy = MovingStrategies.baseMovement,
+                      override val movementStrategy: MovementStrategy
                      )extends Butterfly with EggsBehavior
 
   case class LarvaImpl(override val name: String,
                        override val  boundingBox: Circle,
                        override val direction: Direction = Direction(DEF_NEXT_DIRECTION,DEF_NEXT_DIRECTION) ,
-                       override val fieldOfViewRadius: Int=DEF_BLOB_FOV_RADIUS,
-                       override val velocity: Velocity=DEF_BLOB_VELOCITY ,
+                       override val velocity: Velocity,//=DEF_BLOB_VELOCITY ,
                        override val life: Life=DEF_BLOB_LIFE,
                        override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect,
-                       override val movementStrategy: MovementStrategy = MovingStrategies.baseMovement,
+                       override val movementStrategy: MovementStrategy ,
                       )extends Butterfly with LarvaBehavior
 
 
   case class PuppaImpl(override val name: String,
                        override val  boundingBox: Circle,
                        override val direction: Direction = Direction(DEF_NEXT_DIRECTION,DEF_NEXT_DIRECTION) ,
-                       override val fieldOfViewRadius: Int=DEF_BLOB_FOV_RADIUS,
-                       override val velocity: Velocity=DEF_BLOB_VELOCITY ,
+                       override val velocity: Velocity,//=DEF_BLOB_VELOCITY ,
                        override val life: Life=DEF_BLOB_LIFE,
                        override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect,
-                       override val movementStrategy: MovementStrategy = MovingStrategies.baseMovement,
+                       override val movementStrategy: MovementStrategy ,
                       )extends Butterfly with  PuppaImplBehavior
 
 
   case class ButterflyImpl(override val name: String,
                            override val  boundingBox: Circle,
                            override val direction: Direction = Direction(DEF_NEXT_DIRECTION,DEF_NEXT_DIRECTION) ,
-                           override val fieldOfViewRadius: Int=DEF_BLOB_FOV_RADIUS,
-                           override val velocity: Velocity=DEF_BLOB_VELOCITY ,
+                           override val velocity: Velocity,//=DEF_BLOB_VELOCITY ,
                            override val life: Life=DEF_BLOB_LIFE,
                            override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect,
-                           override val movementStrategy: MovementStrategy = MovingStrategies.baseMovement,
+                           override val movementStrategy: MovementStrategy,
                           )extends Butterfly with butterflyBehavior
 
 
@@ -76,6 +72,7 @@ object SimulationObjectImpl {
                           override val life: Life=DEF_BLOB_LIFE,
                           override val  collisionEffect: Collision
                           )extends Predator with PredatorBehavior
+
 }
 
 ///config final

@@ -1,7 +1,7 @@
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
 import model.common.Point2D
 import model.BoundingBox
-import model.creature.Direction
+import model.creature.{Direction, MovingStrategies}
 import model.reaction.{BeingEatenEffect, DegenerationE}
 import org.scalatest.funspec.AnyFunSpec
 
@@ -13,38 +13,42 @@ class Degeneration  extends AnyFunSpec {
     name = "egg1",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
-    fieldOfViewRadius = 10,
+  //  fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
   val puppa: PuppaImpl = PuppaImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
-    fieldOfViewRadius = 10,
+   // fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
 
   val Larva: LarvaImpl = LarvaImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
-    fieldOfViewRadius = 10,
+   // fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
   val adultB: ButterflyImpl = ButterflyImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
-    fieldOfViewRadius = 10,
+   // fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
   describe("Standard Degradation effect") {
     it("should produce the reduction of its life") {

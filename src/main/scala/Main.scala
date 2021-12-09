@@ -4,7 +4,7 @@ object Main extends App {
     println("test")
 
 
-    View.settingsView
+   // View.settingsView
     println("test2")
 
 

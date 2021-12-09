@@ -1,10 +1,10 @@
 package model.reaction
 
 import model.BoundingBox.Circle
-
 import model.SimulationObjectImpl.{ButterflyImpl, DEF_BLOB_FOV_RADIUS, EggsImpl, LarvaImpl, PuppaImpl}
 import model.creature.Behavior.SimulableEntity
-import model.creature.CreatureObject.{Butterfly}
+import model.creature.CreatureObject.Butterfly
+import model.creature.MovingStrategies
 
 
 object EatingEffect {
@@ -36,8 +36,8 @@ object EatingEffect {
   }
 
   def spwanEggs[A <:Butterfly](adults :A): SimulableEntity =  adults match {
-    case adults :ButterflyImpl => EggsImpl(name = adults.name + "-son"+Counter.nextValue, boundingBox = Circle(adults.boundingBox.point, randomValueChange(DEF_BLOB_RADIUS).max(MIN_BLOB_RADIUS)),
-      fieldOfViewRadius = randomValueChange(DEF_BLOB_FOV_RADIUS).max(MIN_BLOB_FOV_RADIUS))
+    case adults :ButterflyImpl => EggsImpl(name = adults.name + "-son"+Counter.nextValue, boundingBox = Circle(adults.boundingBox.point, randomValueChange(DEF_BLOB_RADIUS).max(MIN_BLOB_RADIUS)),movementStrategy = MovingStrategies.baseMovement)
+      //fieldOfViewRadius = randomValueChange(DEF_BLOB_FOV_RADIUS).max(MIN_BLOB_FOV_RADIUS),movementStrategy = MovingStrategies.baseMovement)
       case _ => ???//Set()
   }
 

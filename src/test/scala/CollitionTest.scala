@@ -3,7 +3,7 @@ import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl
 import model.common.Point2D
 import model.creature.CreatureObject.Butterfly
 import model.creature.CreatureObject.Domain.Degeneration
-import model.creature.Direction
+import model.creature.{Direction, MovingStrategies}
 import model.reaction.{BeingEatenEffect, EatingEffect}
 import model.reaction.EatingEffect.{DEF_FOOD_ENERGY, REDUCE_LIFE, simplePlantCollidedwithButterflyEntity}
 import org.scalatest.funspec.AnyFunSpec
@@ -18,38 +18,42 @@ class CollitionTest extends AnyFunSpec {
     name = "egg1",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
-    fieldOfViewRadius = 10,
+   // fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
   val puppa: PuppaImpl = PuppaImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
-    fieldOfViewRadius = 10,
+    //fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
 
   val Larva: LarvaImpl = LarvaImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
-    fieldOfViewRadius = 10,
+    //fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
   val adultB: ButterflyImpl = ButterflyImpl(
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
-    fieldOfViewRadius = 10,
+    //fieldOfViewRadius = 10,
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
-    degradationEffect =BeingEatenEffect.eatingByPredatorEffect
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
   )
 
   describe("PLant Effect appy to a butterfly") {
