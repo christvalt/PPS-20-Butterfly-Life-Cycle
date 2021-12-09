@@ -50,7 +50,7 @@ object CreatureObject {
   sealed trait Intelligent extends Creature with Moving {
     def movementStrategy: MovementStrategy
     def direction: Direction
-    def fieldOfViewRadius : Int
+    //def fieldOfViewRadius : Int
   }
 
   trait Butterfly extends Creature with Living with Moving with Intelligent {

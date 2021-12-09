@@ -16,7 +16,7 @@ class ButterflyTest extends AnyFunSpec {
     name = "egg2",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
-    fieldOfViewRadius = 10,
+   // fieldOfViewRadius = 10,
     velocity = 3,
     life = 100,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,

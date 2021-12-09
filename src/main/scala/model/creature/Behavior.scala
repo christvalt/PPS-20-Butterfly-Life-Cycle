@@ -29,15 +29,12 @@ object Behavior {
 
   trait EggsBehavior extends Simulable {
     self: EggsImpl =>
-  //  val size :Int
-
     override def updateState(world:World): Set[SimulableEntity]={
-      val newState = self.movementStrategy(self, world)
+      val newPosition = self.movementStrategy(self, world)
       Set(self.copy(
-        boundingBox = Circle(newState.point, self.boundingBox.radius),
-        direction = newState.direction,
+        boundingBox = Circle(newPosition.point, self.boundingBox.radius),
+        direction = newPosition.direction,
         life = self.degradationEffect(self),
-        fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
       ))
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
@@ -77,10 +74,7 @@ object Behavior {
       Set(self.copy(
         boundingBox = Circle(newState.point, self.boundingBox.radius),
         direction = newState.direction,
-        /*movementDirection = movement.angle,
-        stepToNextDirection = movement.stepToNextDirection,*/
         life = self.degradationEffect(self),
-        fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
       ))
 
 
@@ -106,7 +100,7 @@ object Behavior {
         /*movementDirection = movement.angle,
         stepToNextDirection = movement.stepToNextDirection,*/
         life = self.degradationEffect(self),
-        fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
+        //fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
       ))
 
 
@@ -131,7 +125,7 @@ object Behavior {
         /*movementDirection = movement.angle,
         stepToNextDirection = movement.stepToNextDirection,*/
         life = self.degradationEffect(self),
-        fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
+        //fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
       ))
 
 
@@ -209,28 +203,28 @@ object Behavior {
       direction = movement.direction,
       velocity = incrementedValue(base.velocity, TemperatureEffect.standardTemperatureEffect, world, MIN_BLOB_VELOCITY),
       life = base.degradationEffect(base),
-      fieldOfViewRadius = incrementedValue(base.fieldOfViewRadius,TemperatureEffect.standardTemperatureEffect,world, MIN_BLOB_FOV_RADIUS)
+      //fieldOfViewRadius = incrementedValue(base.fieldOfViewRadius,TemperatureEffect.standardTemperatureEffect,world, MIN_BLOB_FOV_RADIUS)
     )
     case cannibal: LarvaImpl => cannibal.copy(
       boundingBox = cannibal.boundingBox.copy(point = movement.point),
       direction = movement.direction,
       velocity = incrementedValue(cannibal.velocity, TemperatureEffect.standardTemperatureEffect, world, MIN_BLOB_VELOCITY),
       life = cannibal.degradationEffect(cannibal),
-      fieldOfViewRadius = incrementedValue(cannibal.fieldOfViewRadius, TemperatureEffect.standardTemperatureEffect, world,MIN_BLOB_FOV_RADIUS)
+      //fieldOfViewRadius = incrementedValue(cannibal.fieldOfViewRadius, TemperatureEffect.standardTemperatureEffect, world,MIN_BLOB_FOV_RADIUS)
     )
     case slow: LarvaImpl => slow.copy(
       boundingBox = slow.boundingBox.copy(point = movement.point),
       direction = movement.direction,
       velocity = DEF_BLOB_SLOW_VELOCITY,
       life = slow.degradationEffect(slow),
-      fieldOfViewRadius = incrementedValue(slow.fieldOfViewRadius, TemperatureEffect.standardTemperatureEffect,  world, MIN_BLOB_FOV_RADIUS),
+      //fieldOfViewRadius = incrementedValue(slow.fieldOfViewRadius, TemperatureEffect.standardTemperatureEffect,  world, MIN_BLOB_FOV_RADIUS),
     )
     case poison: ButterflyImpl => poison.copy(
       boundingBox = poison.boundingBox.copy(point = movement.point),
       direction = movement.direction,
       velocity = incrementedValue(poison.velocity, TemperatureEffect.standardTemperatureEffect, world, MIN_BLOB_VELOCITY),
       life = poison.degradationEffect(poison),
-      fieldOfViewRadius = incrementedValue(poison.fieldOfViewRadius, TemperatureEffect.standardTemperatureEffect, world, MIN_BLOB_FOV_RADIUS),
+      //fieldOfViewRadius = incrementedValue(poison.fieldOfViewRadius, TemperatureEffect.standardTemperatureEffect, world, MIN_BLOB_FOV_RADIUS),
     )
     case _ => throw new Exception("Sub type not supported.")
   }

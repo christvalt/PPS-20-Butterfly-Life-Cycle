@@ -1,45 +1,50 @@
 package model.creature
 
+import model.SimulationObjectImpl.EggsImpl
 import model.World
 import model.common.Point2D
 import model.creature.Behavior.SimulableEntity
 import model.creature.CreatureObject.{Creature, Intelligent}
 
 import scala.math.hypot
-
 import scala.math._
 
 
 
 
 case class Movement(point: Point2D, direction: Direction)
-case class Direction(angle: Int, stepToNextDirection: Int)
+case class Direction(angle: Int, anglePositionY: Int)
 
 object MovingStrategies {
   private val random = new java.util.Random()
 
-  def baseMovement(creature: Intelligent, world: World): Movement = {
-
-    val chasedEntity = world.creature - creature.asInstanceOf[SimulableEntity] match {
-      case set if set.nonEmpty => Option(set.minBy(distanceBetweenEntities(creature, _)))
-      case _ => None
-    }
-
-    chasedEntity match {
-      //case Some(chasedEntity) if distanceBetweenEntities(entity, chasedEntity) < entity.fieldOfViewRadius => chaseMovement(entity, chasedEntity)
-      case _ => standardMovement(creature, creature.direction.angle, world)
-    }
+  def baseMovement(creature: Intelligent, world: World): Movement = creature match{
+    case creature: EggsImpl =>eggMove(creature, world)
+    case _ => standardMovement(creature, creature.direction.angle, world)
 
   }
+// TODO evaluate the position and insert small moving
+  def eggMove(creature:EggsImpl, world: World):Movement ={
 
+    val finaAngle = creature.direction.anglePositionY match {
+      case 0 => Direction(10, 7)
+      case _ => Direction(10, 7)
+    }
+    val newXPosition =creature.velocity*cos(finaAngle.angle)*0.1
+    val newYPosition =creature.velocity*cos(finaAngle.angle)*0.1
+    val x =(creature.boundingBox.point.x+newXPosition).toFloat.round
+    val y =(creature.boundingBox.point.x+newYPosition).toFloat.round
+    isBoundaryCollision(Point2D(x, y), Point2D(world.width, world.height)) match {
+      case true => standardMovement(creature, random.nextInt(360), world)
+      case false => Movement(Point2D(x, y), finaAngle)
+    }
 
-  private def distanceBetweenEntities(a: Intelligent, b: SimulableEntity): Double = {
-    sqrt(pow(b.boundingBox.point.x - a.boundingBox.point.x, 2) + pow(b.boundingBox.point.y - a.boundingBox.point.y, 2))
   }
 
   @scala.annotation.tailrec
   private def standardMovement(creature: Intelligent, angle: Int, world: World): Movement = {
-    val direction = creature.direction.stepToNextDirection match {
+
+    val direction = creature.direction.anglePositionY match {
       case 0 => Direction(random.nextInt(360), random.nextInt(50))
       case x => Direction(angle, x-1)
     }
