@@ -25,12 +25,12 @@ object SettingsView extends Views {
 
 
 
-  private val userInput: Promise[Environment] = Promise[Environment]()
+  private val userInput: Promise[Environment] = Promise[Environment]
 
 
   override def createAndShow: Unit = {
 
-    val panel = new JPanel(new GridLayout(0, 1))
+    val panel = new JPanel(new GridLayout(0, 2))
 
     panel.add(new JLabel("N° Butterfly:"))
     val Butterfly = new JTextField(DefaultColoniesNumber toString)
@@ -55,12 +55,12 @@ object SettingsView extends Views {
 
 
      showConfirmDialog(null, panel, "Settings", OK_CANCEL_OPTION, PLAIN_MESSAGE) match {
-      case OK_OPTION =>userInput.success(Environment(Butterfly,predator,Plan, temporalGranularity,
+      case OK_OPTION =>userInput.success(Environment(temperature=temporalGranularity.getText.toInt,buttefly = Butterfly.getText.toInt,plant = Plan.getText.toInt,predator=predator.getText.toInt,
         dayNumber.getSelectedItem match {
           case "infinite" => Int.MaxValue
           case value => value.toString.toInt
         }))
-      case _ =>  Environment(Butterfly ,predator,Plan , temporalGranularity,dayNumber)
+      case _ =>  Environment(temporalGranularity.getText.toInt, Butterfly.getText.toInt, Plan.getText.toInt, predator.getText.toInt,dayNumber)
     }
 
 
