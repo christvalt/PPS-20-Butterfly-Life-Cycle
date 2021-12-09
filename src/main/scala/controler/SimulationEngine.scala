@@ -12,7 +12,6 @@ import view.SettingsView
 import view.SettingsView.{createAndShow, simulationViewCrateAndShowed}
 
 import java.util.logging.Level
-import scala.sys.env
 
 
 object SimulationEngine {
@@ -21,10 +20,12 @@ object SimulationEngine {
   def setup():IO[Unit] ={
     for{
        _ <- IO {
+         log("building gui")
          processInput()
        }
        env <- inputReadFromUser()
        _ <- IO {
+         log("calling simulation  loop")
          (for{
            _ <- IO {simulationViewCrateAndShowed()}
            _ <- mainLoop().runS(World(env))
@@ -36,7 +37,7 @@ object SimulationEngine {
 
   def mainLoop(): Simulation[Unit] = for {
     _ <- toStateTWorld { (w: World) => {
-      println("it " + w.currentIteration + " / " + w.totalIterations)
+      log("it " + w.currentIteration + " / " + w.totalIterations)
       w
     }}
     startTime <- getTime
@@ -48,7 +49,7 @@ object SimulationEngine {
     f <- if (c.currentIteration < c.totalIterations)
       mainLoop()else
       liftIo( for {
-        e1 <- IO {  }
+        e1 <- IO {log("End of simulation..... print stat")  }
        // e2 <- IO { View.resultViewBuiltAndShowed(worldAfterCollisions) }
       } yield ())
 
@@ -81,8 +82,8 @@ object SimulationEngine {
 
 
 
+  def log(message: String) =  IO pure  {println(Thread.currentThread.getName+": " + message)}
 
 }
-object Logging {
-  def log(message: String) =  IO pure  {println(Thread.currentThread.getName+": " + message)}
-}
+
+

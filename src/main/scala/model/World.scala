@@ -39,39 +39,88 @@ object  World{
   def apply(env:Environment):World={
     val iterationsPerDay =100
 
-    val buttefly: Set[ButterflyImpl] = Set(ButterflyImpl(name = "blob" + nextValue(),
-      boundingBox = BoundingBox.Circle(point = randomPosition() , radius = BUTTERFLY_RADIUS),Direction(0, 20), fieldOfViewRadius=12,
-        velocity= BUTTERFLY_VELOCITY ,life=BUTTERFLY_LIFE , degradationEffect=DegenerationE.deacreaseLifeEffect , movementStrategy = MovingStrategies.baseMovement))
+    val buttefly: Set[SimulableEntity] = Iterator.tabulate(env.buttefly)(i => ButterflyImpl(
+      name = "blob" + i,
+      boundingBox = BoundingBox.Circle.apply(point =  Point2D(5, 5),radius = BUTTERFLY_RADIUS),
+      Direction(0, 0),
+      fieldOfViewRadius=5,
+      velocity= BUTTERFLY_VELOCITY,
+      life=BUTTERFLY_LIFE ,
+      degradationEffect=DegenerationE.deacreaseLifeEffect ,
+      movementStrategy = MovingStrategies.baseMovement
+    )).toSet
 
-    val larva: Set[LarvaImpl] = Set(LarvaImpl(name = "blob" + nextValue(),
-      boundingBox = BoundingBox.Circle(point = randomPosition() , radius = BUTTERFLY_RADIUS),Direction(0, 20), fieldOfViewRadius=12,
-      velocity= BUTTERFLY_VELOCITY ,life=BUTTERFLY_LIFE , degradationEffect=DegenerationE.deacreaseLifeEffect , movementStrategy = MovingStrategies.baseMovement))
+    val larva: Set[LarvaImpl] = Set(LarvaImpl(
+      name = "blob" + nextValue(),
+      boundingBox = BoundingBox.Circle(point = randomPosition() ,radius = BUTTERFLY_RADIUS),
+      Direction(0, 20),
+      fieldOfViewRadius=12,
+      velocity= BUTTERFLY_VELOCITY ,
+      life=BUTTERFLY_LIFE ,
+      degradationEffect=DegenerationE.deacreaseLifeEffect ,
+      movementStrategy = MovingStrategies.baseMovement)
+    )
 
-    val eggs: Set[EggsImpl] = Set(EggsImpl(name = "blob" + nextValue(),
-      boundingBox = BoundingBox.Circle(point = randomPosition() , radius = BUTTERFLY_RADIUS),Direction(0, 20), fieldOfViewRadius=12,
-      velocity= BUTTERFLY_VELOCITY ,life=BUTTERFLY_LIFE , degradationEffect=DegenerationE.deacreaseLifeEffect , movementStrategy = MovingStrategies.baseMovement))
+    val eggs: Set[EggsImpl] = Set(EggsImpl(
+      name = "blob" + nextValue(),
+      boundingBox = BoundingBox.Circle(point = randomPosition() , radius = BUTTERFLY_RADIUS),
+      Direction(0, 20),
+      fieldOfViewRadius=12,
+      velocity= BUTTERFLY_VELOCITY ,
+      life=BUTTERFLY_LIFE ,
+      degradationEffect=DegenerationE.deacreaseLifeEffect ,
+      movementStrategy = MovingStrategies.baseMovement)
+    )
 
-    val puppa: Set[PuppaImpl] = Set(PuppaImpl(name = "blob" + nextValue(),
-      boundingBox = BoundingBox.Circle(point = randomPosition() , radius = BUTTERFLY_RADIUS),Direction(0, 20), fieldOfViewRadius=12,
-      velocity= BUTTERFLY_VELOCITY ,life=BUTTERFLY_LIFE , degradationEffect=DegenerationE.deacreaseLifeEffect , movementStrategy = MovingStrategies.baseMovement))
+    val puppa: Set[PuppaImpl] = Set(PuppaImpl(
+      name = "blob" + nextValue(),
+      boundingBox = BoundingBox.Circle(point = randomPosition() ,
+        radius = BUTTERFLY_RADIUS),
+      Direction(0, 20),
+      fieldOfViewRadius=12,
+      velocity= BUTTERFLY_VELOCITY ,
+      life=BUTTERFLY_LIFE ,
+      degradationEffect=DegenerationE.deacreaseLifeEffect ,
+      movementStrategy = MovingStrategies.baseMovement)
+    )
 
-    val predador : Set[PredatorImpl] = Set(PredatorImpl(name = "predator", boundingBox = Rectangle(point =randomPosition, width = DEF_PREDATOR_PLANT_WIDTH, height = DEF_PREDATOR_PLANT_HEIGHT),collisionEffect =EatingEffect.iscollidedWithPredactor,degradationEffect =DegenerationE.deacreaseLifeEffect,life = 22))
+    val predador : Set[PredatorImpl] = Set(PredatorImpl(name = "predator",
+      boundingBox = Rectangle(point =randomPosition, width = DEF_PREDATOR_PLANT_WIDTH, height = DEF_PREDATOR_PLANT_HEIGHT),
+      collisionEffect =EatingEffect.iscollidedWithPredactor,
+      degradationEffect =DegenerationE.deacreaseLifeEffect,
+      life = 22)
+    )
 
-    val nectarPlant: Set[NectarPlant] =  Set(NectarPlant(name = "predator", boundingBox = Triangle(point = Point2D(100, 100), height = 10),collisionEffect =EatingEffect.iscollidedWithPredactor,degradationEffect =DegenerationE.deacreaseLifeEffect,life = 22))
+    val nectarPlant: Set[NectarPlant] =  Set(NectarPlant(name = "predator",
+      boundingBox = Triangle(point = Point2D(100, 100), height = 10),
+      collisionEffect =EatingEffect.iscollidedWithPredactor,
+      degradationEffect =DegenerationE.deacreaseLifeEffect,life = 22)
+    )
 
-    val simplePlan:Set[flourPlant] =  Set(flourPlant(name = "predator", boundingBox = Triangle(point = Point2D(100, 100), height = 10),collisionEffect =EatingEffect.iscollidedWithPredactor,degradationEffect =DegenerationE.deacreaseLifeEffect,life = 22))
+    val simplePlan:Set[flourPlant] =  Set(flourPlant(name = "predator",
+      boundingBox = Triangle(point = Point2D(100, 100),
+        height = 10),collisionEffect =EatingEffect.iscollidedWithPredactor,
+      degradationEffect =DegenerationE.deacreaseLifeEffect,life = 22)
+    )
+    val creature : Set [SimulableEntity]  = buttefly
 
-    val creature : Set [SimulableEntity]  = buttefly ++ larva ++ eggs ++ puppa++ predador ++ nectarPlant++ simplePlan
+    println("testingìììììììììììììììììììììììììììì"+List(creature))
 
-
-
-    World(temperature = env.temperature , width = WORLD_WIDTH, height = WORLD_HEIGHT, creature = creature, currentIteration = 0,totalIterations=env.days * iterationsPerDay)
+    World(temperature = env.temperature ,
+      width = WORLD_WIDTH,
+      height = WORLD_HEIGHT,
+      creature = creature,
+      currentIteration = 0,
+      totalIterations=env.days * iterationsPerDay)
   }
+
+
+
+
 
 case class ParameterEnv(temperature: Int)
 
   def updateStateOfWorldParameter(world: World): ParameterEnv = {
-    println("world")
 
     val temperatureUpdated: ((Int, Float)) => Int ={
       case (temperature, timeOfTheDay) =>
@@ -82,6 +131,8 @@ case class ParameterEnv(temperature: Int)
     ParameterEnv(
       temperatureUpdated(world.temperature, time))
   }
+
+
 
 
   def wordUpdateToState():Simulation[World] = toStateTWorld{
@@ -104,9 +155,6 @@ case class ParameterEnv(temperature: Int)
       currentIteration = world.currentIteration + 1,
     )
 
-    // call the update of thr collision afther the update of different entities in the system
-
-    // checkCollision
   }
 
 
@@ -119,17 +167,11 @@ case class ParameterEnv(temperature: Int)
 
       if i!=j && isCollidingWith(i.boundingBox,j.boundingBox)
     } yield (i,j)
-    //println("test"+collisionBoundiBox)
 
     def allcreatureCollided = collisionBoundiBox.map(_._1)
     def newCreatureEntitiesAfterCollision = collisionBoundiBox.foldLeft(world.creature -- allcreatureCollided)((entitiesAfterCollision, collision) => entitiesAfterCollision ++ collision._1.collision(collision._2))
 
 
-   // println("after" +newCreatureEntitiesAfterCollision)
-    //println("size" +newCreatureEntitiesAfterCollision.size)
-
-
-    //println("MODEL"+world)
 
     world.copy(
       creature=newCreatureEntitiesAfterCollision,

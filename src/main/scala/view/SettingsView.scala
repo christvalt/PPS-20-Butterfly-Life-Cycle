@@ -17,12 +17,11 @@ import scala.concurrent.duration.Duration
  * View for setup simulation.
  */
 object SettingsView extends Views {
-  private val MatrixSize = Array("100", "200", "300")
-  private val Iterations = Array("1000", "5000", "infinite")
+  private val Iterations = Array("10", "50", "100")
   private val DefaultColoniesNumber = 1
   private val DefaultTemporalGranularity = 1
 
-  val frame = new  JFrame ("tett")
+  val frame = new  JFrame ("Butterfly LFC")
 
 
 

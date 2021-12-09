@@ -33,17 +33,12 @@ object Behavior {
 
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.movementStrategy(self, world)
-
       Set(self.copy(
         boundingBox = Circle(newState.point, self.boundingBox.radius),
         direction = newState.direction,
-        /*movementDirection = movement.angle,
-        stepToNextDirection = movement.stepToNextDirection,*/
         life = self.degradationEffect(self),
         fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
       ))
-
-
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)
@@ -129,7 +124,7 @@ object Behavior {
 
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.movementStrategy(self, world)
-
+        print("*****"+ newState)
       Set(self.copy(
         boundingBox = Circle(newState.point, self.boundingBox.radius),
         direction = newState.direction,
@@ -138,6 +133,7 @@ object Behavior {
         life = self.degradationEffect(self),
         fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
       ))
+
 
 
     }
