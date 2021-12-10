@@ -1,7 +1,6 @@
-package model
+package model.common
 
-import model.BoundingBox.{Circle, Rectangle, Triangle}
-import model.common.Point2D
+import model.common.BoundingBox.{Circle, Rectangle, Triangle}
 import model.common.Point2D.DEF_EQUILATERAL_ANGLE
 
 

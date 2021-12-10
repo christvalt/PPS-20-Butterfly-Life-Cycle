@@ -1,7 +1,8 @@
 package model.creature
 
-import model.BoundingBox.Circle
-import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl, flourPlant}
+import model.common.BoundingBox.Circle
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl}
+import model.common.Movement
 import model.{TemperatureEffect, World}
 import model.creature.CreatureObject.{Butterfly, Creature, Plant, Predator}
 
@@ -114,11 +115,11 @@ object Behavior {
 
 
   trait PlantBehavior extends Simulable {
-    self: flourPlant =>
+    self: FlourPlant =>
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.degradationEffect(self)
       newState match {
-        case n if n > 0 => Set(flourPlant(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect))
+        case n if n > 0 => Set(FlourPlant(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect))
         case _ =>Set()
       }
     }

@@ -2,6 +2,7 @@ package view
 
 import model.World
 import model.common.Environment
+import view.graphic.ShapesPanel
 
 import java.awt.{BorderLayout, Dimension, GridLayout, Toolkit}
 import javax.swing.JOptionPane._
@@ -27,6 +28,18 @@ object SettingsView extends Views {
 
     val panel = new JPanel(new GridLayout(0, 2))
 
+    panel.add(new JLabel("N° Eggs:"))
+    val Eggs = new JTextField(DefaultColoniesNumber toString)
+    panel.add(Eggs)
+
+    panel.add(new JLabel("N° Puppa:"))
+    val Puppa = new JTextField(DefaultColoniesNumber toString)
+    panel.add(Puppa)
+
+    panel.add(new JLabel("N° Larva:"))
+    val Larva = new JTextField(DefaultColoniesNumber toString)
+    panel.add(Larva)
+
     panel.add(new JLabel("N° Butterfly:"))
     val Butterfly = new JTextField(DefaultColoniesNumber toString)
     panel.add(Butterfly)
@@ -49,12 +62,12 @@ object SettingsView extends Views {
 
 
      showConfirmDialog(null, panel, "Settings", OK_CANCEL_OPTION, PLAIN_MESSAGE) match {
-      case OK_OPTION =>userInput.success(Environment(temperature=temporalGranularity.getText.toInt,buttefly = Butterfly.getText.toInt,plant = Plan.getText.toInt,predator=predator.getText.toInt,
+      case OK_OPTION =>userInput.success(Environment(temperature=temporalGranularity.getText.toInt,buttefly = Butterfly.getText.toInt,eggs = Eggs.getText.toInt,puppa = Puppa.getText.toInt,larva = Larva.getText.toInt,plant = Plan.getText.toInt,predator=predator.getText.toInt,
         dayNumber.getSelectedItem match {
           case "infinite" => Int.MaxValue
           case value => value.toString.toInt
         }))
-      case _ =>  Environment(temporalGranularity.getText.toInt, Butterfly.getText.toInt, Plan.getText.toInt, predator.getText.toInt,dayNumber)
+      case _ =>  Environment(temporalGranularity.getText.toInt, Butterfly.getText.toInt,Eggs.getText.toInt,Puppa.getText.toInt,larva = Larva.getText.toInt, Plan.getText.toInt, predator.getText.toInt,dayNumber)
     }
   }
 

@@ -1,11 +1,8 @@
-import model.BoundingBox
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
-import model.common.Point2D
-import model.creature.CreatureObject.Butterfly
-import model.creature.CreatureObject.Domain.Degeneration
-import model.creature.{Direction, MovingStrategies}
+import model.common.{BoundingBox, Direction, MovingStrategies, Point2D}
+
 import model.reaction.{BeingEatenEffect, EatingEffect}
-import model.reaction.EatingEffect.{DEF_FOOD_ENERGY, REDUCE_LIFE, simplePlantCollidedwithButterflyEntity}
+import model.reaction.EatingEffect.{DEF_FOOD_ENERGY, REDUCE_LIFE}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.funsuite.AnyFunSuite
 

@@ -1,8 +1,8 @@
 package model
 
-import model.BoundingBox.{Circle, Rectangle, Triangle}
+import model.common.BoundingBox.{Circle, Rectangle, Triangle}
+import model.common.Direction
 import model.creature.Behavior.{EggsBehavior, LarvaBehavior, NectarPlantBehavior, PlantBehavior, PredatorBehavior, PuppaImplBehavior, butterflyBehavior}
-import model.creature. Direction
 import model.creature.CreatureObject.Domain.{Collision, Degeneration, Life, MovementStrategy, Velocity}
 import model.creature.CreatureObject.{Butterfly, Plant, Predator}
 import model.reaction.DegenerationE
@@ -53,7 +53,7 @@ object SimulationObjectImpl {
                           )extends Butterfly with butterflyBehavior
 
 
-  case class flourPlant(override val name: String,
+  case class FlourPlant(override val name: String,
                         override val boundingBox: Triangle,
                         override val degradationEffect: Degeneration[Plant],
                         override val life: Life,
