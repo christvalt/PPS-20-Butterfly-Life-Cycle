@@ -1,10 +1,10 @@
 package model.reaction
 
-import model.BoundingBox.Circle
+import model.common.BoundingBox.Circle
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
+import model.common.MovingStrategies
 import model.creature.Behavior.SimulableEntity
 import model.creature.CreatureObject.Butterfly
-import model.creature.MovingStrategies
 
 
 object EatingEffect {

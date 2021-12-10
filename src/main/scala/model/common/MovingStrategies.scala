@@ -1,9 +1,9 @@
-package model.creature
+package model.common
 
 import model.SimulationObjectImpl.EggsImpl
 import model.World
-import model.common.Point2D
-import model.creature.CreatureObject.{Creature, Intelligent}
+import model.creature.CreatureObject.Intelligent
+
 import scala.math._
 
 

@@ -1,13 +1,12 @@
 package model
 
 import controler.TimingOps.{Simulation, toStateTWorld}
-import model.BoundingBox.{Rectangle, Triangle}
-import model.Intersection.isCollidingWith
-import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl, flourPlant}
-import model.common.{Environment, Point2D}
+import model.common.BoundingBox.{Rectangle, Triangle}
+import model.common.Intersection.isCollidingWith
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl}
+import model.common.{BoundingBox, Direction, Environment, MovingStrategies, Point2D}
 import model.common.Point2D.randomPosition
 import model.creature.Behavior.SimulableEntity
-import model.creature.{Direction, MovingStrategies}
 import model.reaction.{DegenerationE, EatingEffect}
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal
 
@@ -38,27 +37,8 @@ object  World{
   def apply(env:Environment):World={
     val iterationsPerDay =1000
 
-    val buttefly: Set[SimulableEntity] = Iterator.tabulate(env.buttefly)(i => ButterflyImpl(
-      name = "AdultButtefly" + i,
-      boundingBox = BoundingBox.Circle.apply(point =  Point2D(5, 5),radius = BUTTERFLY_RADIUS),
-      Direction(0, 0),
-      velocity= BUTTERFLY_VELOCITY,
-      life=BUTTERFLY_LIFE ,
-      degradationEffect=DegenerationE.deacreaseLifeEffect ,
-      movementStrategy = MovingStrategies.baseMovement
-    )).toSet
 
-    val larva: Set[SimulableEntity] = Iterator.tabulate(env.buttefly)(i => LarvaImpl(
-      name = "Larva" + i,
-      boundingBox = BoundingBox.Circle.apply(point =  Point2D(1, 3),radius = BUTTERFLY_RADIUS),
-      Direction(0, 20),
-      velocity= 15,
-      life=BUTTERFLY_LIFE ,
-      degradationEffect=DegenerationE.deacreaseLifeEffect ,
-      movementStrategy = MovingStrategies.baseMovement
-    )).toSet
-
-    val eggs: Set[SimulableEntity] = Iterator.tabulate(env.buttefly)(i => EggsImpl(
+    val eggs: Set[SimulableEntity] = Iterator.tabulate(env.eggs)(i => EggsImpl(
       name = "eggs" + i,
       boundingBox = BoundingBox.Circle.apply(point =  Point2D(0, 0),radius = BUTTERFLY_RADIUS),
       Direction(0, 0),
@@ -68,18 +48,36 @@ object  World{
       movementStrategy = MovingStrategies.baseMovement
     )).toSet
 
-
-    val puppa: Set[SimulableEntity] = Iterator.tabulate(env.buttefly)(i => PuppaImpl(
-      name = "puppa" + i,
+    val larva: Set[SimulableEntity] = Iterator.tabulate(env.larva)(i => LarvaImpl(
+      name = "Larva" + i,
       boundingBox = BoundingBox.Circle.apply(point =  Point2D(1, 3),radius = BUTTERFLY_RADIUS),
       Direction(0, 20),
-      velocity= 25,
+      velocity= 15,
       life=BUTTERFLY_LIFE ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
       movementStrategy = MovingStrategies.baseMovement
     )).toSet
 
 
+    val puppa: Set[SimulableEntity] = Iterator.tabulate(env.puppa)(i => PuppaImpl(
+      name = "puppa" + i,
+      boundingBox = BoundingBox.Circle.apply(point =  Point2D(1, 3),radius = BUTTERFLY_RADIUS),
+      Direction(0, 20),
+      velocity= 35,
+      life=BUTTERFLY_LIFE ,
+      degradationEffect=DegenerationE.deacreaseLifeEffect ,
+      movementStrategy = MovingStrategies.baseMovement
+    )).toSet
+
+    val Adultbuttefly: Set[SimulableEntity] = Iterator.tabulate(env.buttefly)(i => ButterflyImpl(
+      name = "AdultButtefly" + i,
+      boundingBox = BoundingBox.Circle.apply(point =  Point2D(5, 5),radius = BUTTERFLY_RADIUS),
+      Direction(0, 0),
+      velocity= BUTTERFLY_VELOCITY,
+      life=BUTTERFLY_LIFE ,
+      degradationEffect=DegenerationE.deacreaseLifeEffect ,
+      movementStrategy = MovingStrategies.baseMovement
+    )).toSet
 
     val predador : Set[SimulableEntity] =  Iterator.tabulate(env.predator)(i => PredatorImpl(
       name = "predator"+i,
@@ -97,7 +95,7 @@ object  World{
       life = 5003
     )).toSet
 
-    val simplePlan:Set[SimulableEntity] =  Iterator.tabulate(env.plant)(i => flourPlant(
+    val simplePlan:Set[SimulableEntity] =  Iterator.tabulate(env.plant)(i => FlourPlant(
       name = "flourPlant" + i ,
       boundingBox = Triangle.apply(point = randomPosition(),
         height = 10),
@@ -107,11 +105,11 @@ object  World{
     )).toSet
 
 
-    val creature : Set [SimulableEntity]  = buttefly ++ larva ++ eggs ++puppa ++predador ++nectarPlant ++ simplePlan
+    val creature : Set [SimulableEntity]  = Adultbuttefly ++ larva ++ eggs ++puppa ++predador ++nectarPlant ++ simplePlan
 
     println("testingìììììììììììììììììììììììììììì"+List(creature))
     println("--------------------"+creature.size)
-    println("+++++++++++++++++++"+buttefly.size)
+    println("+++++++++++++++++++"+Adultbuttefly.size)
     println("********************"+larva.size)
     println("°°°°°°°°°°°°°°°°°"+eggs.size)
     println("°°°°°°°°°°°°°°°°°"+puppa.size)

@@ -2,7 +2,6 @@ import org.scalatest._
 import funspec._
 import model.World
 import model.common.Environment
-import model.reaction.EatingEffect.collisionREceptivePLan
 
 class WordTest extends AnyFunSpec {
 
@@ -11,6 +10,9 @@ class WordTest extends AnyFunSpec {
     Environment(
       temperature=2,
       buttefly=2,
+      eggs= 3,
+      puppa= 3,
+      larva= 3,
       plant =2 ,
       predator=3,
       days=2
