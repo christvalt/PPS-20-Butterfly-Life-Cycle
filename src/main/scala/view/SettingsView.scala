@@ -1,12 +1,9 @@
 package view
 
-import cats.effect.IO
 import model.World
 import model.common.Environment
-import view.SwingView.frame
 
-import java.awt.event.{WindowAdapter, WindowEvent}
-import java.awt.{BorderLayout, Dimension, Frame, GraphicsEnvironment, GridLayout, Toolkit}
+import java.awt.{BorderLayout, Dimension, GridLayout, Toolkit}
 import javax.swing.JOptionPane._
 import javax.swing._
 import scala.concurrent.{Await, Promise}
@@ -22,10 +19,8 @@ object SettingsView extends Views {
   private val DefaultTemporalGranularity = 1
 
   val frame = new  JFrame ("Butterfly LFC")
-
-
-
   private val userInput: Promise[Environment] = Promise[Environment]
+  private val entityPanel = new JPanel
 
 
   override def createAndShow: Unit = {
@@ -53,7 +48,6 @@ object SettingsView extends Views {
     panel.add(dayNumber)
 
 
-
      showConfirmDialog(null, panel, "Settings", OK_CANCEL_OPTION, PLAIN_MESSAGE) match {
       case OK_OPTION =>userInput.success(Environment(temperature=temporalGranularity.getText.toInt,buttefly = Butterfly.getText.toInt,plant = Plan.getText.toInt,predator=predator.getText.toInt,
         dayNumber.getSelectedItem match {
@@ -62,11 +56,7 @@ object SettingsView extends Views {
         }))
       case _ =>  Environment(temporalGranularity.getText.toInt, Butterfly.getText.toInt, Plan.getText.toInt, predator.getText.toInt,dayNumber)
     }
-
-
-      ///userInput.success(Environment(temperature = Butterfly.getValue, buttefly = ???, plant = ???, predator = ???, days = ???))
   }
-
 
 
   def getInputUser ():Environment  = Await.result(userInput.future, Duration.Inf)
@@ -88,8 +78,6 @@ object SettingsView extends Views {
   }
 
 
-  private val entityPanel = new JPanel
-
   override def rendered(world: World): Unit = {
     SwingUtilities.invokeAndWait(() => {
       entityPanel.removeAll()
@@ -98,12 +86,4 @@ object SettingsView extends Views {
     })
   }
 
-
-
-
-  object SimulationViewTeest extends  JPanel{
-
-
-
-  }
 }

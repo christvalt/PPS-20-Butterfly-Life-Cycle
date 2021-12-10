@@ -3,10 +3,7 @@ package model.creature
 import model.SimulationObjectImpl.EggsImpl
 import model.World
 import model.common.Point2D
-import model.creature.Behavior.SimulableEntity
 import model.creature.CreatureObject.{Creature, Intelligent}
-
-import scala.math.hypot
 import scala.math._
 
 

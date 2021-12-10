@@ -4,16 +4,12 @@ import model.BoundingBox.Circle
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl, flourPlant}
 import model.{TemperatureEffect, World}
 import model.creature.CreatureObject.{Butterfly, Creature, Plant, Predator}
-import model.reaction.EatingEffect.MIN_BLOB_FOV_RADIUS
-
-import scala.math.Ordered.orderingToOrdered
 
 object Behavior {
   val DEF_BLOB_VELOCITY = 50
   val DEF_BLOB_SLOW_VELOCITY: Int = DEF_BLOB_VELOCITY / 2
   val MIN_BLOB_VELOCITY: Int = DEF_BLOB_SLOW_VELOCITY
 
-  /// all the intity in the system
 
   trait Simulable extends Collidable with UpdatableEntity
   type SimulableEntity = Creature with Simulable
@@ -23,8 +19,6 @@ object Behavior {
     self:Creature =>
 
   }
-
-
 
 
   trait EggsBehavior extends Simulable {
@@ -63,11 +57,8 @@ object Behavior {
   }
 
 
-//      case base: BaseBlob => if (self.boundingBox.radius >= base.boundingBox.radius) Set(self.copy(life = self.life + base.life)) else Set(self.copy())
-
   trait LarvaBehavior extends Simulable {
     self: LarvaImpl =>
-
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.movementStrategy(self, world)
 
@@ -76,34 +67,24 @@ object Behavior {
         direction = newState.direction,
         life = self.degradationEffect(self),
       ))
-
-
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)
       case  predator:Predator => Set(self.copy(life = self.life - predator.life))
       case _ => Set(self)
     }
-
   }
 
 
   trait PuppaImplBehavior extends  Simulable  {
     self: PuppaImpl =>
-
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.movementStrategy(self, world)
-
       Set(self.copy(
         boundingBox = Circle(newState.point, self.boundingBox.radius),
         direction = newState.direction,
-        /*movementDirection = movement.angle,
-        stepToNextDirection = movement.stepToNextDirection,*/
         life = self.degradationEffect(self),
-        //fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
       ))
-
-
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)
@@ -115,21 +96,13 @@ object Behavior {
 
   trait butterflyBehavior extends Simulable {
     self: ButterflyImpl =>
-
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.movementStrategy(self, world)
-        //print("*****"+ newState)
       Set(self.copy(
         boundingBox = Circle(newState.point, self.boundingBox.radius),
         direction = newState.direction,
-        /*movementDirection = movement.angle,
-        stepToNextDirection = movement.stepToNextDirection,*/
         life = self.degradationEffect(self),
-        //fieldOfViewRadius = self.fieldOfViewRadius + world.temperature
       ))
-
-
-
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)
@@ -142,7 +115,6 @@ object Behavior {
 
   trait PlantBehavior extends Simulable {
     self: flourPlant =>
-
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.degradationEffect(self)
       newState match {

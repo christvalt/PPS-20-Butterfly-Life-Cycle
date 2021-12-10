@@ -13,10 +13,36 @@ class ButterflyTest extends AnyFunSpec {
   val LIFE_AFTER_DEGENERATION = 40
 
   val adultB: ButterflyImpl = ButterflyImpl(
-    name = "egg2",
+    name = "adultB",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
-   // fieldOfViewRadius = 10,
+    velocity = 3,
+    life = 100,
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
+  )
+  val lava: LarvaImpl = LarvaImpl(
+    name = "adultB",
+    boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
+    direction = Direction(0, 15),
+    velocity = 3,
+    life = 100,
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
+  )
+  val egg: EggsImpl = EggsImpl(
+    name = "egg",
+    boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
+    direction = Direction(0, 15),
+    velocity = 3,
+    life = 100,
+    degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
+    movementStrategy = MovingStrategies.baseMovement
+  )
+  val puppa: PuppaImpl = PuppaImpl(
+    name = "puppa",
+    boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
+    direction = Direction(0, 15),
     velocity = 3,
     life = 100,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
@@ -31,7 +57,7 @@ class ButterflyTest extends AnyFunSpec {
     collisionEffect = EatingEffect.simplePlantCollidedwithButterflyEntity
   )
 
-  describe("when a butterfly collide with a plant") {
+  describe("in every cycle of creature when it's collide with a colliding entities") {
     it("the butterfly  should eat the plant"){
       assert(adultB.collision(food).exists{
         case b: Butterfly => b.life == adultB.life + DEF_FOOD_ENERGY

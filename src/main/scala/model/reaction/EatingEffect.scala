@@ -1,7 +1,7 @@
 package model.reaction
 
 import model.BoundingBox.Circle
-import model.SimulationObjectImpl.{ButterflyImpl, DEF_BLOB_FOV_RADIUS, EggsImpl, LarvaImpl, PuppaImpl}
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
 import model.creature.Behavior.SimulableEntity
 import model.creature.CreatureObject.Butterfly
 import model.creature.MovingStrategies

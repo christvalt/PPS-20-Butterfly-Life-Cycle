@@ -9,7 +9,6 @@ import model.common.Point2D.randomPosition
 import model.creature.Behavior.SimulableEntity
 import model.creature.{Direction, MovingStrategies}
 import model.reaction.{DegenerationE, EatingEffect}
-import model.reaction.EatingEffect.Counter.nextValue
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal
 
 
@@ -53,21 +52,16 @@ object  World{
       name = "Larva" + i,
       boundingBox = BoundingBox.Circle.apply(point =  Point2D(1, 3),radius = BUTTERFLY_RADIUS),
       Direction(0, 20),
-      //fieldOfViewRadius=12,
       velocity= 15,
       life=BUTTERFLY_LIFE ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
       movementStrategy = MovingStrategies.baseMovement
     )).toSet
 
-
-
-
     val eggs: Set[SimulableEntity] = Iterator.tabulate(env.buttefly)(i => EggsImpl(
       name = "eggs" + i,
       boundingBox = BoundingBox.Circle.apply(point =  Point2D(0, 0),radius = BUTTERFLY_RADIUS),
       Direction(0, 0),
-      //fieldOfViewRadius=1,
       velocity= BUTTERFLY_VELOCITY,
       life=BUTTERFLY_LIFE ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
@@ -79,7 +73,6 @@ object  World{
       name = "puppa" + i,
       boundingBox = BoundingBox.Circle.apply(point =  Point2D(1, 3),radius = BUTTERFLY_RADIUS),
       Direction(0, 20),
-      //fieldOfViewRadius=12,
       velocity= 25,
       life=BUTTERFLY_LIFE ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
@@ -127,8 +120,6 @@ object  World{
     println("°°°°°°°°°°°°°°°°°"+simplePlan.size)
 
 
-
-
     World(temperature = env.temperature ,
       width = WORLD_WIDTH,
       height = WORLD_HEIGHT,
@@ -136,9 +127,6 @@ object  World{
       currentIteration = 0,
       totalIterations=env.days * iterationsPerDay)
   }
-
-
-
 
 
 case class ParameterEnv(temperature: Int)
@@ -156,8 +144,6 @@ case class ParameterEnv(temperature: Int)
   }
 
 
-
-
   def wordUpdateToState():Simulation[World] = toStateTWorld{
     updateState
   }
@@ -165,7 +151,6 @@ case class ParameterEnv(temperature: Int)
   def checkCollisionToState():Simulation[World] = toStateTWorld{
     checkCollision
   }
-
 
 
   def updateState(world: World):World= {
@@ -195,22 +180,12 @@ case class ParameterEnv(temperature: Int)
     def newCreatureEntitiesAfterCollision = collisionBoundiBox.foldLeft(world.creature -- allcreatureCollided)((entitiesAfterCollision, collision) => entitiesAfterCollision ++ collision._1.collision(collision._2))
 
 
-
     world.copy(
       creature=newCreatureEntitiesAfterCollision,
     )
-
   }
 
 
   def timeOfTheDay(iteration: Int): Float =
     iteration % ITERATIONS_PER_DAY / ITERATIONS_PER_DAY.toFloat
-
-
 }
-
-
-
-
-
-
