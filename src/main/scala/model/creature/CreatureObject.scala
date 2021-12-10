@@ -49,12 +49,13 @@ object CreatureObject {
   sealed trait Intelligent extends Creature with Moving {
     def movementStrategy: MovementStrategy
     def direction: Direction
-    //def fieldOfViewRadius : Int
+   // def stage : BoundingBox
   }
 
   trait Butterfly extends Creature with Living with Moving with Intelligent {
     override def boundingBox: BoundingBox
     def degradationEffect: Degeneration[Butterfly]
+    //override  def stage:BoundingBox
   }
 
   trait ButterflyWithTemporaryStatus extends Butterfly {
