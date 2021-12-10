@@ -9,7 +9,6 @@ import model.common.Point2D.randomPosition
 import model.creature.Behavior.SimulableEntity
 import model.creature.{Direction, MovingStrategies}
 import model.reaction.{DegenerationE, EatingEffect}
-import model.reaction.EatingEffect.Counter.nextValue
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal
 
 
@@ -37,13 +36,12 @@ object  World{
 
 
   def apply(env:Environment):World={
-    val iterationsPerDay =100
+    val iterationsPerDay =1000
 
     val buttefly: Set[SimulableEntity] = Iterator.tabulate(env.buttefly)(i => ButterflyImpl(
       name = "AdultButtefly" + i,
       boundingBox = BoundingBox.Circle.apply(point =  Point2D(5, 5),radius = BUTTERFLY_RADIUS),
       Direction(0, 0),
-     // fieldOfViewRadius=5,
       velocity= BUTTERFLY_VELOCITY,
       life=BUTTERFLY_LIFE ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
@@ -54,21 +52,16 @@ object  World{
       name = "Larva" + i,
       boundingBox = BoundingBox.Circle.apply(point =  Point2D(1, 3),radius = BUTTERFLY_RADIUS),
       Direction(0, 20),
-      //fieldOfViewRadius=12,
       velocity= 15,
       life=BUTTERFLY_LIFE ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
       movementStrategy = MovingStrategies.baseMovement
     )).toSet
 
-
-
-
     val eggs: Set[SimulableEntity] = Iterator.tabulate(env.buttefly)(i => EggsImpl(
       name = "eggs" + i,
       boundingBox = BoundingBox.Circle.apply(point =  Point2D(0, 0),radius = BUTTERFLY_RADIUS),
       Direction(0, 0),
-      //fieldOfViewRadius=1,
       velocity= BUTTERFLY_VELOCITY,
       life=BUTTERFLY_LIFE ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
@@ -80,7 +73,6 @@ object  World{
       name = "puppa" + i,
       boundingBox = BoundingBox.Circle.apply(point =  Point2D(1, 3),radius = BUTTERFLY_RADIUS),
       Direction(0, 20),
-      //fieldOfViewRadius=12,
       velocity= 25,
       life=BUTTERFLY_LIFE ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
@@ -91,34 +83,42 @@ object  World{
 
     val predador : Set[SimulableEntity] =  Iterator.tabulate(env.predator)(i => PredatorImpl(
       name = "predator"+i,
-      boundingBox = Rectangle.apply(point =Point2D(600, 300), width = DEF_PREDATOR_PLANT_WIDTH, height = DEF_PREDATOR_PLANT_HEIGHT),
+      boundingBox = Rectangle.apply(point = randomPosition(), width = DEF_PREDATOR_PLANT_WIDTH, height = DEF_PREDATOR_PLANT_HEIGHT),
       collisionEffect =EatingEffect.iscollidedWithPredactor,
       degradationEffect =DegenerationE.deacreaseLifeEffect,
-      life = 22
+      life = 5003
     )).toSet
 
     val nectarPlant: Set[SimulableEntity] = Iterator.tabulate(env.plant)(i => NectarPlant(
       name = "nectarPlant" +i,
-      boundingBox = Triangle.apply(point = Point2D(100, 100), height = 10),
+      boundingBox = Triangle.apply(point =  randomPosition(), height = 10),
       collisionEffect =EatingEffect.iscollidedWithPredactor,
       degradationEffect =DegenerationE.deacreaseLifeEffect,
-      life = 22
+      life = 5003
     )).toSet
 
     val simplePlan:Set[SimulableEntity] =  Iterator.tabulate(env.plant)(i => flourPlant(
       name = "flourPlant" + i ,
-      boundingBox = Triangle.apply(point = Point2D(100, 100),
+      boundingBox = Triangle.apply(point = randomPosition(),
         height = 10),
       collisionEffect =EatingEffect.iscollidedWithPredactor,
       degradationEffect =DegenerationE.deacreaseLifeEffect,
-      life = 22
+      life = 5003
     )).toSet
 
 
     val creature : Set [SimulableEntity]  = buttefly ++ larva ++ eggs ++puppa ++predador ++nectarPlant ++ simplePlan
 
     println("testingìììììììììììììììììììììììììììì"+List(creature))
-    println("********************"+creature.size)
+    println("--------------------"+creature.size)
+    println("+++++++++++++++++++"+buttefly.size)
+    println("********************"+larva.size)
+    println("°°°°°°°°°°°°°°°°°"+eggs.size)
+    println("°°°°°°°°°°°°°°°°°"+puppa.size)
+    println("°°°°°°°°°°°°°°°°°"+predador.size)
+    println("°°°°°°°°°°°°°°°°°"+nectarPlant.size)
+    println("°°°°°°°°°°°°°°°°°"+simplePlan.size)
+
 
     World(temperature = env.temperature ,
       width = WORLD_WIDTH,
@@ -127,9 +127,6 @@ object  World{
       currentIteration = 0,
       totalIterations=env.days * iterationsPerDay)
   }
-
-
-
 
 
 case class ParameterEnv(temperature: Int)
@@ -147,8 +144,6 @@ case class ParameterEnv(temperature: Int)
   }
 
 
-
-
   def wordUpdateToState():Simulation[World] = toStateTWorld{
     updateState
   }
@@ -156,7 +151,6 @@ case class ParameterEnv(temperature: Int)
   def checkCollisionToState():Simulation[World] = toStateTWorld{
     checkCollision
   }
-
 
 
   def updateState(world: World):World= {
@@ -186,22 +180,12 @@ case class ParameterEnv(temperature: Int)
     def newCreatureEntitiesAfterCollision = collisionBoundiBox.foldLeft(world.creature -- allcreatureCollided)((entitiesAfterCollision, collision) => entitiesAfterCollision ++ collision._1.collision(collision._2))
 
 
-
     world.copy(
       creature=newCreatureEntitiesAfterCollision,
     )
-
   }
 
 
   def timeOfTheDay(iteration: Int): Float =
     iteration % ITERATIONS_PER_DAY / ITERATIONS_PER_DAY.toFloat
-
-
 }
-
-
-
-
-
-

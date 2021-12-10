@@ -1,8 +1,6 @@
 package view
 
-import cats.effect.IO
 import model.World
-import model.common.Environment
 
 import javax.swing.JPanel
 

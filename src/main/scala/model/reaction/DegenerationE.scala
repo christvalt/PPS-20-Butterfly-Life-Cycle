@@ -8,7 +8,7 @@ import model.creature.CreatureObject.Living
 
 object DegenerationE  {
 
-  val STANDARD_LIFE_DECREASE = 10
+  val STANDARD_LIFE_DECREASE = 5
 
   def deacreaseLifeEffect(creatureOb: Living): Life = creatureOb.life - STANDARD_LIFE_DECREASE
 }

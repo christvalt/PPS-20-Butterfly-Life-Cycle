@@ -1,11 +1,9 @@
 package view
 
-import model.BoundingBox.{Circle, Rectangle, Triangle}
-import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl, flourPlant}
-import model.{Intersection, World}
+import model.common.BoundingBox.{Circle, Rectangle, Triangle}
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PuppaImpl, FlourPlant}
+import model.World
 import model.common.Point2D
-import model.creature.CreatureObject.{Butterfly, Creature}
-
 import java.awt.{Color, Dimension, Graphics}
 import javax.swing.JPanel
 
@@ -22,11 +20,17 @@ class ShapesPanel(world: World) extends JPanel {
     val blueIntensity = 255 - redIntensity
     val temperatureColor = new Color(redIntensity, 0, blueIntensity, 75)
     g.setColor(temperatureColor)
+
     g.fillRect(0, 0, getWidth, getHeight)
 
     world.creature.foreach(e => e.boundingBox match {
-      case Circle(point2D, r) =>
-        g.setColor(Color.blue)
+      case Circle(point2D, r) =>e match{
+        case _: EggsImpl => g.setColor(Color.DARK_GRAY)
+        case _: LarvaImpl => g.setColor(Color.MAGENTA)
+        case _: PuppaImpl => g.setColor(Color.blue)
+        case _: ButterflyImpl => g.setColor(Color.RED)
+        case _ => g.setColor(Color.BLACK)
+      }
         g.fillOval(modelToViewRatio(point2D.x - r, this.getSize().width, world.width),
           modelToViewRatio(point2D.y - r, this.getSize().height, world.height),
           modelToViewRatio(r * 2, this.getSize().width, world.width),
@@ -37,17 +41,17 @@ class ShapesPanel(world: World) extends JPanel {
           modelToViewRatio(point2D.y - h / 2, this.getSize().height, world.height),
           modelToViewRatio(w, this.getSize().width, world.width),
           modelToViewRatio(h, this.getSize().height, world.height))
-      case Triangle(point2D, h, a) =>
+      case Triangle(point2D, h, a) => e match {
+        case _ : NectarPlant=>g.setColor(Color.green)
+        case _: FlourPlant =>g.setColor(Color.yellow)
+      }
         val vertices = triangleVertices(Triangle(point2D, h, a))
-        g.setColor(Color.green)
         g.fillPolygon(vertices.productIterator.map({
           case p: Point2D => modelToViewRatio(p.x, this.getSize().width, world.width)
         }).toArray, vertices.productIterator.map({
           case p: Point2D => modelToViewRatio(p.y, this.getSize().height, world.height)
         }).toArray, vertices.productIterator.length)
     })
-
-
   }
 
   override def getPreferredSize: Dimension = {
