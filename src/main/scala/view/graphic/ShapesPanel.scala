@@ -1,9 +1,10 @@
-package view
+package view.graphic
 
-import model.common.BoundingBox.{Circle, Rectangle, Triangle}
-import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, NectarPlant, PuppaImpl, FlourPlant}
+import model.SimulationObjectImpl._
 import model.World
+import model.common.BoundingBox.{Circle, Rectangle, Triangle}
 import model.common.Point2D
+
 import java.awt.{Color, Dimension, Graphics}
 import javax.swing.JPanel
 

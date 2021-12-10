@@ -1,6 +1,6 @@
 package model.reaction
 
-import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl, flourPlant}
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl, FlourPlant}
 import model.creature.CreatureObject.{Creature}
 import model.creature.CreatureObject.Domain.Life
 
@@ -13,8 +13,8 @@ object BeingEatenEffect {
     case creture: PuppaImpl =>creture.life - REDUCE_LIFE
     case creture :LarvaImpl=>creture.life - REDUCE_LIFE
     case creture :ButterflyImpl=>creture.life - REDUCE_LIFE
-    case creture :flourPlant=>creture.life - REDUCE_LIFE
-    case creture:flourPlant=>creture.life - REDUCE_LIFE
+    case creture :FlourPlant=>creture.life - REDUCE_LIFE
+    case creture:FlourPlant=>creture.life - REDUCE_LIFE
   }
 
 }

@@ -1,8 +1,6 @@
-import model.SimulationObjectImpl.{ButterflyImpl, NectarPlant, flourPlant}
-import model.common.Point2D
-import model.BoundingBox
+import model.SimulationObjectImpl.{ButterflyImpl, FlourPlant, NectarPlant}
+import model.common.{BoundingBox, Direction, MovingStrategies, Point2D}
 import model.creature.CreatureObject.Butterfly
-import model.creature.{Direction, MovingStrategies}
 import model.reaction.EatingEffect.DEF_FOOD_ENERGY
 import model.reaction.{BeingEatenEffect, DegenerationE, EatingEffect}
 import org.scalatest.funspec.AnyFunSpec
@@ -23,7 +21,7 @@ class plantTest extends AnyFunSpec {
     movementStrategy = MovingStrategies.baseMovement
   )
 
-  private val food: flourPlant = flourPlant(
+  private val food: FlourPlant = FlourPlant(
     name = "food4",
     boundingBox = BoundingBox.Triangle(point = Point2D(100, 100), height = 10),
     degradationEffect = DegenerationE.deacreaseLifeEffect,
