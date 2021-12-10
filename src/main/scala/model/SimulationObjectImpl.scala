@@ -1,7 +1,7 @@
 package model
 
 import model.common.BoundingBox.{Circle, Rectangle, Triangle}
-import model.common.Direction
+import model.common.{BoundingBox, Direction}
 import model.creature.Behavior.{EggsBehavior, LarvaBehavior, NectarPlantBehavior, PlantBehavior, PredatorBehavior, PuppaImplBehavior, butterflyBehavior}
 import model.creature.CreatureObject.Domain.{Collision, Degeneration, Life, MovementStrategy, Velocity}
 import model.creature.CreatureObject.{Butterfly, Plant, Predator}
@@ -20,8 +20,10 @@ object SimulationObjectImpl {
                       override val velocity: Velocity=DEF_BLOB_VELOCITY ,
                       override val life: Life=DEF_BLOB_LIFE,
                       override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect,
-                      override val movementStrategy: MovementStrategy
-                     )extends Butterfly with EggsBehavior
+                      override val movementStrategy: MovementStrategy,
+                     )extends Butterfly with EggsBehavior {
+
+  }
 
   case class LarvaImpl(override val name: String,
                        override val  boundingBox: Circle,
