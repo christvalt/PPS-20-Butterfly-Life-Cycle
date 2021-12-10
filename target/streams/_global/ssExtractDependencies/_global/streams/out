@@ -1,8 +1,8 @@
-[error] sbt.librarymanagement.ResolveException: Error downloading org.scalatest:scalatest_2.13:3.0.5
+[error] sbt.librarymanagement.ResolveException: Error downloading org.scala-lang.modules:scala-swing_2.13:2.0.0-M2
 [error]   Not found
 [error]   Not found
-[error]   not found: C:\Users\camerum\.ivy2\local\org.scalatest\scalatest_2.13\3.0.5\ivys\ivy.xml
-[error]   not found: https://repo1.maven.org/maven2/org/scalatest/scalatest_2.13/3.0.5/scalatest_2.13-3.0.5.pom
+[error]   not found: C:\Users\81YH00ETIX\.ivy2\local\org.scala-lang.modules\scala-swing_2.13\2.0.0-M2\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scala-lang/modules/scala-swing_2.13/2.0.0-M2/scala-swing_2.13-2.0.0-M2.pom
 [error] 	at lmcoursier.CoursierDependencyResolution.unresolvedWarningOrThrow(CoursierDependencyResolution.scala:258)
 [error] 	at lmcoursier.CoursierDependencyResolution.$anonfun$update$38(CoursierDependencyResolution.scala:227)
 [error] 	at scala.util.Either$LeftProjection.map(Either.scala:573)
@@ -27,14 +27,14 @@
 [error] 	at sbt.Execute.$anonfun$submit$1(Execute.scala:282)
 [error] 	at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)
 [error] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:64)
-[error] 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-[error] 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
-[error] 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-[error] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-[error] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-[error] 	at java.lang.Thread.run(Thread.java:748)
-[error] (ssExtractDependencies) sbt.librarymanagement.ResolveException: Error downloading org.scalatest:scalatest_2.13:3.0.5
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+[error] 	at java.base/java.lang.Thread.run(Thread.java:829)
+[error] (ssExtractDependencies) sbt.librarymanagement.ResolveException: Error downloading org.scala-lang.modules:scala-swing_2.13:2.0.0-M2
 [error]   Not found
 [error]   Not found
-[error]   not found: C:\Users\camerum\.ivy2\local\org.scalatest\scalatest_2.13\3.0.5\ivys\ivy.xml
-[error]   not found: https://repo1.maven.org/maven2/org/scalatest/scalatest_2.13/3.0.5/scalatest_2.13-3.0.5.pom
+[error]   not found: C:\Users\81YH00ETIX\.ivy2\local\org.scala-lang.modules\scala-swing_2.13\2.0.0-M2\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scala-lang/modules/scala-swing_2.13/2.0.0-M2/scala-swing_2.13-2.0.0-M2.pom

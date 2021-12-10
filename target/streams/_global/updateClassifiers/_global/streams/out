@@ -1,4 +1,4 @@
 [debug] not up to date. inChanged = true, force = false
-[debug] Updating ProjectRef(uri("file:/C:/Users/camerum/Documents/pro/"), "pro")...
-[debug] Done updating ProjectRef(uri("file:/C:/Users/camerum/Documents/pro/"), "pro")
+[debug] Updating ProjectRef(uri("file:/D:/PPS/PPS-20-Butterfly-Life-Cycle/"), "pps-20-butterfly-life-cycle")...
+[debug] Done updating ProjectRef(uri("file:/D:/PPS/PPS-20-Butterfly-Life-Cycle/"), "pps-20-butterfly-life-cycle")
 [warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
