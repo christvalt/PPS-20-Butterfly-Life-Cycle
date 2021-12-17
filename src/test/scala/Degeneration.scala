@@ -5,7 +5,7 @@ import org.scalatest.funspec.AnyFunSpec
 
 class Degeneration  extends AnyFunSpec {
   val DEFAULD_BLOB_LIFE = 50
-  val LIFE_AFTER_DEGENERATION = 40
+  val LIFE_AFTER_DEGENERATION = 45
 
   val eggs: EggsImpl = EggsImpl(
     name = "egg1",
@@ -15,7 +15,8 @@ class Degeneration  extends AnyFunSpec {
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    //lifeCycle=0
   )
   val puppa: PuppaImpl = PuppaImpl(
     name = "egg2",

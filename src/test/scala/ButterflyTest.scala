@@ -35,7 +35,8 @@ class ButterflyTest extends AnyFunSpec {
     velocity = 3,
     life = 100,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+   // lifeCycle=0
   )
   val puppa: PuppaImpl = PuppaImpl(
     name = "puppa",

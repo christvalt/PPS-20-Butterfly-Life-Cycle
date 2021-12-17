@@ -35,7 +35,6 @@ object MovingStrategies {
       case true => standardMovement(creature, random.nextInt(360), world)
       case false => Movement(Point2D(x, y), finaAngle)
     }
-
   }
 
   @scala.annotation.tailrec

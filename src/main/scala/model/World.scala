@@ -6,7 +6,9 @@ import model.common.Intersection.isCollidingWith
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl}
 import model.common.{BoundingBox, Direction, Environment, MovingStrategies, Point2D}
 import model.common.Point2D.randomPosition
+import model.creature.Behavior
 import model.creature.Behavior.SimulableEntity
+import model.reaction.DegenerationE
 import model.reaction.{DegenerationE, EatingEffect}
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal
 
@@ -28,45 +30,48 @@ object  World{
   val DEF_PREDATOR_PLANT_WIDTH = 8
   val DEF_PREDATOR_PLANT_HEIGHT = 12
   val ITERATIONS_PER_DAY = 100
-  val BUTTERFLY_RADIUS = 5
+  val BUTTERFLY_RADIUS = 30
   val DEF_BLOB_FOW_RADIUS= 10
   val BUTTERFLY_VELOCITY = 70
   val BUTTERFLY_LIFE = 300
 
 
   def apply(env:Environment):World={
-    val iterationsPerDay =1000
+    val iterationsPerDay =100
 
 
     val eggs: Set[SimulableEntity] = Iterator.tabulate(env.eggs)(i => EggsImpl(
       name = "eggs" + i,
-      boundingBox = BoundingBox.Circle.apply(point =  Point2D(0, 0),radius = BUTTERFLY_RADIUS),
+      boundingBox = BoundingBox.Circle.apply(point = randomPosition(),radius = 5),
       Direction(0, 0),
-      velocity= BUTTERFLY_VELOCITY,
+      velocity= 3,
       life=BUTTERFLY_LIFE ,
-      degradationEffect=DegenerationE.deacreaseLifeEffect ,
-      movementStrategy = MovingStrategies.baseMovement
+      degradationEffect = DegenerationE.deacreaseLifeEffect ,
+      movementStrategy = MovingStrategies.baseMovement,
+      //lifeCycle = updateLifeCyclecreatureOb
     )).toSet
 
     val larva: Set[SimulableEntity] = Iterator.tabulate(env.larva)(i => LarvaImpl(
       name = "Larva" + i,
-      boundingBox = BoundingBox.Circle.apply(point =  Point2D(1, 3),radius = BUTTERFLY_RADIUS),
+      boundingBox = BoundingBox.Circle.apply(point =  Point2D(150, 130),radius = 15),
       Direction(0, 20),
       velocity= 15,
       life=BUTTERFLY_LIFE ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
-      movementStrategy = MovingStrategies.baseMovement
+      movementStrategy = MovingStrategies.baseMovement,
+     // lifeCycle = updateLifeCyclecreatureOb
     )).toSet
 
 
     val puppa: Set[SimulableEntity] = Iterator.tabulate(env.puppa)(i => PuppaImpl(
       name = "puppa" + i,
-      boundingBox = BoundingBox.Circle.apply(point =  Point2D(1, 3),radius = BUTTERFLY_RADIUS),
+      boundingBox = BoundingBox.Circle.apply(point =  Point2D(444, 355),radius = 20),
       Direction(0, 20),
       velocity= 35,
       life=BUTTERFLY_LIFE ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
-      movementStrategy = MovingStrategies.baseMovement
+      movementStrategy = MovingStrategies.baseMovement,
+     // lifeCycle = updateLifeCyclecreatureOb
     )).toSet
 
     val Adultbuttefly: Set[SimulableEntity] = Iterator.tabulate(env.buttefly)(i => ButterflyImpl(
@@ -76,7 +81,8 @@ object  World{
       velocity= BUTTERFLY_VELOCITY,
       life=BUTTERFLY_LIFE ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
-      movementStrategy = MovingStrategies.baseMovement
+      movementStrategy = MovingStrategies.baseMovement,
+      //lifeCycle = updateLifeCyclecreatureOb
     )).toSet
 
     val predador : Set[SimulableEntity] =  Iterator.tabulate(env.predator)(i => PredatorImpl(
