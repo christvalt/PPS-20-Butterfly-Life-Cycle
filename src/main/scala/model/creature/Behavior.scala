@@ -4,7 +4,8 @@ import model.common.BoundingBox.Circle
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl}
 import model.common.Movement
 import model.{TemperatureEffect, World}
-import model.creature.CreatureObject.{Butterfly, Creature, Plant, Predator}
+import model.creature.CreatureObject.{Butterfly, Creature, Living, Plant, Predator}
+import model.reaction.DegenerationE
 
 object Behavior {
   val DEF_BLOB_VELOCITY = 50
@@ -24,30 +25,19 @@ object Behavior {
 
   trait EggsBehavior extends Simulable {
     self: EggsImpl =>
-    override def updateState(world:World): Set[SimulableEntity]={
+   // def lifeCycle = self.life-1
+    override def updateState(world:World): Set[SimulableEntity] = {
       val newPosition = self.movementStrategy(self, world)
-      Set(self.copy(
-        boundingBox = Circle(newPosition.point, self.boundingBox.radius),
-        direction = newPosition.direction,
-        life = self.degradationEffect(self),
-      ))
-    }
-    override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
-      case  plant: Plant => plant.collisionEffect(self)
-      case  predator:Predator => Set(self.copy(life = self.life - predator.life))
-      case _ => Set(self)
-    }
-  }
-
-
-  trait EggsBehavior2LarvaBehavior extends Simulable {
-    self: LarvaImpl =>
-
-    override def updateState(world:World): Set[SimulableEntity]={
-      val newState = self.degradationEffect(self)
-      newState match {
-       // case n if n > 0 => Set(LarvaImpl(self.name,self.boundingBox,self.direction,self.fieldOfViewRadius))
-        case _ =>Set()
+      println("lifeèèèeèèèeèèeeèeèèeèèèdcccccsfdèsdcsfs"+self)
+      self.life match {
+        case n if n > 0 => world.currentIteration  match {
+          case  m if m==500 => Set(DegenerationE.helperEggToPuppa(self))
+          case _ => Set(self.copy(
+            boundingBox = Circle(newPosition.point, 5),//Circle(Position=Point(2,4) , radius=5)
+            direction = newPosition.direction,
+            life = self.degradationEffect(self)))
+        }
+        case  _ =>  Set()
       }
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
@@ -62,12 +52,16 @@ object Behavior {
     self: LarvaImpl =>
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.movementStrategy(self, world)
-
-      Set(self.copy(
-        boundingBox = Circle(newState.point, self.boundingBox.radius),
-        direction = newState.direction,
-        life = self.degradationEffect(self),
-      ))
+      self.life match {
+        case n if n > 0 => world.currentIteration  match {
+          case  m if m==1000 => Set(DegenerationE.helperLarvaToAdult(self))
+          case _ => Set(self.copy(
+            boundingBox = Circle(newState.point, 5),//Circle(Position=Point(2,4) , radius=5)
+            direction = newState.direction,
+            life = self.degradationEffect(self)))
+        }
+        case  _ =>  Set()
+      }
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)
@@ -79,13 +73,19 @@ object Behavior {
 
   trait PuppaImplBehavior extends  Simulable  {
     self: PuppaImpl =>
+    println("puppa entities*****++***++*++*++*******" +self )
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.movementStrategy(self, world)
-      Set(self.copy(
-        boundingBox = Circle(newState.point, self.boundingBox.radius),
-        direction = newState.direction,
-        life = self.degradationEffect(self),
-      ))
+      self.life match {
+        case n if n > 0 => world.currentIteration  match {
+          case  m if m==1500 => Set(DegenerationE.helperPuppaToLarva(self))
+          case _ => Set(self.copy(
+            boundingBox = Circle(newState.point, 5),//Circle(Position=Point(2,4) , radius=5)
+            direction = newState.direction,
+            life = self.degradationEffect(self)))
+        }
+        case  _ =>  Set()
+      }
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)

@@ -1,6 +1,6 @@
 package model.creature
 
-import model.creature.CreatureObject.Domain.{Collision, Degeneration, Life, MovementStrategy, ToChange, Velocity}
+import model.creature.CreatureObject.Domain.{ChangingStage, Collision, Degeneration, Increase, Life, LifeCycle, MovementStrategy, ToChange, Velocity}
 import model.World
 import model.common.{BoundingBox, Direction, Movement}
 import model.common.BoundingBox.{Rectangle, Triangle}
@@ -16,9 +16,11 @@ object CreatureObject {
     type Position = Movement
     type ToChange = Int
     type LifeCycle = Int
+    type Increase[A] = A => Life
     type Degeneration[A] = A => Life
     type Collision = Butterfly => Set[SimulableEntity]
     type MovementStrategy = (Intelligent, World) => Position
+    type ChangingStage= (Intelligent ,World)=> Creature
   }
 
 
@@ -30,6 +32,8 @@ object CreatureObject {
 
   sealed trait Living extends Creature {
     def life: Life
+    //def lifeCycle: LifeCycle
+
   }
 
   sealed trait Moving extends Creature {
@@ -49,13 +53,14 @@ object CreatureObject {
   sealed trait Intelligent extends Creature with Moving {
     def movementStrategy: MovementStrategy
     def direction: Direction
-   // def stage : BoundingBox
+   // def changeStage : ChangingStage
   }
 
   trait Butterfly extends Creature with Living with Moving with Intelligent {
     override def boundingBox: BoundingBox
     def degradationEffect: Degeneration[Butterfly]
-    //override  def stage:BoundingBox
+
+   // override def changeStage: ChangingStage
   }
 
   trait ButterflyWithTemporaryStatus extends Butterfly {
