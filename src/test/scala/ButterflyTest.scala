@@ -17,7 +17,8 @@ class ButterflyTest extends AnyFunSpec {
     velocity = 3,
     life = 100,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
   val lava: LarvaImpl = LarvaImpl(
     name = "adultB",
@@ -26,7 +27,8 @@ class ButterflyTest extends AnyFunSpec {
     velocity = 3,
     life = 100,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
   val egg: EggsImpl = EggsImpl(
     name = "egg",
@@ -36,7 +38,7 @@ class ButterflyTest extends AnyFunSpec {
     life = 100,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
     movementStrategy = MovingStrategies.baseMovement,
-   // lifeCycle=0
+    lifeCycle=0
   )
   val puppa: PuppaImpl = PuppaImpl(
     name = "puppa",
@@ -45,7 +47,8 @@ class ButterflyTest extends AnyFunSpec {
     velocity = 3,
     life = 100,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
 
   private val food: FlourPlant = FlourPlant(
@@ -53,7 +56,8 @@ class ButterflyTest extends AnyFunSpec {
     boundingBox = BoundingBox.Triangle(point = Point2D(100, 100), height = 10),
     degradationEffect = DegenerationE.deacreaseLifeEffect,
     life = 100,
-    collisionEffect = EatingEffect.simplePlantCollidedwithButterflyEntity
+    collisionEffect = EatingEffect.simplePlantCollidedwithButterflyEntity,
+    lifeCycle=0
   )
 
   describe("in every cycle of creature when it's collide with a colliding entities") {

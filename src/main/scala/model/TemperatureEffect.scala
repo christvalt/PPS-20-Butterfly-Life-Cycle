@@ -1,7 +1,7 @@
 package model
 
 import model.World.timeOfTheDay
-import model.creature.CreatureObject.Domain.Velocity
+import model.creature.CreatureObject.TypeUtilities.Velocity
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal
 
 object TemperatureEffect {

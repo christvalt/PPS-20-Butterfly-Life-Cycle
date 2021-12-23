@@ -1,14 +1,13 @@
 package model
 
 import model.common.BoundingBox.{Circle, Rectangle, Triangle}
-import model.common.{BoundingBox, Direction}
-import model.creature.Behavior.{EggsBehavior, LarvaBehavior, NectarPlantBehavior, PlantBehavior, PredatorBehavior, PuppaImplBehavior, butterflyBehavior}
-import model.creature.CreatureObject.Domain.{ChangingStage, Collision, Degeneration, Increase, Life, LifeCycle, MovementStrategy, Velocity}
-import model.creature.CreatureObject.{Butterfly, Living, Plant, Predator}
+import model.common.Direction
+import model.creature.Behavior.{EggsBehavior, LarvaBehavior, LeavesBehavior, NectarPlantBehavior, PlantBehavior, PredatorBehavior, PuppaImplBehavior, butterflyBehavior}
+import model.creature.CreatureObject.TypeUtilities.{Degeneration, Increase, LifeCycle}
+import model.creature.CreatureObject.{Butterfly, Plant, Predator}
 import model.reaction.DegenerationE
-import model.reaction.DegenerationE.{STANDARD_LIFE_DECREASE}
+import utils.TypeUtilities.{Collision, Life, MovementStrategy, SimulableEntity, Velocity}
 
-import java.sql.RowIdLifetime
 
 
 object SimulationObjectImpl {
@@ -21,15 +20,33 @@ object SimulationObjectImpl {
   val DEF_NEXT_DIRECTION = 0
   val DEF_DAY_FOR_HIBERNATION_EGGS=500
 
+
   case class EggsImpl(override val name: String,
                       override val  boundingBox: Circle,
                       override val direction: Direction = Direction(DEF_NEXT_DIRECTION,DEF_NEXT_DIRECTION),
                       override val velocity: Velocity=DEF_BLOB_VELOCITY,
-                      override val life: Life=DEF_EGG_LIFE,
+                      override val life: Life,//=DEF_EGG_LIFE,
                       override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect,
                       override val movementStrategy: MovementStrategy,
-                      //override val  lifeCycle: LifeCycle// = updateLifeCyclecreatureOb
+                      override val lifeCycle: LifeCycle,// = 300 ,//= DegenerationE.setLifeCycle(),
+                      override val changeStage: Increase[Butterfly] = DegenerationE.inc
   )extends Butterfly with EggsBehavior {
+
+  }
+
+
+  case class LeavesOfPlants(override val name: String,
+                            override val boundingBox: Rectangle,
+                            override val degradationEffect: Degeneration[Plant] = DegenerationE.deacreaseLifeEffect,
+                            override val life: Life,
+                            override val  collisionEffect: Collision,
+                            val valor: Set[SimulableEntity],
+                            override val  lifeCycle: LifeCycle// = updateLifeCyclecreatureOb
+                           )extends Plant  with LeavesBehavior {
+
+
+
+
   }
 
   case class LarvaImpl(override val name: String,
@@ -40,7 +57,8 @@ object SimulationObjectImpl {
                        override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect,
                        override val movementStrategy: MovementStrategy,
                        //override val changeStage: Unit = ???
-                       //override val  lifeCycle: LifeCycle// = ???
+                       override val  lifeCycle: LifeCycle,//= DegenerationE.setLifeCycle(),
+                       override val  changeStage: Increase[Butterfly] = DegenerationE.inc
                       )extends Butterfly with LarvaBehavior {
 
   }
@@ -53,7 +71,8 @@ object SimulationObjectImpl {
                        override val life: Life=DEF_PUPPA_LIFE,
                        override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect,
                        override val movementStrategy: MovementStrategy ,
-                      // override val  lifeCycle: LifeCycle// = ???
+                       override val  lifeCycle: LifeCycle,//= DegenerationE.setLifeCycle(),
+                       override val  changeStage: Increase[Butterfly] = DegenerationE.inc
                        //override val changeStage: Unit = ???
                       )extends Butterfly with  PuppaImplBehavior
 
@@ -65,7 +84,8 @@ object SimulationObjectImpl {
                            override val life: Life=DEF_BUTTERFLY_LIFE,
                            override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect,
                            override val movementStrategy: MovementStrategy,
-                           //override val  lifeCycle: LifeCycle// = ???
+                           override val  lifeCycle: LifeCycle,//= DegenerationE.setLifeCycle(),
+                           override val  changeStage: Increase[Butterfly] = DegenerationE.inc
                           // override val changeStage: Unit = ???
                           )extends Butterfly with butterflyBehavior
 
@@ -75,7 +95,7 @@ object SimulationObjectImpl {
                         override val degradationEffect: Degeneration[Plant],
                         override val life: Life,
                         override val  collisionEffect: Collision,
-                       // override val  lifeCycle: LifeCycle// = ???
+                        override val  lifeCycle: LifeCycle// = ???
                        // override val  lifeCycle: LifeCycle = ???
                        )extends Plant with PlantBehavior
 
@@ -85,17 +105,22 @@ object SimulationObjectImpl {
                         override val degradationEffect: Degeneration[Plant] = DegenerationE.deacreaseLifeEffect,
                         override val life: Life,//=DEF_BUTTERFLY_LIFE,
                         override val  collisionEffect: Collision,
-                        // override val  lifeCycle: LifeCycle// = ???
+                         override val  lifeCycle: LifeCycle// = ???
                          //override val  lifeCycle: LifeCycle = ???
                         )extends Plant with NectarPlantBehavior
 
   case class PredatorImpl(override val name: String,
                           override val boundingBox: Rectangle,
-                          override val degradationEffect: Degeneration[Predator] ,
-                          override val life: Life,//=DEF_BUTTERFLY_LIFE,
+                          override val degradationEffect: Degeneration[Predator] = DegenerationE.deacreaseLifeEffect ,
+                          override val life: Life,
                           override val  collisionEffect: Collision,
-                         // override val  lifeCycle: LifeCycle// = ???
-                          //override val  lifeCycle: LifeCycle = ???
-                          )extends Predator with PredatorBehavior
+                          override val  lifeCycle: LifeCycle,
+                          override val direction: Direction = Direction(DEF_NEXT_DIRECTION,DEF_NEXT_DIRECTION) ,
+                          override val velocity: Velocity,
+                          override val movementStrategy: MovementStrategy,
+                          )extends Predator with PredatorBehavior {
+
+  }
 
 }
+

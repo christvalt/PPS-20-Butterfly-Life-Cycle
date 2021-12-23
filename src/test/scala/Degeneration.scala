@@ -16,7 +16,7 @@ class Degeneration  extends AnyFunSpec {
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
     movementStrategy = MovingStrategies.baseMovement,
-    //lifeCycle=0
+    lifeCycle=0
   )
   val puppa: PuppaImpl = PuppaImpl(
     name = "egg2",
@@ -26,7 +26,8 @@ class Degeneration  extends AnyFunSpec {
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
 
   val Larva: LarvaImpl = LarvaImpl(
@@ -37,7 +38,8 @@ class Degeneration  extends AnyFunSpec {
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
   val adultB: ButterflyImpl = ButterflyImpl(
     name = "egg2",
@@ -47,7 +49,8 @@ class Degeneration  extends AnyFunSpec {
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
   describe("Standard Degradation effect") {
     it("should produce the reduction of its life") {

@@ -1,5 +1,6 @@
 package model.common
 
+import javafx.geometry.Point3D
 import model.common.BoundingBox.{Circle, Rectangle, Triangle}
 import model.common.Point2D.DEF_EQUILATERAL_ANGLE
 
@@ -25,6 +26,11 @@ object BoundingBox {
   def apply(point: Point2D, width: Int, height: Int): Rectangle = Rectangle(point, width, height)
 
   def apply(point: Point2D, height: Int, angle: Double): Triangle = Triangle(point, height, angle)
+}
+
+sealed trait test3D {
+
+  def point3:Point3D
 }
 
 
