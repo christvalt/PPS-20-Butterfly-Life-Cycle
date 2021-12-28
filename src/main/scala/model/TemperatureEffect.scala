@@ -1,8 +1,8 @@
 package model
 
 import model.World.timeOfTheDay
-import model.creature.CreatureObject.TypeUtilities.Velocity
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal
+import utils.TypeUtilities.Velocity
 
 object TemperatureEffect {
   val VELOCITY_MODIFIER =0.0253125f

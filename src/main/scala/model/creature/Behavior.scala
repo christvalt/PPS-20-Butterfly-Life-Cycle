@@ -29,7 +29,7 @@ object Behavior {
    // def lifeCycle = self.life-1
     override def updateState(world:World): Set[SimulableEntity] = {
       val newPosition = self.movementStrategy(self, world)
-     // println("lifeèèèeèèèeèèee" +"" +self.lifeCycle)
+      println("lifeèèèeèèèeèèee" +"" +self.life)
       self.life match {
         case n if n > 0 => self.lifeCycle match {
           case  m if m == 500 => Set(DegenerationE.helperEggToPuppa(self))
@@ -51,7 +51,7 @@ object Behavior {
     def incrementLifeCy: () => Life = () => self.lifeCycle+1 //self.changeStage(self)
   }
 
-
+//comment of change
   trait LarvaBehavior extends Simulable {
     self: LarvaImpl =>
     override def updateState(world:World): Set[SimulableEntity]={
@@ -181,7 +181,7 @@ object Behavior {
     override def updateState(world:World): Set[SimulableEntity]={
      // val newState = self.degradationEffect(self)
       val newPosition = self.movementStrategy(self, world)
-      println("jai"+self.life)
+    //  println("jai"+self.life)
       self.life match {
         case n if n > 0 => Set(self.copy(
           boundingBox = Rectangle.apply(newPosition.point, self.boundingBox.width, self.boundingBox.height),

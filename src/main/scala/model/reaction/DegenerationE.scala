@@ -16,10 +16,10 @@ object DegenerationE  {
   val STANDARD_LIFE_DECREASE = 0.5
   val STANDARD_LIFE_INCREASE = 1
 
-  def deacreaseLifeEffect(creatureOb: Living): Life = creatureOb.life - 2
+  def deacreaseLifeEffect(creatureOb: Living): Life = creatureOb.life - 0
 
 
-  def setLifeCycle(lifeCycle: Int):Int = lifeCycle +1
+  def setLifeCycle(lifeCycle: Int):Int = lifeCycle + 1
 
   def inc (creatureOb: Living): LifeCycle = creatureOb.lifeCycle + STANDARD_LIFE_INCREASE
 

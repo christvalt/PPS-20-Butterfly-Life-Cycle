@@ -48,7 +48,7 @@ object  World{
       boundingBox = BoundingBox.Circle.apply(point = randomPosition(),radius = 5),
       Direction(0, 0),
       velocity = 3,
-      life = BUTTERFLY_LIFE ,
+      life = 1200 ,
       degradationEffect = DegenerationE.deacreaseLifeEffect ,
       movementStrategy = MovingStrategies.baseMovement,
       changeStage = DegenerationE.inc,
