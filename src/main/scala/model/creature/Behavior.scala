@@ -1,11 +1,14 @@
 package model.creature
 
-import model.common.BoundingBox.Circle
-import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl}
+import model.common.BoundingBox.{Circle, Rectangle}
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, LeavesOfPlants, NectarPlant, PredatorImpl, PuppaImpl}
+import model.World.{DEF_PREDATOR_PLANT_HEIGHT, DEF_PREDATOR_PLANT_WIDTH}
 import model.common.Movement
+import model.common.Point2D.randomPosition
 import model.{TemperatureEffect, World}
 import model.creature.CreatureObject.{Butterfly, Creature, Living, Plant, Predator}
 import model.reaction.DegenerationE
+import utils.TypeUtilities.Life
 
 object Behavior {
   val DEF_BLOB_VELOCITY = 50
@@ -17,9 +20,7 @@ object Behavior {
   type SimulableEntity = Creature with Simulable
 
   object Simulable {
-
     self:Creature =>
-
   }
 
 
@@ -28,26 +29,29 @@ object Behavior {
    // def lifeCycle = self.life-1
     override def updateState(world:World): Set[SimulableEntity] = {
       val newPosition = self.movementStrategy(self, world)
-      println("lifeèèèeèèèeèèeeèeèèeèèèdcccccsfdèsdcsfs"+self)
+      println("lifeèèèeèèèeèèee" +"" +self.life)
       self.life match {
-        case n if n > 0 => world.currentIteration  match {
-          case  m if m==500 => Set(DegenerationE.helperEggToPuppa(self))
+        case n if n > 0 => self.lifeCycle match {
+          case  m if m == 500 => Set(DegenerationE.helperEggToPuppa(self))
           case _ => Set(self.copy(
-            boundingBox = Circle(newPosition.point, 5),//Circle(Position=Point(2,4) , radius=5)
+            boundingBox = Circle(newPosition.point, self.boundingBox.radius),//Circle(Position=Point(2,4) , radius=5)
             direction = newPosition.direction,
-            life = self.degradationEffect(self)))
+            life = self.degradationEffect(self),
+            lifeCycle = self.changeStage(self)))
         }
         case  _ =>  Set()
       }
+
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)
       case  predator:Predator => Set(self.copy(life = self.life - predator.life))
       case _ => Set(self)
     }
+    def incrementLifeCy: () => Life = () => self.lifeCycle+1 //self.changeStage(self)
   }
 
-
+//comment of change
   trait LarvaBehavior extends Simulable {
     self: LarvaImpl =>
     override def updateState(world:World): Set[SimulableEntity]={
@@ -73,14 +77,14 @@ object Behavior {
 
   trait PuppaImplBehavior extends  Simulable  {
     self: PuppaImpl =>
-    println("puppa entities*****++***++*++*++*******" +self )
+  //  println("puppa entities*****++***++*++*++*******" +self )
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.movementStrategy(self, world)
       self.life match {
         case n if n > 0 => world.currentIteration  match {
-          case  m if m==1500 => Set(DegenerationE.helperPuppaToLarva(self))
+          case  m if m==700 => Set(DegenerationE.helperPuppaToLarva(self))
           case _ => Set(self.copy(
-            boundingBox = Circle(newState.point, 5),//Circle(Position=Point(2,4) , radius=5)
+            boundingBox = Circle(newState.point, self.boundingBox.radius),//Circle(Position=Point(2,4) , radius=5)
             direction = newState.direction,
             life = self.degradationEffect(self)))
         }
@@ -102,7 +106,7 @@ object Behavior {
       Set(self.copy(
         boundingBox = Circle(newState.point, self.boundingBox.radius),
         direction = newState.direction,
-        life = self.degradationEffect(self),
+        life = self.degradationEffect(self)
       ))
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
@@ -112,14 +116,12 @@ object Behavior {
     }
   }
 
-
-
   trait PlantBehavior extends Simulable {
     self: FlourPlant =>
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.degradationEffect(self)
       newState match {
-        case n if n > 0 => Set(FlourPlant(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect))
+        case n if n > 0 => Set(FlourPlant(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect,self.lifeCycle))
         case _ =>Set()
       }
     }
@@ -129,12 +131,41 @@ object Behavior {
     }
   }
 
+
+
+
+  trait LeavesBehavior extends Simulable {
+    self: LeavesOfPlants =>
+   // println("leaving leaf" + self )
+    override def updateState(world:World): Set[SimulableEntity]={
+      val newState = self.degradationEffect(self)
+      newState match {
+        case n if n > 0 => Set(LeavesOfPlants(self.name,
+          self.boundingBox,
+          self.degradationEffect,
+          newState,
+          self.collisionEffect,
+          self.valor,
+          self.lifeCycle))
+        case _ =>Set()
+      }
+    }
+    override def collision(other: SimulableEntity): Set[SimulableEntity] = other match {
+      case _: Butterfly => Set()
+      case _ => Set(self)
+    }
+
+  }
+
+
+
+
   trait NectarPlantBehavior extends  Simulable {
     self: NectarPlant =>
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.degradationEffect(self)
       newState match {
-        case n if n > 0 => Set(NectarPlant(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect))
+        case n if n > 0 => Set(NectarPlant(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect,self.lifeCycle))
         case _ =>Set()
       }
     }
@@ -148,13 +179,20 @@ object Behavior {
     self: PredatorImpl =>
 
     override def updateState(world:World): Set[SimulableEntity]={
-      val newState = self.degradationEffect(self)
-      newState match {
-        case n if n > 0 => Set(PredatorImpl(self.name, self.boundingBox,self.degradationEffect,newState,self.collisionEffect))
-        case _ =>Set()
+     // val newState = self.degradationEffect(self)
+      val newPosition = self.movementStrategy(self, world)
+    //  println("jai"+self.life)
+      self.life match {
+        case n if n > 0 => Set(self.copy(
+          boundingBox = Rectangle.apply(newPosition.point, self.boundingBox.width, self.boundingBox.height),
+          direction = newPosition.direction,
+          life = self.degradationEffect(self)
+        ))
+        case _ => Set()
       }
+
     }
-    override def collision(other: SimulableEntity): Set[SimulableEntity] = other match {
+    override def collision(other: SimulableEntity): Set[SimulableEntity] =  other match {
       case _: Butterfly => Set()
       case _ => Set(self)
     }
@@ -170,7 +208,10 @@ object Behavior {
   }
 
 
-  protected[model] def updateBlob[A <: Butterfly](self: A, movement: Movement, world: World): SimulableEntity = self match {
+  /*
+  *
+  *
+  * protected[model] def updateBlob[A <: Butterfly](self: A, movement: Movement, world: World): SimulableEntity = self match {
     case base: EggsImpl => base.copy(
       boundingBox = base.boundingBox.copy(point = movement.point),
       direction = movement.direction,
@@ -205,7 +246,7 @@ object Behavior {
 
   private def incrementedValue(value: Int, effect: ((Int, Int)) => Int, world: World, min: Int): Int = {
     (value + effect(world.temperature, world.currentIteration)).max(min)
-  }
+  }*/
 }
 
 

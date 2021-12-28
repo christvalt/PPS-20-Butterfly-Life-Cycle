@@ -36,8 +36,10 @@ class ShapesPanel(world: World) extends JPanel {
           modelToViewRatio(point2D.y - r, this.getSize().height, world.height),
           modelToViewRatio(r * 2, this.getSize().width, world.width),
           modelToViewRatio(r * 2, this.getSize().height, world.height))
-      case Rectangle(point2D, w, h) =>
-        g.setColor(Color.red)
+      case Rectangle(point2D, w, h) => e match{
+        case _: PredatorImpl =>g.setColor(Color.black)
+        case _  =>g.setColor(Color.green)
+      }
         g.fillRect(modelToViewRatio(point2D.x - w / 2, this.getSize().width, world.width),
           modelToViewRatio(point2D.y - h / 2, this.getSize().height, world.height),
           modelToViewRatio(w, this.getSize().width, world.width),

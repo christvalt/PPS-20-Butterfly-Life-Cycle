@@ -4,8 +4,9 @@ import model.SimulationObjectImpl
 import model.common.BoundingBox.Circle
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
 import model.common.MovingStrategies
-import model.creature.Behavior.SimulableEntity
+import model.creature.Behavior
 import model.creature.CreatureObject.Butterfly
+import utils.TypeUtilities.SimulableEntity
 
 
 object EatingEffect {
@@ -15,7 +16,7 @@ object EatingEffect {
   val MIN_BLOB_FOV_RADIUS: Int = 222
   var INTERVAL: Int = 1
   val DEF_FOOD_ENERGY = 50
-  val REDUCE_LIFE = 25
+  val REDUCE_LIFE = 1
   val DEF_NECTARD_ENERGY = 222
 
   private def randomValueChange(value: Int): Int = {
@@ -39,7 +40,7 @@ object EatingEffect {
   def spwanEggs[A <:Butterfly](adults :A): SimulableEntity =  adults match {
     case adults :ButterflyImpl => EggsImpl(name = adults.name + "-son"+Counter.nextValue, boundingBox = Circle(adults.boundingBox.point,
       randomValueChange(DEF_BLOB_RADIUS).max(MIN_BLOB_RADIUS)),
-      movementStrategy = MovingStrategies.baseMovement)
+      movementStrategy = MovingStrategies.baseMovement,lifeCycle=adults.lifeCycle,changeStage = ???,direction = ???,velocity = ???,life = ???)
       //fieldOfViewRadius = randomValueChange(DEF_BLOB_FOV_RADIUS).max(MIN_BLOB_FOV_RADIUS),movementStrategy = MovingStrategies.baseMovement)
       case _ => ???//Set()
   }
@@ -52,7 +53,7 @@ object EatingEffect {
     case _ => Set()
   }
 
-  def iscollidedWithPredactor[A <:Butterfly](eggs: A) :Set[SimulableEntity] = eggs  match{
+  def collidedWithPredactor[A <:Butterfly](creature: A) :Set[SimulableEntity] = creature  match{
     case e:EggsImpl => Set(e.copy(life = e.life - REDUCE_LIFE))
     case e :PuppaImpl => Set(e.copy(life = e.life - REDUCE_LIFE))
     case e: LarvaImpl => Set(e.copy(life = e.life - REDUCE_LIFE))

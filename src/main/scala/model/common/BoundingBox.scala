@@ -29,6 +29,7 @@ object BoundingBox {
 
 
 
+
 object Intersection {
 
   def isCollidingWith(body1: BoundingBox, body2: BoundingBox): Boolean = (body1, body2) match {

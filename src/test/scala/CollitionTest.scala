@@ -20,7 +20,7 @@ class CollitionTest extends AnyFunSpec {
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
     movementStrategy = MovingStrategies.baseMovement,
-    //lifeCycle=0
+    lifeCycle=0
   )
   val puppa: PuppaImpl = PuppaImpl(
     name = "egg2",
@@ -30,7 +30,8 @@ class CollitionTest extends AnyFunSpec {
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
 
   val Larva: LarvaImpl = LarvaImpl(
@@ -41,7 +42,8 @@ class CollitionTest extends AnyFunSpec {
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
   val adultB: ButterflyImpl = ButterflyImpl(
     name = "egg2",
@@ -51,7 +53,8 @@ class CollitionTest extends AnyFunSpec {
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
 
   describe("PLant Effect appy to a butterfly") {
@@ -60,7 +63,7 @@ class CollitionTest extends AnyFunSpec {
         assert(EatingEffect.simplePlantCollidedwithButterflyEntity(eggs).equals(Set(eggs.copy(life = eggs.life + DEF_FOOD_ENERGY))))
       }
       it("dicrease the life of the creature and would be greatheet that the previeos value ") {
-        assert(EatingEffect.iscollidedWithPredactor(eggs).equals(Set(eggs.copy(life =eggs.life- REDUCE_LIFE))))
+        assert(EatingEffect.collidedWithPredactor(eggs).equals(Set(eggs.copy(life =eggs.life- REDUCE_LIFE))))
 
       }
 
