@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a3a4c98a-d69c-4fa5-b150-78216fea177d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/scala/model/common/Final.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/SimulationObjectImpl.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/SimulationObjectImpl.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/World.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/World.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/BoundingBox.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/BoundingBox.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/Point2D.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/Point2D.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/creature/Behavior.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/creature/Behavior.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/reaction/DegenerationE.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/reaction/DegenerationE.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/reaction/EatingEffect.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/reaction/EatingEffect.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/ButterflyTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/ButterflyTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/CollitionTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/CollitionTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/Degeneration.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Degeneration.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/WordTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/WordTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/plantTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/plantTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$EggsBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$EggsBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$LarvaBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$LarvaBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PuppaImplBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PuppaImplBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/view/SettingsView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/view/SettingsView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/test-classes/ButterflyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/test-classes/ButterflyTest.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="22gqE7adQbJx0BGhjyp40FDIQj3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager" selected="Application.Launcher">
+    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Launcher" />
+      <module name="pro" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ButterflyTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="pro" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="testClassPath" value="ButterflyTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CollitionTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="pro" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="testClassPath" value="CollitionTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Degeneration" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="pro" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="testClassPath" value="Degeneration" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WordTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="pro" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="testClassPath" value="WordTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Launcher" />
+        <item itemvalue="ScalaTest.WordTest" />
+        <item itemvalue="ScalaTest.Degeneration" />
+        <item itemvalue="ScalaTest.CollitionTest" />
+        <item itemvalue="ScalaTest.ButterflyTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a3a4c98a-d69c-4fa5-b150-78216fea177d" name="Default Changelist" comment="" />
+      <created>1640268013000</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1640268013000</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

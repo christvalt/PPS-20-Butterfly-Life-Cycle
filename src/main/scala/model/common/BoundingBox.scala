@@ -1,7 +1,7 @@
 package model.common
 
 import model.common.BoundingBox.{Circle, Rectangle, Triangle}
-import model.common.Point2D.DEF_EQUILATERAL_ANGLE
+import model.common.Final.DEF_EQUILATERAL_ANGLE
 
 
 
@@ -26,6 +26,7 @@ object BoundingBox {
 
   def apply(point: Point2D, height: Int, angle: Double): Triangle = Triangle(point, height, angle)
 }
+
 
 
 

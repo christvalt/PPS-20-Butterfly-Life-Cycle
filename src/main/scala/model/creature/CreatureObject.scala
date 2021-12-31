@@ -1,24 +1,21 @@
 package model.creature
 
-import model.creature.CreatureObject.Domain.{Collision, Degeneration, Life, MovementStrategy, ToChange, Velocity}
+import model.creature.CreatureObject.TypeUtilities.{ Degeneration, Increase,  LifeCycle}
 import model.World
 import model.common.{BoundingBox, Direction, Movement}
 import model.common.BoundingBox.{Rectangle, Triangle}
 import model.creature.Behavior.SimulableEntity
+import utils.TypeUtilities.{Collision, Life, MovementStrategy, ToChange, Velocity}
 
 
 object CreatureObject {
 
 
-  object Domain {
-    type Life = Int
-    type Velocity = Int
-    type Position = Movement
-    type ToChange = Int
+  object TypeUtilities {
     type LifeCycle = Int
+    type Increase[A] = A => Life
     type Degeneration[A] = A => Life
-    type Collision = Butterfly => Set[SimulableEntity]
-    type MovementStrategy = (Intelligent, World) => Position
+
   }
 
 
@@ -30,6 +27,8 @@ object CreatureObject {
 
   sealed trait Living extends Creature {
     def life: Life
+    def lifeCycle: LifeCycle
+
   }
 
   sealed trait Moving extends Creature {
@@ -49,12 +48,13 @@ object CreatureObject {
   sealed trait Intelligent extends Creature with Moving {
     def movementStrategy: MovementStrategy
     def direction: Direction
-    //def fieldOfViewRadius : Int
+   // def changeStage : ChangingStage
   }
 
   trait Butterfly extends Creature with Living with Moving with Intelligent {
     override def boundingBox: BoundingBox
     def degradationEffect: Degeneration[Butterfly]
+    def changeStage: Increase[Butterfly]
   }
 
   trait ButterflyWithTemporaryStatus extends Butterfly {
@@ -65,13 +65,13 @@ object CreatureObject {
 //    override def boundingBox: Rectangle
 //  }
 
-  trait Predator extends Creature with Living  with eating{
+  trait Predator extends Creature with Living  with eating with Intelligent {
     override def boundingBox: Rectangle
     def degradationEffect: Degeneration[Predator]
   }
 
   trait Plant extends Creature with Living  with eating{
-    override def boundingBox: Triangle
+    override def boundingBox: BoundingBox
     def degradationEffect: Degeneration[Plant]
   }
 

@@ -1,10 +1,8 @@
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
+import model.common.Final.{DEF_FOOD_ENERGY, DEF_SIMPLE_PLANT_ENERGY, NULL_ENERGY, REDUCE_LIFE, REDUCE_LIFE_Larva, REDUCE_LIFE_Puppa}
 import model.common.{BoundingBox, Direction, MovingStrategies, Point2D}
-
 import model.reaction.{BeingEatenEffect, EatingEffect}
-import model.reaction.EatingEffect.{DEF_FOOD_ENERGY, REDUCE_LIFE}
 import org.scalatest.funspec.AnyFunSpec
-import org.scalatest.funsuite.AnyFunSuite
 
 
 class CollitionTest extends AnyFunSpec {
@@ -19,7 +17,8 @@ class CollitionTest extends AnyFunSpec {
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
   val puppa: PuppaImpl = PuppaImpl(
     name = "egg2",
@@ -29,7 +28,8 @@ class CollitionTest extends AnyFunSpec {
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
 
   val Larva: LarvaImpl = LarvaImpl(
@@ -40,7 +40,8 @@ class CollitionTest extends AnyFunSpec {
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
   val adultB: ButterflyImpl = ButterflyImpl(
     name = "egg2",
@@ -50,35 +51,68 @@ class CollitionTest extends AnyFunSpec {
     velocity = 3,
     life = DEFAULD_BLOB_LIFE,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
 
-  describe("PLant Effect appy to a butterfly") {
-    describe("when  eating standars plant and when collide with a predactor ") {
-      it("increase the life of the creature and would be greatheet that the previeos value") {
+  describe("Collision  Effect apply to a Egg") {
+    describe("when egg collide with simple plant and predactor ") {
+
+      it("increase the life of the eggs and would be greatheet that the previeos value") {
         assert(EatingEffect.simplePlantCollidedwithButterflyEntity(eggs).equals(Set(eggs.copy(life = eggs.life + DEF_FOOD_ENERGY))))
       }
-      it("dicrease the life of the creature and would be greatheet that the previeos value ") {
-        assert(EatingEffect.iscollidedWithPredactor(eggs).equals(Set(eggs.copy(life =eggs.life- REDUCE_LIFE))))
 
+      it("egg life  value") {
+        assert(EatingEffect.collideWithSimplePlan(eggs).equals(Set(eggs.copy(life = eggs.life + NULL_ENERGY ))))
       }
 
-
-
-      /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   Test after*/
-      it("should produce NoSuchElementException when head is invoked") {
-       // assert(EatingEffect.collisionREceptivePLan(eggs).equals(Set(eggs)))
-        //assert(EatingEffect.iscollidedWithNectarPlant(eggs).equals(Set(eggs)))
-        //Adult Butterfly  should increase life  and create a adultbuterfly child(Eggs)
-        //assert(reaction.reproducingFoodForAdultButterfly(egg).equals(Set(eggs.copy())))
-        // assert(EatingEffect.collisionREceptivePLan(adultB).exists(Set(adultB.copy(life = adultB.life + DEF_FOOD_ENERGY))))
-        //assert(reaction.reproducingFoodForAdultButterfly(adultB).equals().count()
+      it("dicrease the life of the egg and would be small than the previeos value ") {
+        assert(EatingEffect.collidedWithPredactor(eggs).equals(Set(eggs.copy(life = eggs.life- REDUCE_LIFE))))
 
       }
     }
 
-    //assert(collisionREceptivePLan().exists(_.isEmpty))
   }
+
+  describe("kvfv"){
+    // LARVA Effect
+    it("larva and predactor dicrese") {
+      assert(EatingEffect.collidedWithPredactor(Larva).equals(Set(Larva.copy(life = Larva.life - REDUCE_LIFE_Larva))))
+    }
+
+    it("increase the life of Larva when collide with a simple plan ") {
+      assert(EatingEffect.collideWithSimplePlan(Larva).equals(Set(Larva.copy(life = Larva.life + DEF_SIMPLE_PLANT_ENERGY))))
+    }
+
+
+  }
+  describe("pu"){
+    // PUPPA Efect
+
+
+    it("increase the life of adult buuuterflay when collide with a simple plan ") {
+      assert(EatingEffect.collideWithSimplePlan(puppa).equals(Set(puppa.copy(life = puppa.life+ DEF_SIMPLE_PLANT_ENERGY))))
+    }
+
+    it("increase the life of larva when collide with a simple plan ") {
+      assert(EatingEffect.collidedWithPredactor(puppa).equals(Set(puppa.copy(life = puppa.life - REDUCE_LIFE_Puppa))))
+
+    }
+  }
+
+/*
+*
+*   describe("BUtte"){
+    //BUTTERFLY Effect
+    it("increase the life of puppa when collide with a simple plan ") {
+      assert(EatingEffect.collideWithSimplePlan(adultB).equals(Set(adultB.copy(life = adultB.life + DEF_SIMPLE_PLANT_ENERGY))))
+    }
+
+    it("increase the life of puppa when collide with a simple plan ") {
+      assert(EatingEffect.collidedWithPredactor(adultB).equals(Set(adultB.copy(life = adultB.life -  REDUCE_LIFE))))
+
+    }
+  }*/
 
 
 }

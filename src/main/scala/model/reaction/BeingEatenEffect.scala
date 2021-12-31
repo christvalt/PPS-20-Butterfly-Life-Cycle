@@ -1,8 +1,8 @@
 package model.reaction
 
-import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl, FlourPlant}
-import model.creature.CreatureObject.{Creature}
-import model.creature.CreatureObject.Domain.Life
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, PuppaImpl}
+import model.creature.CreatureObject.Creature
+import utils.TypeUtilities.Life
 
 object BeingEatenEffect {
   val REDUCE_LIFE = 250

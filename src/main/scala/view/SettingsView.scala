@@ -62,7 +62,12 @@ object SettingsView extends Views {
 
 
      showConfirmDialog(null, panel, "Settings", OK_CANCEL_OPTION, PLAIN_MESSAGE) match {
-      case OK_OPTION =>userInput.success(Environment(temperature=temporalGranularity.getText.toInt,buttefly = Butterfly.getText.toInt,eggs = Eggs.getText.toInt,puppa = Puppa.getText.toInt,larva = Larva.getText.toInt,plant = Plan.getText.toInt,predator=predator.getText.toInt,
+
+      case OK_OPTION =>userInput.success(Environment(temperature=temporalGranularity.getText.toInt,
+        buttefly = Butterfly.getText.toInt,
+        eggs = Eggs.getText.toInt,puppa = Puppa.getText.toInt,
+        larva = Larva.getText.toInt,plant = Plan.getText.toInt,
+        predator=predator.getText.toInt,
         dayNumber.getSelectedItem match {
           case "infinite" => Int.MaxValue
           case value => value.toString.toInt

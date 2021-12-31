@@ -6,7 +6,7 @@ import model.common.Environment
 class WordTest extends AnyFunSpec {
 
 
-  val initialWorld : Environment = {
+  val initialSettingEnvirinement : Environment = {
     Environment(
       temperature=2,
       buttefly=2,
@@ -18,19 +18,23 @@ class WordTest extends AnyFunSpec {
       days=2
     )
   }
-  val  initialWorld2: World = World(initialWorld)
+  val  initialWorld: World = World(initialSettingEnvirinement)
+
+  val updatedWorld :World = World.updateState(initialWorld)
 
   describe("A  World") {
     describe("when initialized ") {
       it("should have curent Iteration value to 0") {
-        assert(initialWorld2.currentIteration==0)
+        assert(initialWorld.currentIteration==0)
       }
     }
     describe("with a given Environment") {
       it("should match the given Environment temperature") {
-        assert(initialWorld2.temperature==initialWorld.temperature)
+        assert(initialWorld.temperature==initialSettingEnvirinement.temperature)
       }
     }
 
   }
+
+
 }

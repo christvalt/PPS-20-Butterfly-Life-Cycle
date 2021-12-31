@@ -1,7 +1,7 @@
 import model.SimulationObjectImpl.{ButterflyImpl, FlourPlant, NectarPlant}
+import model.common.Final.DEF_FOOD_ENERGY
 import model.common.{BoundingBox, Direction, MovingStrategies, Point2D}
 import model.creature.CreatureObject.Butterfly
-import model.reaction.EatingEffect.DEF_FOOD_ENERGY
 import model.reaction.{BeingEatenEffect, DegenerationE, EatingEffect}
 import org.scalatest.funspec.AnyFunSpec
 
@@ -18,7 +18,8 @@ class plantTest extends AnyFunSpec {
     velocity = 3,
     life = 100,
     degradationEffect =BeingEatenEffect.eatingByPredatorEffect,
-    movementStrategy = MovingStrategies.baseMovement
+    movementStrategy = MovingStrategies.baseMovement,
+    lifeCycle=0
   )
 
   private val food: FlourPlant = FlourPlant(
@@ -26,7 +27,8 @@ class plantTest extends AnyFunSpec {
     boundingBox = BoundingBox.Triangle(point = Point2D(100, 100), height = 10),
     degradationEffect = DegenerationE.deacreaseLifeEffect,
     life = 100,
-    collisionEffect = EatingEffect.simplePlantCollidedwithButterflyEntity
+    collisionEffect = EatingEffect.simplePlantCollidedwithButterflyEntity,
+    lifeCycle=0
   )
 
   private val foods: NectarPlant = NectarPlant(
@@ -34,7 +36,8 @@ class plantTest extends AnyFunSpec {
     boundingBox = BoundingBox.Triangle(point = Point2D(100, 100), height = 10),
     degradationEffect = DegenerationE.deacreaseLifeEffect,
     life = 100,
-    collisionEffect = EatingEffect.simplePlantCollidedwithButterflyEntity
+    collisionEffect = EatingEffect.simplePlantCollidedwithButterflyEntity,
+    lifeCycle=0
   )
   private val reproductuvefood: NectarPlant = foods.copy(name = "food5", collisionEffect = EatingEffect.simplePlantCollidedwithButterflyEntity)
 
