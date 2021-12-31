@@ -4,9 +4,9 @@ import controler.TimingOps.{Simulation, toStateTWorld}
 import model.common.BoundingBox.{Rectangle, Triangle}
 import model.common.Intersection.isCollidingWith
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, LeavesOfPlants, NectarPlant, PredatorImpl, PuppaImpl}
+import model.common.Final.{BUTTERFLY_LIFE, BUTTERFLY_RADIUS, BUTTERFLY_VELOCITY, DEF_PREDATOR_PLANT_HEIGHT, DEF_PREDATOR_PLANT_WIDTH, ITERATIONS_PER_DAY, TEMPERATURE_AMPLITUDE, WORLD_HEIGHT, WORLD_WIDTH}
 import model.common.{BoundingBox, Direction, Environment, MovingStrategies, Point2D}
 import model.common.Point2D.randomPosition
-import model.creature.CreatureObject.TypeUtilities.LifeCycle
 import model.reaction.{DegenerationE, EatingEffect}
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal
 import utils.TypeUtilities.SimulableEntity
@@ -23,16 +23,7 @@ case class  World(temperature:Int,
 
 object  World{
 
-  val WORLD_WIDTH = 1280
-  val WORLD_HEIGHT = 720
-  val TEMPERATURE_AMPLITUDE = 1.0125f
-  val DEF_PREDATOR_PLANT_WIDTH = 8
-  val DEF_PREDATOR_PLANT_HEIGHT = 12
-  val ITERATIONS_PER_DAY = 100
-  val BUTTERFLY_RADIUS = 25
-  val DEF_BLOB_FOW_RADIUS= 10
-  val BUTTERFLY_VELOCITY = 70
-  val BUTTERFLY_LIFE = 700
+
 
 
 
@@ -118,7 +109,7 @@ object  World{
       name = "flourPlant" + i ,
       boundingBox = Triangle.apply(point = randomPosition(),
         height = 10),
-      collisionEffect =EatingEffect.collidedWithPredactor,
+      collisionEffect =EatingEffect.collideWithSimplePlan,
       degradationEffect =DegenerationE.deacreaseLifeEffect,
       life = 5003,
       lifeCycle = 0
