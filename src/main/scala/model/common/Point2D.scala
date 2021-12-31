@@ -1,14 +1,13 @@
 package model.common
 
+import model.common.Final.{WORLD_HEIGHT, WORLD_WIDTH}
+
 case class Point2D(x: Int ,y: Int)
 
 object Point2D {
 
 
-  val WORLD_WIDTH = 1200
 
-  val WORLD_HEIGHT = 700
-  val DEF_EQUILATERAL_ANGLE = 20
 
 
 // TODO: bisogna considerare per tutti i boundibox

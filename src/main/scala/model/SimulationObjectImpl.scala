@@ -2,6 +2,7 @@ package model
 
 import model.common.BoundingBox.{Circle, Rectangle, Triangle}
 import model.common.Direction
+import model.common.Final.{DEF_BLOB_VELOCITY, DEF_BUTTERFLY_LIFE, DEF_LARVA_LIFE, DEF_NEXT_DIRECTION, DEF_PUPPA_LIFE}
 import model.creature.Behavior.{EggsBehavior, LarvaBehavior, LeavesBehavior, NectarPlantBehavior, PlantBehavior, PredatorBehavior, PuppaImplBehavior, butterflyBehavior}
 import model.creature.CreatureObject.TypeUtilities.{Degeneration, Increase, LifeCycle}
 import model.creature.CreatureObject.{Butterfly, Plant, Predator}
@@ -11,14 +12,7 @@ import utils.TypeUtilities.{Collision, Life, MovementStrategy, SimulableEntity, 
 
 
 object SimulationObjectImpl {
-  val DEF_BUTTERFLY_LIFE = 1250
-  val DEF_EGG_LIFE = 50
-  val DEF_PUPPA_LIFE = 300
-  val DEF_LARVA_LIFE = 50
-  val DEF_BLOB_VELOCITY = 50
-  val DEF_BLOB_FOV_RADIUS = 50
-  val DEF_NEXT_DIRECTION = 0
-  val DEF_DAY_FOR_HIBERNATION_EGGS=500
+
 
 
   case class EggsImpl(override val name: String,
