@@ -1,8 +1,8 @@
 package model.reaction
 
-import model.SimulationObjectImpl.{EggsImpl, LarvaImpl, PuppaImpl}
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, LarvaImpl, PuppaImpl}
 import model.common.BoundingBox.Circle
-import model.common.Final.{DEF_PUPPA_LIFE, STANDARD_LIFE_DECREASE, STANDARD_LIFE_INCREASE}
+import model.common.Final.{DEF_PUPPA_LIFE, LIFE_ADD_EGG_TO_LARVA, STANDARD_LIFE_DECREASE, STANDARD_LIFE_INCREASE, VELOCITY_ADD_EGG_TO_LARVA, VELOCITY_ADD_LARVA_TO_PUPPA}
 import model.common.Point2D
 import model.creature.CreatureObject.TypeUtilities.LifeCycle
 import model.creature.CreatureObject.Living
@@ -18,58 +18,39 @@ object DegenerationE  {
   def deacreaseLifeEffect(creatureOb: Living): Life = creatureOb.life - STANDARD_LIFE_DECREASE
 
 
-  def setLifeCycle(lifeCycle: Int):Int = lifeCycle + 1
+  def deacreaseLifeEffectForLarva(creatureOb: Living): Life = creatureOb.life - STANDARD_LIFE_DECREASE+1
 
   def inc (creatureOb: Living): LifeCycle = creatureOb.lifeCycle + STANDARD_LIFE_INCREASE
 
-  //var incrr: EggsImpl => Life = (egg: => EggsImpl) => egg.lifeCycle+STANDARD_LIFE_INCREASE
-
-
-
-  trait  testing  extends EggsImpl {
-    self: EggsImpl =>
-
-    def inc = () => self.lifeCycle+STANDARD_LIFE_INCREASE
-
-  }
-
-
 
   def helperEggToLarva[A<: EggsImpl](egg:A): SimulableEntity ={
-    //println("puppa name"+ PuppaImpl())
-    //println("cycle" + egg.lifeCycle)
     LarvaImpl(egg.name +"new larva" ,
       egg.boundingBox,
       egg.direction,
-      egg.velocity+15,
-      egg.life -1 ,
+      egg.velocity+VELOCITY_ADD_EGG_TO_LARVA,
+      egg.life + LIFE_ADD_EGG_TO_LARVA ,
       egg.degradationEffect ,
       egg.movementStrategy,
-      lifeCycle=8,
+      egg.lifeCycle,
       egg.changeStage)
   }
 
 
-  def helperLarvaToPuppa[A<: PuppaImpl](puppa:A): SimulableEntity ={
-    //println("cycleTEst" + puppa.lifeCycle)
-    PuppaImpl(puppa.name +"new Puppa" ,
-      boundingBox = Circle(point =  Point2D(444, 355),radius = 10),
+  def helperLarvaToPuppa[A<: LarvaImpl](puppa:A): SimulableEntity ={
+    PuppaImpl(puppa.name +"new Larva" ,
+      puppa.boundingBox,
       puppa.direction,
-      puppa.velocity+35,
-      puppa.life  ,
+      puppa.velocity+VELOCITY_ADD_LARVA_TO_PUPPA,
+      puppa.life+ LIFE_ADD_EGG_TO_LARVA   ,
       puppa.degradationEffect ,
       puppa.movementStrategy,
-      puppa.lifeCycle ,// =egg.changeStage(egg),
+      puppa.lifeCycle ,
       puppa.changeStage)
-
-
-
-
   }
 
-  def helperLarvaToAdult[A<: LarvaImpl](larva:A): SimulableEntity ={
-    //println("puppa name"+ PuppaImpl())
-    PuppaImpl(larva.name +"new Puppa" ,
+  def helperPuppaToAdult[A<: PuppaImpl](larva:A): SimulableEntity ={
+    println("puppa name"+ larva.life)
+    ButterflyImpl(larva.name +"new Puppa" ,
       larva.boundingBox,
       larva.direction,
       larva.velocity+35,
@@ -82,7 +63,7 @@ object DegenerationE  {
 
   def helperAdultSpwoonEggs[A<: EggsImpl](egg:A): SimulableEntity ={
     //println("puppa name"+ PuppaImpl())
-    PuppaImpl(egg.name +"new Puppa" ,
+    PuppaImpl(egg.name +"new egg son" ,
       egg.boundingBox,
       egg.direction,
       egg.velocity+35,

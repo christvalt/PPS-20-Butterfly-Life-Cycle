@@ -27,7 +27,7 @@ object Final {
   val DEF_FOOD_ENERGY = 2
   val REDUCE_LIFE = 1
   val DEF_NECTARD_ENERGY = 222
-  val DEF_SIMPLE_PLANT_ENERGY = 50
+  val DEF_SIMPLE_PLANT_ENERGY = 63
   val REDUCE_LIFE_Larva = 5
   val REDUCE_LIFE_Puppa = 4
   val NULL_ENERGY = 0
@@ -44,7 +44,7 @@ object Final {
   val ITERATIONS_PER_DAY = 100
   val BUTTERFLY_RADIUS = 25
   val DEF_BLOB_FOW_RADIUS= 10
-  val BUTTERFLY_VELOCITY = 70
+  val BUTTERFLY_VELOCITY = 50
   val BUTTERFLY_LIFE = 700
 
 
@@ -70,5 +70,16 @@ object Final {
   val WORLD_HEIGHT3 = 700
   val DEF_EQUILATERAL_ANGLE = 20
 
+
+
+  /**Point parameter */
+
+  val EGG_RADIUS_ADD = 0.003
+
+/**helper EggTo larva*/
+
+ val LIFE_ADD_EGG_TO_LARVA = 15
+  val VELOCITY_ADD_EGG_TO_LARVA = 15
+  val VELOCITY_ADD_LARVA_TO_PUPPA = 20
 
 }

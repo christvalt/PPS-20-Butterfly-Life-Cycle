@@ -6,12 +6,24 @@ import model.common.Intersection.isCollidingWith
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, LeavesOfPlants, NectarPlant, PredatorImpl, PuppaImpl}
 import model.common.Final.{BUTTERFLY_LIFE, BUTTERFLY_RADIUS, BUTTERFLY_VELOCITY, DEF_PREDATOR_PLANT_HEIGHT, DEF_PREDATOR_PLANT_WIDTH, ITERATIONS_PER_DAY, TEMPERATURE_AMPLITUDE, WORLD_HEIGHT, WORLD_WIDTH}
 import model.common.{BoundingBox, Direction, Environment, MovingStrategies, Point2D}
-import model.common.Point2D.randomPosition
+import model.common.Point2D.{randomPosition, randomPositionForEgg}
 import model.reaction.{DegenerationE, EatingEffect}
 import utils.TrigonometricalOps.Sinusoidal.Curried.zeroPhasedZeroYTranslatedSinusoidal
 import utils.TypeUtilities.SimulableEntity
 
 
+
+
+
+/**
+ *  Represent the state of the simuation and contains all  the creature durent the iteration
+ *  params: temperature --the actual temperature of the system
+ *  width: The width of the simulation
+ *  height:   the height of the simulation
+ *  cretature: the set of creature present inside the simulation
+ *  currentIteration: the real time iteration
+ *  TotalIteration: the total iteration before the end of simulation
+ * */
 
 case class  World(temperature:Int,
                   width :Int,
@@ -21,14 +33,18 @@ case class  World(temperature:Int,
                   totalIterations: Int)
 
 
+/**
+ * compagnon object of the World that contains all the different paraneter of world
+ *
+ * Represent the state of the simuation and contains all  the creature durent the iteration
+ *  params: temperature --the actual temperature of the system
+ *  cretature: the set of creature present inside the simulation
+ *  currentIteration: the real time iteration
+ *  TotalIteration: the total iteration before the end of simulation
+ *
+ * */
+
 object  World{
-
-
-
-
-
-
-  //var incrr: EggsImpl => Life = (egg: => EggsImpl) => egg.lifeCycle+STANDARD_LIFE_INCREASE
 
   def apply(env:Environment):World={
     val iterationsPerDay =100
@@ -36,7 +52,7 @@ object  World{
 
     val eggs: Set[SimulableEntity] = Iterator.tabulate(env.eggs)(i => EggsImpl(
       name = "eggs" + i,
-      boundingBox = BoundingBox.Circle.apply(point = randomPosition(),radius = 5),
+      boundingBox = BoundingBox.Circle.apply(point = randomPositionForEgg(), radius = 7),
       Direction(0, 0),
       velocity = 3,
       life = 1200 ,
@@ -48,20 +64,20 @@ object  World{
 
     val larva: Set[SimulableEntity] = Iterator.tabulate(env.larva)(i => LarvaImpl(
       name = "Larva" + i,
-      boundingBox = BoundingBox.Circle.apply(point =  Point2D(150, 130),radius = 5),
+      boundingBox = BoundingBox.Circle.apply(point = randomPosition(), radius = 5),
       Direction(0, 20),
       velocity= 15,
-      life=BUTTERFLY_LIFE ,
-      degradationEffect=DegenerationE.deacreaseLifeEffect ,
+      life=950,
+      degradationEffect = DegenerationE.deacreaseLifeEffectForLarva ,
       movementStrategy = MovingStrategies.baseMovement,
       lifeCycle = 0,
-      changeStage=DegenerationE.inc
+      changeStage = DegenerationE.inc
     )).toSet
 
 
     val puppa: Set[SimulableEntity] = Iterator.tabulate(env.puppa)(i => PuppaImpl(
       name = "puppa" + i,
-      boundingBox = BoundingBox.Circle.apply(point =  Point2D(444, 355),radius = 10),
+      boundingBox = BoundingBox.Circle.apply(point = randomPosition(), radius = 10),
       Direction(0, 20),
       velocity= 35,
       life=BUTTERFLY_LIFE ,
@@ -73,10 +89,10 @@ object  World{
 
     val Adultbuttefly: Set[SimulableEntity] = Iterator.tabulate(env.buttefly)(i => ButterflyImpl(
       name = "AdultButtefly" + i,
-      boundingBox = BoundingBox.Circle.apply(point =  Point2D(5, 5),radius = BUTTERFLY_RADIUS),
+      boundingBox = BoundingBox.Circle.apply(point = randomPosition(), radius = BUTTERFLY_RADIUS),
       Direction(0, 0),
       velocity= BUTTERFLY_VELOCITY,
-      life=BUTTERFLY_LIFE ,
+      life=1200 ,
       degradationEffect=DegenerationE.deacreaseLifeEffect ,
       movementStrategy = MovingStrategies.baseMovement,
       lifeCycle = 0,
@@ -118,7 +134,8 @@ object  World{
 
 
 
-    val leavesOfPlants: Set[SimulableEntity] = Iterator.tabulate(env.eggs)(i => LeavesOfPlants(name = "leaf " + i ,
+  /**
+   *   val leavesOfPlants: Set[SimulableEntity] = Iterator.tabulate(env.eggs)(i => LeavesOfPlants(name = "leaf " + i ,
       boundingBox = Rectangle.apply(point = randomPosition(), width = 150, height = 30),
       degradationEffect = DegenerationE.deacreaseLifeEffect,
       life = 10006,
@@ -126,11 +143,10 @@ object  World{
       valor=eggs,
       lifeCycle = 0
 
-    )).toSet
+    )).toSet*/
 
 
-    val creature : Set [SimulableEntity]  = Adultbuttefly ++ larva ++ eggs ++puppa ++predador ++nectarPlant ++ simplePlan  ++ leavesOfPlants
-
+    val creature : Set [SimulableEntity]  = Adultbuttefly ++ larva ++ eggs ++puppa ++predador ++nectarPlant ++ simplePlan
 
 
     World(temperature = env.temperature ,
@@ -165,7 +181,12 @@ case class ParameterEnv(temperature: Int)
     checkCollision
   }
 
-
+  /**
+   *  Upadates the state of  the world occording of the time of the day and the ininitial parameter
+   *  params:world - the iinitila worls with the parameter to update
+   *  Returns: the stare of world updated
+   *
+   * */
   def updateState(world: World):World= {
 
     val updateWorldParameters = updateStateOfWorldParameter(world)
@@ -178,6 +199,13 @@ case class ParameterEnv(temperature: Int)
 
   }
 
+  /** Check collisions between the different simmulable creature that are lives in the systems.
+   * The detection between creature is noticed by the intersection of two figure that represent it
+   *
+   * params: the world that containt the creature
+   * Returns: the  new state of world after observing the collision of different creature.
+   *
+   * */
 
   def checkCollision(world: World):World = {
 
@@ -198,9 +226,12 @@ case class ParameterEnv(temperature: Int)
     )
   }
 
-
+  /**
+   * Returns the time of the day
+   * params: iteration - iteratio number
+   * Returns : time of the day
+   *
+   * */
   def timeOfTheDay(iteration: Int): Float =
     iteration % ITERATIONS_PER_DAY / ITERATIONS_PER_DAY.toFloat
 }
-
-

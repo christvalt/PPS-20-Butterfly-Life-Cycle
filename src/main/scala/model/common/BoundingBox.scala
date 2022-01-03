@@ -12,7 +12,7 @@ sealed trait BoundingBox {
 object BoundingBox {
 
 
-  case class Circle(point: Point2D, radius: Int) extends BoundingBox
+  case class Circle(point: Point2D, radius: Double) extends BoundingBox
 
   case class Rectangle(point: Point2D, width: Int, height: Int) extends BoundingBox
 
