@@ -13,9 +13,9 @@ class WordTest extends AnyFunSpec {
       eggs= 3,
       puppa= 3,
       larva= 3,
-      plant =2 ,
-      predator=3,
-      days=2
+      plant =4 ,
+      predator=7,
+      days=200
     )
   }
   val  initialWorld: World = World(initialSettingEnvirinement)
@@ -31,7 +31,18 @@ class WordTest extends AnyFunSpec {
     describe("with a given Environment") {
       it("should match the given Environment temperature") {
         assert(initialWorld.temperature==initialSettingEnvirinement.temperature)
+        assert(initialWorld.totalIterations==initialSettingEnvirinement.days*100)
+        assert(initialWorld.currentIteration==0)
+        assert(Environment(2, 2,3,3,4,2,3,200).temperature == 2)
+        assert(Environment(2, 2,3,3,4,2,3,200).buttefly == 2)
+        assert(Environment(2, 2,3,3,4,2,3,200).eggs == 3)
+        assert(Environment(2, 2,3,3,4,2,3,200).puppa == 3)
+        assert(Environment(2, 2,3,3,3,2,3,200).larva == 3)
+        assert(Environment(2, 2,3,3,4,4,3,200).plant == 4)
+        assert(Environment(2, 2,3,3,4,2,7,200).days== 200)
       }
+
+
     }
 
   }

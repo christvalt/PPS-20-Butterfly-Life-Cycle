@@ -16,7 +16,10 @@ import scala.concurrent.duration.Duration
  */
 object SettingsView extends Views {
   private val Iterations = Array("10", "50", "100")
-  private val DefaultColoniesNumber = 1
+  private val DefaultEggNumber = 10
+  private val DefaultOtherNumber = 1
+  private val DefaultPredatorNumber = 5
+  private val DefaultPlantNumber = 65
   private val DefaultTemporalGranularity = 1
 
   val frame = new  JFrame ("Butterfly LFC")
@@ -29,27 +32,27 @@ object SettingsView extends Views {
     val panel = new JPanel(new GridLayout(0, 2))
 
     panel.add(new JLabel("N° Eggs:"))
-    val Eggs = new JTextField(DefaultColoniesNumber toString)
+    val Eggs = new JTextField(DefaultEggNumber toString)
     panel.add(Eggs)
 
     panel.add(new JLabel("N° Puppa:"))
-    val Puppa = new JTextField(DefaultColoniesNumber toString)
+    val Puppa = new JTextField(DefaultOtherNumber toString)
     panel.add(Puppa)
 
     panel.add(new JLabel("N° Larva:"))
-    val Larva = new JTextField(DefaultColoniesNumber toString)
+    val Larva = new JTextField(DefaultOtherNumber toString)
     panel.add(Larva)
 
     panel.add(new JLabel("N° Butterfly:"))
-    val Butterfly = new JTextField(DefaultColoniesNumber toString)
+    val Butterfly = new JTextField(DefaultOtherNumber toString)
     panel.add(Butterfly)
 
     panel.add(new JLabel("N° predator:"))
-    val predator = new JTextField(DefaultColoniesNumber toString)
+    val predator = new JTextField(DefaultPredatorNumber toString)
     panel.add(predator)
 
     panel.add(new JLabel("N° Plan:"))
-    val Plan = new JTextField(DefaultColoniesNumber toString)
+    val Plan = new JTextField(DefaultPlantNumber toString)
     panel.add(Plan)
 
     panel.add(new JLabel("Temporal Granularity (days) :"))

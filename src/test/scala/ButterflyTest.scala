@@ -1,17 +1,21 @@
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, PredatorImpl, PuppaImpl}
 import model.World
-import model.common.Final.{BUTTERFLY_VELOCITY, DEF_SIMPLE_PLANT_ENERGY, REDUCE_LIFE_Larva, REDUCE_LIFE_Puppa}
+import model.common.Final.{BUTTERFLY_VELOCITY, DEF_SIMPLE_PLANT_ENERGY, LIFE_ADD_EGG_TO_LARVA, REDUCE_LIFE_Larva, REDUCE_LIFE_Puppa, VELOCITY_ADD_EGG_TO_LARVA}
 import model.creature.CreatureObject.Butterfly
 import model.common.{BoundingBox, Direction, MovingStrategies, Point2D}
+import model.creature.Behavior.SimulableEntity
+import model.reaction.DegenerationE.helperEggToLarva
 import model.reaction.{BeingEatenEffect, DegenerationE, EatingEffect}
 import org.scalatest.funspec.AnyFunSpec
+
+import java.util.AbstractMap.SimpleImmutableEntry
 
 class ButterflyTest extends AnyFunSpec {
 
   val DEFAULD_BLOB_LIFE = 50
   val LIFE_AFTER_DEGENERATION = 40
 
-  val adultB: ButterflyImpl = ButterflyImpl(
+  private val adultB: ButterflyImpl = ButterflyImpl(
     name = "adultB",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
@@ -21,17 +25,17 @@ class ButterflyTest extends AnyFunSpec {
     movementStrategy = MovingStrategies.baseMovement,
     lifeCycle=0
   )
-  val lava: LarvaImpl = LarvaImpl(
+  private val lava: LarvaImpl = LarvaImpl(
     name = "larva",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
     velocity = 3,
-    life = 100,
+    life = 700,
     degradationEffect = DegenerationE.deacreaseLifeEffect,
     movementStrategy = MovingStrategies.baseMovement,
     lifeCycle=0
   )
-  val egg: EggsImpl = EggsImpl(
+  private val egg: EggsImpl = EggsImpl(
     name = "egg",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
@@ -41,7 +45,7 @@ class ButterflyTest extends AnyFunSpec {
     movementStrategy = MovingStrategies.baseMovement,
     lifeCycle=0
   )
-  val puppa: PuppaImpl = PuppaImpl(
+  private val puppa: PuppaImpl = PuppaImpl(
     name = "puppa",
     boundingBox = BoundingBox.Circle(point = Point2D(100, 100), radius = 10),
     direction = Direction(0, 15),
@@ -52,12 +56,6 @@ class ButterflyTest extends AnyFunSpec {
     lifeCycle=0
   )
 
-  private val world:World = World(temperature=12,
-    width =12,
-    height =12,
-    creature =Set(egg,adultB ,puppa ,food),
-    currentIteration =0,
-    totalIterations=10)
 
   private val food: FlourPlant = FlourPlant(
     name = "food4",
@@ -79,6 +77,13 @@ class ButterflyTest extends AnyFunSpec {
     velocity = BUTTERFLY_VELOCITY,
     movementStrategy = MovingStrategies.baseMovement,
   )
+
+  private val world:World = World(temperature=12,
+    width =12,
+    height =12,
+    creature =Set(egg,adultB ,puppa ,food,predator),
+    currentIteration =0,
+    totalIterations=10)
 
 
 
@@ -119,32 +124,21 @@ class ButterflyTest extends AnyFunSpec {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-  describe("in every cycle of creature when it's collide with a colliding entities") {
-
-    /*
-    * it("the new egg should have less life") {
-      val partialUpdatedEgg: EggsImpl = egg.updateState(world).asInstanceOf[EggsImpl]
-      assert(egg.life < partialUpdatedEgg.life)
-    }
-    *
-    * */
-
+  describe("Egg with EggBehavior") {
+    describe("when transforming to be a larva ") {
+      it("the life cycle change"){
+        val newEGGToLarva : LarvaImpl = helperEggToLarva(egg).asInstanceOf[LarvaImpl]
+        assert(newEGGToLarva.life==egg.life+LIFE_ADD_EGG_TO_LARVA)
+        assert(newEGGToLarva.velocity==egg.velocity+VELOCITY_ADD_EGG_TO_LARVA)
+      }
 
     }
 
+  }
 
 
-  describe("Life durind the updating stage of egg "){
+
+  describe("Life during the updating stage of egg "){
 
     /*it("the new egg should have less life") {
       val partialUpdatedEgg = egg.updateState(world) //.head.asInstanceOf[EggsImpl]

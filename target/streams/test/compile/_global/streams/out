@@ -1,0 +1,4 @@
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\camerum\Documents\pro\src\test\scala\ButterflyTest.scala:58:38: Reference to uninitialized value food[0m
+[0m[[0m[33mwarn[0m] [0m[0m    creature =Set(egg,adultB ,puppa ,food),[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
