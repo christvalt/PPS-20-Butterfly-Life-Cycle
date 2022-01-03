@@ -51,7 +51,7 @@ object SimulationObjectImpl {
                        override val degradationEffect: Degeneration[Butterfly] = DegenerationE.deacreaseLifeEffect,
                        override val movementStrategy: MovementStrategy,
                        //override val changeStage: Unit = ???
-                       override val  lifeCycle: LifeCycle,//= DegenerationE.setLifeCycle(),
+                       override val lifeCycle: LifeCycle,//= DegenerationE.setLifeCycle(),
                        override val  changeStage: Increase[Butterfly] = DegenerationE.inc
                       )extends Butterfly with LarvaBehavior {
 

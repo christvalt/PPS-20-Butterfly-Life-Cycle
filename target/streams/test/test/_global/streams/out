@@ -1,23 +1,62 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(EatingReactionTest, org.scalatest.tools.Framework$$anon$1@72884965, false, [SuiteSelector])[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mEatingReactionTest:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31mEatingReactionTest *** ABORTED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  scala.NotImplementedError: an implementation is missing[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.Predef$.$qmark$qmark$qmark(Predef.scala:344)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at model.Point2D$.<clinit>(BoundingBox.scala:16)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at model.BoundingBox$Triangle$.apply$default$3(BoundingBox.scala:38)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at EatingReactionTest.<init>(EatingReactionTest.scala:42)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at java.lang.reflect.Constructor.newInstance(Constructor.java:423)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at java.lang.Class.newInstance(Class.java:442)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatest.tools.Framework$ScalaTestTask.execute(Framework.scala:450)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 1 second, 550 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 0, aborted 1[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 0, failed 0, canceled 0, ignored 0, pending 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m*** 1 SUITE ABORTED ***[0m[0m
-[0m[[0m[31merror[0m] [0m[0mError during tests:[0m
-[0m[[0m[31merror[0m] [0m[0m	EatingReactionTest[0m
-[0m[[0m[31merror[0m] [0m[0m(Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(WordTest, org.scalatest.tools.Framework$$anon$1@118783ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(ButterflyTest, org.scalatest.tools.Framework$$anon$1@118783ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(Degeneration, org.scalatest.tools.Framework$$anon$1@118783ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(plantTest, org.scalatest.tools.Framework$$anon$1@118783ff, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mplantTest:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mwhen a butterfly collide with a  simple plant[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- the butterfly  should eat the plant and it's life is increase [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mwhen a butterfly collide with a  nectarplant[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should increase the life of buttefly[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should  create  new eggscreature[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mWordTest:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mA  World[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(CollitionTest, org.scalatest.tools.Framework$$anon$1@118783ff, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  when initialized [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mDegeneration:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mStandard Degradation effect[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should produce the reduction of its life[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should reduce egg life[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should reduce larva  life[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should reduce puppa  life[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should update lifecycle[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should have curent Iteration value to 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  with a given Environment[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should match the given Environment temperature[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mButterflyTest:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m During all the cycle of eggs when it's collide with a colliding entities[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m-  if the collinding entity is an predator , it' life  should deacrese [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- if the collinding entity is an an simple food , it' life should be the same [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m During all the cycle of Larva  when it's collide with a colliding entities[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m-  if the collinding entity is an predator , it' life  should deacrese [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- if the collinding entity is an an simple food , it's life should be increase [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m During all the cycle of puppa  when it's collide with a colliding entities[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m-  if the collinding entity is an predator , it' life  should deacrese [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- if the collinding entity is an an simple food , it's life should be increase [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32min every cycle of creature when it's collide with a colliding entities[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mLife durind the updating stage of egg [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mCollitionTest:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mCollision  Effect apply to a Egg[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  when egg collide with simple plant and predactor [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - increase the life of the eggs and would be greatheet that the previeos value[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - egg life  value[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - dicrease the life of the egg and would be small than the previeos value [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mkvfv[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- larva and predactor dicrese[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- increase the life of Larva when collide with a simple plan [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mpu[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- increase the life of adult buuuterflay when collide with a simple plan [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- increase the life of larva when collide with a simple plan [0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mSummary for ScalaCheck not available.[0m
+[0m[[0m[0minfo[0m] [0m[0mScalaTest[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 1 second, 460 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 23[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 5, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 23, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mPassed: Total 23, Failed 0, Errors 0, Passed 23[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ButterflyTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Degeneration[0m
+[0m[[0m[0mdebug[0m] [0m[0m	WordTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	plantTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CollitionTest[0m

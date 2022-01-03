@@ -2,7 +2,8 @@ package model.creature
 
 import model.common.BoundingBox.{Circle, Rectangle}
 import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, LeavesOfPlants, NectarPlant, PredatorImpl, PuppaImpl}
-import model. World
+import model.World
+import model.common.Final.EGG_RADIUS_ADD
 import model.creature.CreatureObject.{Butterfly, Creature, Plant, Predator}
 import model.reaction.DegenerationE
 import utils.TypeUtilities.Life
@@ -21,15 +22,13 @@ object Behavior {
 
   trait EggsBehavior extends Simulable {
     self: EggsImpl =>
-   // def lifeCycle = self.life-1
     override def updateState(world:World): Set[SimulableEntity] = {
       val newPosition = self.movementStrategy(self, world)
-     // println("lifeèèèeèèèeèèee" +"" +self.life)
       self.life match {
         case n if n > 0 => self.lifeCycle match {
           case  m if m == 500 => Set(DegenerationE.helperEggToLarva(self))
           case _ => Set(self.copy(
-            boundingBox = Circle(newPosition.point, self.boundingBox.radius),//Circle(Position=Point(2,4) , radius=5)
+            boundingBox = Circle(newPosition.point, self.boundingBox.radius+EGG_RADIUS_ADD),
             direction = newPosition.direction,
             life = self.degradationEffect(self),
             lifeCycle = self.changeStage(self)))
@@ -39,24 +38,24 @@ object Behavior {
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{
       case  plant: Plant => plant.collisionEffect(self)
-      case  predator: Predator => predator.collisionEffect(self)   /// Set(self.copy(life = self.life - predator.life))
+      case  predator: Predator => predator.collisionEffect(self)
       case _ => Set(self)
     }
-    def incrementLifeCy: () => Life = () => self.lifeCycle+1 //self.changeStage(self)
   }
 
-//comment of change
+
   trait LarvaBehavior extends Simulable {
     self: LarvaImpl =>
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.movementStrategy(self, world)
       self.life match {
-        case n if n > 0 => world.currentIteration  match {
-          case  m if m==700 => Set(DegenerationE.helperLarvaToAdult(self))
+        case n if n > 0 => self.lifeCycle  match {
+          case  m if m==900 => Set(DegenerationE.helperLarvaToPuppa(self))
           case _ => Set(self.copy(
-            boundingBox = Circle(newState.point, 5),//Circle(Position=Point(2,4) , radius=5)
+            boundingBox = Circle(newState.point, self.boundingBox.radius),
             direction = newState.direction,
-            life = self.degradationEffect(self)))
+            life = self.degradationEffect(self),
+            lifeCycle = self.changeStage(self)))
         }
         case  _ =>  Set()
       }
@@ -71,16 +70,18 @@ object Behavior {
 
   trait PuppaImplBehavior extends  Simulable  {
     self: PuppaImpl =>
-  //  println("puppa entities*****++***++*++*++*******" +self )
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.movementStrategy(self, world)
+      println("puppa"+ life)
+
       self.life match {
-        case n if n > 0 => world.currentIteration  match {
-          case  m if m==1000 => Set(DegenerationE.helperLarvaToPuppa(self))
+        case n if n > 0 => self.lifeCycle   match {
+          case  m if m==1150 => Set(DegenerationE.helperPuppaToAdult(self))
           case _ => Set(self.copy(
             boundingBox = Circle(newState.point, self.boundingBox.radius),//Circle(Position=Point(2,4) , radius=5)
             direction = newState.direction,
-            life = self.degradationEffect(self)))
+            life = self.degradationEffect(self),
+            lifeCycle = self.changeStage(self)))
         }
         case  _ =>  Set()
       }
@@ -95,7 +96,7 @@ object Behavior {
 
   trait butterflyBehavior extends Simulable {
     self: ButterflyImpl =>
-    override def updateState(world:World): Set[SimulableEntity]={
+    override def updateState(world:World): Set[SimulableEntity] = {
       val newState = self.movementStrategy(self, world)
       Set(self.copy(
         boundingBox = Circle(newState.point, self.boundingBox.radius),

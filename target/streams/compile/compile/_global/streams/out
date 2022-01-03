@@ -1,18 +1,5 @@
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\camerum\Documents\pro\src\main\scala\view\SettingsView.scala:22:18: method without a parameter list overrides a method with a single empty one[0m
-[0m[[0m[33mwarn[0m] [0m[0m    override def createAndShow: Environment = {[0m
-[0m[[0m[33mwarn[0m] [0m[0m                 ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\camerum\Documents\pro\src\main\scala\controler\SimulationEngine.scala:19:12: a pure expression does nothing in statement position[0m
-[0m[[0m[33mwarn[0m] [0m[0m    }yield model[0m
-[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\camerum\Documents\pro\src\main\scala\model\creature\Behavior.scala:193:38: unreachable code[0m
-[0m[[0m[33mwarn[0m] [0m[0m    case slow: LarvaImpl => slow.copy([0m
-[0m[[0m[33mwarn[0m] [0m[0m                                     ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\camerum\Documents\pro\src\main\scala\model\creature\MovingStrategies.scala:30:5: match may not be exhaustive.[0m
-[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following inputs: None, Some(_)[0m
-[0m[[0m[33mwarn[0m] [0m[0m    chasedEntity match {[0m
-[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
 [0m[[0m[33mwarn[0m] [0m[0mC:\Users\camerum\Documents\pro\src\main\scala\model\reaction\BeingEatenEffect.scala:17:43: unreachable code[0m
-[0m[[0m[33mwarn[0m] [0m[0m    case creture:flourPlant=>creture.life - REDUCE_LIFE[0m
+[0m[[0m[33mwarn[0m] [0m[0m    case creture:FlourPlant=>creture.life - REDUCE_LIFE[0m
 [0m[[0m[33mwarn[0m] [0m[0m                                          ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m6 deprecations (since 2.13.3); re-run with -deprecation for details[0m
-[0m[[0m[33mwarn[0m] [0m[0m6 warnings found[0m
+[0m[[0m[33mwarn[0m] [0m[0m7 deprecations (since 2.13.3); re-run with -deprecation for details[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m
