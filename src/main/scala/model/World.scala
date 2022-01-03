@@ -3,7 +3,7 @@ package model
 import controler.TimingOps.{Simulation, toStateTWorld}
 import model.common.BoundingBox.{Rectangle, Triangle}
 import model.common.Intersection.isCollidingWith
-import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, LeavesOfPlants, NectarPlant, PredatorImpl, PuppaImpl}
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlowerPlant, LarvaImpl, LeavesOfPlants, NectarPlant, PredatorImpl, PuppaImpl}
 import model.common.Final.{BUTTERFLY_LIFE, BUTTERFLY_RADIUS, BUTTERFLY_VELOCITY, DEF_PREDATOR_PLANT_HEIGHT, DEF_PREDATOR_PLANT_WIDTH, ITERATIONS_PER_DAY, TEMPERATURE_AMPLITUDE, WORLD_HEIGHT, WORLD_WIDTH}
 import model.common.{BoundingBox, Direction, Environment, MovingStrategies, Point2D}
 import model.common.Point2D.randomPosition
@@ -105,7 +105,7 @@ object  World{
 
     )).toSet
 
-    val simplePlan:Set[SimulableEntity] =  Iterator.tabulate(env.plant)(i => FlourPlant(
+    val simplePlan:Set[SimulableEntity] =  Iterator.tabulate(env.plant)(i => FlowerPlant(
       name = "flourPlant" + i ,
       boundingBox = Triangle.apply(point = randomPosition(),
         height = 10),
@@ -123,7 +123,6 @@ object  World{
       degradationEffect = DegenerationE.deacreaseLifeEffect,
       life = 10006,
       collisionEffect = EatingEffect.collidedWithPredactor,
-      valor=eggs,
       lifeCycle = 0
 
     )).toSet

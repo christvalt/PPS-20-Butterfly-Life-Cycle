@@ -1,4 +1,4 @@
-import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, PredatorImpl, PuppaImpl}
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlowerPlant, LarvaImpl, PredatorImpl, PuppaImpl}
 import model.World
 import model.common.Final.{BUTTERFLY_VELOCITY, DEF_SIMPLE_PLANT_ENERGY, REDUCE_LIFE_Larva, REDUCE_LIFE_Puppa}
 import model.creature.CreatureObject.Butterfly
@@ -59,7 +59,7 @@ class ButterflyTest extends AnyFunSpec {
     currentIteration =0,
     totalIterations=10)
 
-  private val food: FlourPlant = FlourPlant(
+  private val food: FlowerPlant = FlowerPlant(
     name = "food4",
     boundingBox = BoundingBox.Triangle(point = Point2D(100, 100), height = 10),
     degradationEffect = DegenerationE.deacreaseLifeEffect,

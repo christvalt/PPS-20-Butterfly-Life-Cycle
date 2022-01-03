@@ -5,28 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3a4c98a-d69c-4fa5-b150-78216fea177d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/model/common/Final.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/SimulationObjectImpl.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/SimulationObjectImpl.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/World.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/World.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/BoundingBox.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/BoundingBox.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/Point2D.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/Point2D.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/creature/Behavior.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/creature/Behavior.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/model/reaction/DegenerationE.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/reaction/DegenerationE.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/model/reaction/EatingEffect.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/reaction/EatingEffect.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/creature/CreatureObject.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/creature/CreatureObject.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/reaction/BeingEatenEffect.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/reaction/BeingEatenEffect.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/view/graphic/ShapesPanel.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/view/graphic/ShapesPanel.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/scala/ButterflyTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/ButterflyTest.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/CollitionTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/CollitionTest.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/Degeneration.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Degeneration.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/WordTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/WordTest.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/scala/plantTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/plantTest.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$EggsBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$EggsBehavior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$LarvaBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$LarvaBehavior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PuppaImplBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PuppaImplBehavior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/view/SettingsView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/view/SettingsView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/test-classes/ButterflyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/test-classes/ButterflyTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +31,24 @@
     </projectState>
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="boundaryreview" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature-app-changeStageCreature" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -60,6 +67,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -154,5 +162,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

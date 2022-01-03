@@ -39,7 +39,7 @@ object CreatureObject {
     def velocity: Velocity
   }
 
-  // trait that represent entity that react to an evenmemt in the environemt
+  // trait that represent entity that react to an event in the environment
   sealed trait eating extends Creature {
     def collisionEffect: Collision
   }
