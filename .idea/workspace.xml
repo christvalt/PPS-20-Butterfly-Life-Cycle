@@ -5,28 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3a4c98a-d69c-4fa5-b150-78216fea177d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/model/common/Final.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/SimulationObjectImpl.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/SimulationObjectImpl.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/World.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/World.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/BoundingBox.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/BoundingBox.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/Final.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/Final.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/Point2D.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/Point2D.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/creature/Behavior.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/creature/Behavior.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/reaction/DegenerationE.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/reaction/DegenerationE.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/reaction/EatingEffect.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/reaction/EatingEffect.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/view/SettingsView.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/view/SettingsView.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/scala/ButterflyTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/ButterflyTest.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/CollitionTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/CollitionTest.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/Degeneration.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Degeneration.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/scala/WordTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/WordTest.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/plantTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/plantTest.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$EggsBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$EggsBehavior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$LarvaBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$LarvaBehavior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PuppaImplBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PuppaImplBehavior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/view/SettingsView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/view/SettingsView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/test-classes/ButterflyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/test-classes/ButterflyTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +50,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -71,54 +64,58 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ButterflyTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="ButterflyTest.Butterfly with ButterflyBehavior when updating the life cycle change" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="pro" />
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="testKind" value="Class" />
+      <option name="testKind" value="Test name" />
       <option name="testClassPath" value="ButterflyTest" />
+      <option name="testName" value="Butterfly with ButterflyBehavior when updating the life cycle change" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CollitionTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="ButterflyTest.During all the cycle of Larva  when it's collide with a colliding entities if the collinding entity is an an simple food , it's life should be increase" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="pro" />
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="testKind" value="Class" />
-      <option name="testClassPath" value="CollitionTest" />
+      <option name="testKind" value="Test name" />
+      <option name="testClassPath" value="ButterflyTest" />
+      <option name="testName" value="During all the cycle of Larva  when it's collide with a colliding entities if the collinding entity is an an simple food , it's life should be increase" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Degeneration" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="ButterflyTest.in testing if triyng" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="pro" />
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="testKind" value="Class" />
-      <option name="testClassPath" value="Degeneration" />
+      <option name="testKind" value="Test name" />
+      <option name="testClassPath" value="ButterflyTest" />
+      <option name="testName" value="in testing if triyng" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WordTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="ButterflyTest.in testing triyng" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="pro" />
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="testKind" value="Class" />
-      <option name="testClassPath" value="WordTest" />
+      <option name="testKind" value="Test name" />
+      <option name="testClassPath" value="ButterflyTest" />
+      <option name="testName" value="in testing triyng" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -126,10 +123,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Launcher" />
-        <item itemvalue="ScalaTest.WordTest" />
-        <item itemvalue="ScalaTest.Degeneration" />
-        <item itemvalue="ScalaTest.CollitionTest" />
-        <item itemvalue="ScalaTest.ButterflyTest" />
+        <item itemvalue="ScalaTest.ButterflyTest.During all the cycle of Larva  when it's collide with a colliding entities if the collinding entity is an an simple food , it's life should be increase" />
+        <item itemvalue="ScalaTest.ButterflyTest.Butterfly with ButterflyBehavior when updating the life cycle change" />
+        <item itemvalue="ScalaTest.ButterflyTest.in testing if triyng" />
+        <item itemvalue="ScalaTest.ButterflyTest.in testing triyng" />
       </list>
     </recent_temporary>
   </component>
@@ -154,5 +151,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/pro$Launcher.ic" NAME="Launcher Coverage Results" MODIFIED="1641131824876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/pro$ButterflyTest_in_every_cycle_of_creature_when_it_s_collide_with_a_colliding_entities_the_new_egg_should_have_less_life.ic" NAME="ButterflyTest.in every cycle of creature when it's collide with a colliding entities the new egg should have less life Coverage Results" MODIFIED="1641131935287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

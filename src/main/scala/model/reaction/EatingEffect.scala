@@ -31,17 +31,16 @@ object EatingEffect {
   }
 
   def collideWithSimplePlan[A <: Butterfly](creature: A): Set[SimulableEntity]  = creature match {
-    case larva : LarvaImpl => Set(larva.copy(life = creature.life +DEF_SIMPLE_PLANT_ENERGY))
-    case puppa : PuppaImpl=> Set(puppa.copy(life = creature.life +DEF_SIMPLE_PLANT_ENERGY))
-    case adults : ButterflyImpl=> Set(adults.copy(life = creature.life +DEF_SIMPLE_PLANT_ENERGY))
-    case egg : EggsImpl => Set(egg.copy(life = creature.life+NULL_ENERGY))
+    case larva : LarvaImpl => Set(larva.copy(life = creature.life + DEF_SIMPLE_PLANT_ENERGY))
+    case puppa : PuppaImpl=> Set(puppa.copy(life = creature.life + DEF_SIMPLE_PLANT_ENERGY))
+    case adults : ButterflyImpl=> Set(adults.copy(life = creature.life + DEF_SIMPLE_PLANT_ENERGY))
+    case egg : EggsImpl => Set(egg.copy(life = creature.life + NULL_ENERGY))
     case _  => Set()
 
   }
 
   def spwanEggs[A <:Butterfly](adults :A): SimulableEntity =  adults match {
-    case adults :ButterflyImpl => EggsImpl(name = adults.name + "-son"+Counter.nextValue, boundingBox = Circle(adults.boundingBox.point,
-      randomValueChange(DEF_BLOB_RADIUS).max(MIN_BLOB_RADIUS)),
+    case adults :ButterflyImpl => EggsImpl(name = adults.name + "-son"+Counter.nextValue, boundingBox = Circle(adults.boundingBox.point, randomValueChange(DEF_BLOB_RADIUS).max(MIN_BLOB_RADIUS)),
       movementStrategy = MovingStrategies.baseMovement,lifeCycle=adults.lifeCycle,changeStage = ???,direction = ???,velocity = ???,life = ???)
       //fieldOfViewRadius = randomValueChange(DEF_BLOB_FOV_RADIUS).max(MIN_BLOB_FOV_RADIUS),movementStrategy = MovingStrategies.baseMovement)
       case _ => ???//Set()

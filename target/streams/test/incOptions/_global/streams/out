@@ -1,8 +1,13 @@
 [0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = C:\Users\camerum\Documents\pro\target\scala-2.13\test-classes.bak[0m
 [0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tst1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	behaviorTest.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	EatingReactionTest.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
 [0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	tst1.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	EatingReactionTest.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	behaviorTest.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CollitionTest.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	plantTest.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ButterflyTest.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Degeneration.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	WordTest.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: C:\Users\camerum\Documents\pro\target\scala-2.13\test-classes.bak[0m
