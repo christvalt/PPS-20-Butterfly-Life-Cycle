@@ -11,7 +11,11 @@ import utils.TypeUtilities.SimulableEntity
 object EatingEffect {
 
 
-
+  /** Returns a value with variable range from an initial value.
+   *
+   * @param value value that determines the range
+   * @return a value between value - range and value + range
+   */
   private def randomValueChange(value: Int): Int = {
     val max: Int = (value * 1.5).toInt
     val min: Int = (value * 0.8).toInt
@@ -22,14 +26,23 @@ object EatingEffect {
     case butterfly : EggsImpl =>Set(butterfly.copy())
     case butterfly : PuppaImpl =>Set(butterfly.copy())
     case butterfly : LarvaImpl =>Set(butterfly.copy())
-    case butterfly : ButterflyImpl =>Set(butterfly.copy())
-    case _ => Set()
-  }
-  def iscollidedWithNectarPlant[A <:Butterfly](adults :A): Set[SimulableEntity] = adults match{
     case adults:ButterflyImpl  => Set(adults.copy(life = adults.life +DEF_NECTARD_ENERGY),spwanEggs(adults))
     case _ => Set()
   }
+  def iscollidedWithNectarPlant[A <:Butterfly](adults :A): Set[SimulableEntity] = adults match{
+    case adults:ButterflyImpl  => Set(spwanEggs(adults))
+    case butterfly : EggsImpl =>Set(butterfly.copy())
+    case butterfly : PuppaImpl =>Set(butterfly.copy())
+    case butterfly : LarvaImpl =>Set(butterfly.copy())
 
+    case _ => Set()
+  }
+  /**
+   * Returns a set with a copy of the Buttefly given as input with life incremented by Constants and a new Buttefly with properties based of the other Buttefly.
+   *
+   * @param buttefly a Buttefly subjected to the effect
+   * @return a set with the Buttefly produced by the effect
+   */
   def collideWithSimplePlan[A <: Butterfly](creature: A): Set[SimulableEntity]  = creature match {
     case larva : LarvaImpl => Set(larva.copy(life = creature.life + DEF_SIMPLE_PLANT_ENERGY))
     case puppa : PuppaImpl=> Set(puppa.copy(life = creature.life + DEF_SIMPLE_PLANT_ENERGY))
@@ -40,9 +53,14 @@ object EatingEffect {
   }
 
   def spwanEggs[A <:Butterfly](adults :A): SimulableEntity =  adults match {
-    case adults :ButterflyImpl => EggsImpl(name = adults.name + "-son"+Counter.nextValue, boundingBox = Circle(adults.boundingBox.point, randomValueChange(DEF_BLOB_RADIUS).max(MIN_BLOB_RADIUS)),
-      movementStrategy = MovingStrategies.baseMovement,lifeCycle=adults.lifeCycle,changeStage = ???,direction = ???,velocity = ???,life = ???)
-      //fieldOfViewRadius = randomValueChange(DEF_BLOB_FOV_RADIUS).max(MIN_BLOB_FOV_RADIUS),movementStrategy = MovingStrategies.baseMovement)
+    case adults : ButterflyImpl => EggsImpl(name = adults.name + "-son"+Counter.nextValue,
+      boundingBox = Circle(adults.boundingBox.point, randomValueChange(5).max(7)),
+      movementStrategy = MovingStrategies.baseMovement,
+      lifeCycle=adults.lifeCycle,
+      changeStage = adults.changeStage,
+      direction = adults.direction,
+      velocity = adults.velocity-50,
+      life = adults.life)
       case _ => ???//Set()
   }
 
@@ -54,6 +72,9 @@ object EatingEffect {
     case _ => Set()
   }
 
+
+  /**Represent the effect of collision of and predactor with another creature in the system
+   * */
   def collidedWithPredactor[A <:Butterfly](creature: A) :Set[SimulableEntity] = creature  match{
     case e:EggsImpl => Set(e.copy(life = e.life - Final.REDUCE_LIFE))
     case e :PuppaImpl => Set(e.copy(life = e.life - REDUCE_LIFE_Puppa))

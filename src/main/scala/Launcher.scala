@@ -1,6 +1,8 @@
 import controler.SimulationEngine
-import model.common.Environment
 
+
+
+/** Entry point for the application */
 object Launcher extends App {
 
   SimulationEngine.setup().unsafeRunSync

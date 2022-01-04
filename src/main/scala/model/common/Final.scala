@@ -48,7 +48,7 @@ object Final {
   val BUTTERFLY_LIFE = 700
 
 
-  /** simaulation ùobject parameter*/
+  /** simaulation object parameter*/
 
 
 
