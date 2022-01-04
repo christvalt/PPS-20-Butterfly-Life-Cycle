@@ -15,7 +15,7 @@ import scala.concurrent.duration.Duration
  * View for setup simulation.
  */
 object SettingsView extends Views {
-  private val Iterations = Array("10", "50", "100")
+  private val Iterations = Array("10", "18", "30")
   private val DefaultEggNumber = 10
   private val DefaultOtherNumber = 1
   private val DefaultPredatorNumber = 5
@@ -26,7 +26,7 @@ object SettingsView extends Views {
   private val userInput: Promise[Environment] = Promise[Environment]
   private val entityPanel = new JPanel
 
-
+  /**create and get the simulatino initial parameter*/
   override def createAndShow: Unit = {
 
     val panel = new JPanel(new GridLayout(0, 2))
@@ -87,18 +87,17 @@ object SettingsView extends Views {
 
   private implicit def numberFrom[T](component: JComboBox[T]): Int = component.getSelectedItem.toString toInt
 
-
+  /**report the simulation*/
   override def simulationViewCrateAndShowed(): Unit  =  {
     frame.getContentPane.add(entityPanel, BorderLayout.CENTER)
     frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit.getScreenSize.width, Toolkit.getDefaultToolkit.getScreenSize.width))
     frame.setResizable(false)
-   //frame.getContentPane().add(shape)
     frame.setDefaultCloseOperation(3)
     frame.pack()
     frame.setVisible(true)
   }
 
-
+  /**show the simulation processus*/
   override def rendered(world: World): Unit = {
     SwingUtilities.invokeAndWait(() => {
       entityPanel.removeAll()

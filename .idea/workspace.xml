@@ -5,18 +5,101 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3a4c98a-d69c-4fa5-b150-78216fea177d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$FlowerPlant$.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$FlowerPlant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Launcher.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Launcher.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/controler/SimulationEngine.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/controler/SimulationEngine.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/controler/TimingOps.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/controler/TimingOps.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/SimulationObjectImpl.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/SimulationObjectImpl.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/World.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/World.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/BoundingBox.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/BoundingBox.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/Final.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/Final.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/MovingStrategies.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/MovingStrategies.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/Point2D.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/Point2D.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/creature/Behavior.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/creature/Behavior.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/creature/Collidable.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/creature/Collidable.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/creature/CreatureObject.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/creature/CreatureObject.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/creature/UpdatableEntity.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/creature/UpdatableEntity.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/model/reaction/BeingEatenEffect.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/reaction/BeingEatenEffect.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/reaction/DegenerationE.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/reaction/DegenerationE.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/model/reaction/EatingEffect.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/reaction/EatingEffect.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/view/SettingsView.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/view/SettingsView.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/view/Views.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/view/Views.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/view/graphic/ShapesPanel.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/view/graphic/ShapesPanel.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/scala/ButterflyTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/ButterflyTest.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/WordTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/WordTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/plantTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/plantTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Launcher$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Launcher$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Launcher$delayedInit$body.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Launcher$delayedInit$body.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/controler/SimulationEngine$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/controler/SimulationEngine$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/controler/SimulationEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/controler/SimulationEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/controler/TimingOps$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/controler/TimingOps$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/controler/TupleUtils$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/controler/TupleUtils$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$ButterflyImpl$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$ButterflyImpl$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$ButterflyImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$ButterflyImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$EggsImpl$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$EggsImpl$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$EggsImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$EggsImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$LarvaImpl$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$LarvaImpl$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$LarvaImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$LarvaImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$LeavesOfPlants$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$LeavesOfPlants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$NectarPlant$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$NectarPlant$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$NectarPlant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$NectarPlant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$PredatorImpl$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$PredatorImpl$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$PredatorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$PredatorImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$PuppaImpl$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$PuppaImpl$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$PuppaImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$PuppaImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$flourPlant$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl$flourPlant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/SimulationObjectImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/World$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/World$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/World$ParameterEnv$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/World$ParameterEnv$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/World$ParameterEnv.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/World$ParameterEnv.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Circle$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Circle$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Circle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Circle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Rectangle$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Rectangle$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Rectangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Rectangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Triangle$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Triangle$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/BoundingBox$Triangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Direction$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Direction$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Direction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Direction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Final$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Final$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Final.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Final.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Intersection$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Intersection$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Movement$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Movement$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Movement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Movement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/MovingStrategies$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/MovingStrategies$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Point2D$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Point2D$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Point2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Point2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$EggsBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$EggsBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$LarvaBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$LarvaBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$LeavesBehavior.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$NectarPlantBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$NectarPlantBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PlantBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PlantBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PredatorBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PredatorBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PuppaImplBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PuppaImplBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$Simulable$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$Simulable$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$butterflyBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$butterflyBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Collidable$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Collidable$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Collidable$NeutralCollidable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Collidable$NeutralCollidable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/CreatureObject$ButterflyWithTemporaryStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/CreatureObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/CreatureObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/UpdatableEntity$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/UpdatableEntity$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/UpdatableEntity$NeutralUpdatable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/UpdatableEntity$NeutralUpdatable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/BeingEatenEffect$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/BeingEatenEffect$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE$testing.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/DegenerationE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/EatingEffect$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/EatingEffect$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/EatingEffect$Counter$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/reaction/EatingEffect$Counter$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/view/SettingsView$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/view/SettingsView$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/view/graphic/ShapesPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/view/graphic/ShapesPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/test-classes/ButterflyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/test-classes/ButterflyTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/test-classes/plantTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/test-classes/plantTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,13 +142,26 @@
   <component name="RunManager" selected="Application.Launcher">
     <configuration name="Launcher" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Launcher" />
-      <module name="pro" />
+      <module name="ButterflyLifeCycle" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="ButterflyLifeCycle" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="ButterflyLifeCycle" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ButterflyTest.Butterfly with ButterflyBehavior when updating the life cycle change" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="pro" />
+      <module name="ButterflyLifeCycle" />
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
@@ -79,7 +175,7 @@
       </method>
     </configuration>
     <configuration name="ButterflyTest.During all the cycle of Larva  when it's collide with a colliding entities if the collinding entity is an an simple food , it's life should be increase" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="pro" />
+      <module name="ButterflyLifeCycle" />
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
@@ -93,7 +189,7 @@
       </method>
     </configuration>
     <configuration name="ButterflyTest.in testing if triyng" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="pro" />
+      <module name="ButterflyLifeCycle" />
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
@@ -107,7 +203,7 @@
       </method>
     </configuration>
     <configuration name="ButterflyTest.in testing triyng" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="pro" />
+      <module name="ButterflyLifeCycle" />
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">

@@ -27,8 +27,7 @@ object TimingOps {
 
   implicit val timer = IO.timer(ExecutionContext.global)
 
-  def getTime() = liftIo(IO { System.currentTimeMillis().millis })    //def getTime() = liftIo(IO( (w: World) => (w, System.currentTimeMillis().millis)) ) //as a statet monad returns a identical new world but x seconds older
-
+  def getTime() = liftIo(IO { System.currentTimeMillis().millis })
   def waitUntil(from: FiniteDuration, period: FiniteDuration) =
     liftIo(if (from < period) {
       IO.sleep(period - from)

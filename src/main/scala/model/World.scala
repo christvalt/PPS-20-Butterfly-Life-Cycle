@@ -3,7 +3,7 @@ package model
 import controler.TimingOps.{Simulation, toStateTWorld}
 import model.common.BoundingBox.{Rectangle, Triangle}
 import model.common.Intersection.isCollidingWith
-import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlourPlant, LarvaImpl, LeavesOfPlants, NectarPlant, PredatorImpl, PuppaImpl}
+import model.SimulationObjectImpl.{ButterflyImpl, EggsImpl, FlowerPlant, LarvaImpl, NectarPlant, PredatorImpl, PuppaImpl}
 import model.common.Final.{BUTTERFLY_LIFE, BUTTERFLY_RADIUS, BUTTERFLY_VELOCITY, DEF_PREDATOR_PLANT_HEIGHT, DEF_PREDATOR_PLANT_WIDTH, ITERATIONS_PER_DAY, TEMPERATURE_AMPLITUDE, WORLD_HEIGHT, WORLD_WIDTH}
 import model.common.{BoundingBox, Direction, Environment, MovingStrategies, Point2D}
 import model.common.Point2D.{randomPosition, randomPositionForEgg}
@@ -93,10 +93,10 @@ object  World{
       Direction(0, 0),
       velocity= BUTTERFLY_VELOCITY,
       life=1200 ,
-      degradationEffect=DegenerationE.deacreaseLifeEffect ,
+      degradationEffect = DegenerationE.deacreaseLifeEffect ,
       movementStrategy = MovingStrategies.baseMovement,
       lifeCycle = 0,
-      changeStage=DegenerationE.inc
+      changeStage = DegenerationE.inc
     )).toSet
 
     val predador : Set[SimulableEntity] =  Iterator.tabulate(env.predator)(i => PredatorImpl(
@@ -114,14 +114,14 @@ object  World{
     val nectarPlant: Set[SimulableEntity] = Iterator.tabulate(env.plant)(i => NectarPlant(
       name = "nectarPlant" +i,
       boundingBox = Triangle.apply(point =  randomPosition(), height = 10),
-      collisionEffect =EatingEffect.collidedWithPredactor,
+      collisionEffect =EatingEffect.iscollidedWithNectarPlant,
       degradationEffect =DegenerationE.deacreaseLifeEffect,
       life = 5003,
       lifeCycle = 0
 
     )).toSet
 
-    val simplePlan:Set[SimulableEntity] =  Iterator.tabulate(env.plant)(i => FlourPlant(
+    val simplePlan:Set[SimulableEntity] =  Iterator.tabulate(env.plant)(i => FlowerPlant(
       name = "flourPlant" + i ,
       boundingBox = Triangle.apply(point = randomPosition(),
         height = 10),
@@ -158,6 +158,9 @@ object  World{
   }
 
 
+
+  /**Updating the world according to the temerature in the time of the day
+   * */
 case class ParameterEnv(temperature: Int)
 
   def updateStateOfWorldParameter(world: World): ParameterEnv = {
@@ -172,10 +175,11 @@ case class ParameterEnv(temperature: Int)
       temperatureUpdated(world.temperature, time))
   }
 
-
+/**provide a simple conversion from IO instance of updateState of the world to more general cats.date.StteT monad */
   def wordUpdateToState():Simulation[World] = toStateTWorld{
     updateState
   }
+  /**provide a simple conversion from IO instance of checkCollision to more general cats.date.StteT monad */
 
   def checkCollisionToState():Simulation[World] = toStateTWorld{
     checkCollision
