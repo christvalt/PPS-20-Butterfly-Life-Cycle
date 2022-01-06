@@ -9,24 +9,25 @@ import javax.swing.JOptionPane._
 import javax.swing._
 import scala.concurrent.{Await, Promise}
 import scala.concurrent.duration.Duration
+import scala.language.postfixOps
 
 
 /**
  * View for setup simulation.
  */
 object SettingsView extends Views {
-  private val Iterations = Array("10", "50", "100")
-  private val DefaultEggNumber = 10
+  private val Iterations = Array("18", "10", "30")
+  private val DefaultEggNumber = 11
   private val DefaultOtherNumber = 1
   private val DefaultPredatorNumber = 5
-  private val DefaultPlantNumber = 65
+  private val DefaultPlantNumber = 85
   private val DefaultTemporalGranularity = 1
 
   val frame = new  JFrame ("Butterfly LFC")
   private val userInput: Promise[Environment] = Promise[Environment]
   private val entityPanel = new JPanel
 
-
+  /**create and get the simulatino initial parameter*/
   override def createAndShow: Unit = {
 
     val panel = new JPanel(new GridLayout(0, 2))
@@ -87,18 +88,17 @@ object SettingsView extends Views {
 
   private implicit def numberFrom[T](component: JComboBox[T]): Int = component.getSelectedItem.toString toInt
 
-
+  /**report the simulation*/
   override def simulationViewCrateAndShowed(): Unit  =  {
     frame.getContentPane.add(entityPanel, BorderLayout.CENTER)
     frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit.getScreenSize.width, Toolkit.getDefaultToolkit.getScreenSize.width))
     frame.setResizable(false)
-   //frame.getContentPane().add(shape)
     frame.setDefaultCloseOperation(3)
     frame.pack()
     frame.setVisible(true)
   }
 
-
+  /**show the simulation processus*/
   override def rendered(world: World): Unit = {
     SwingUtilities.invokeAndWait(() => {
       entityPanel.removeAll()

@@ -1,4 +1,4 @@
-import model.SimulationObjectImpl.{ButterflyImpl, FlourPlant, NectarPlant}
+import model.SimulationObjectImpl.{ButterflyImpl, FlowerPlant, NectarPlant}
 import model.common.Final.DEF_FOOD_ENERGY
 import model.common.{BoundingBox, Direction, MovingStrategies, Point2D}
 import model.creature.CreatureObject.Butterfly
@@ -22,7 +22,7 @@ class plantTest extends AnyFunSpec {
     lifeCycle=0
   )
 
-  private val food: FlourPlant = FlourPlant(
+  private val food: FlowerPlant = FlowerPlant(
     name = "food4",
     boundingBox = BoundingBox.Triangle(point = Point2D(100, 100), height = 10),
     degradationEffect = DegenerationE.deacreaseLifeEffect,

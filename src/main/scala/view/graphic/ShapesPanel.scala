@@ -46,7 +46,7 @@ class ShapesPanel(world: World) extends JPanel {
           modelToViewRatio(h, this.getSize().height, world.height))
       case Triangle(point2D, h, a) => e match {
         case _ : NectarPlant=>g.setColor(Color.green)
-        case _: FlourPlant =>g.setColor(Color.yellow)
+        case _: FlowerPlant =>g.setColor(Color.yellow)
       }
         val vertices = triangleVertices(Triangle(point2D, h, a))
         g.fillPolygon(vertices.productIterator.map({

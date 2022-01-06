@@ -18,37 +18,35 @@ object CreatureObject {
 
   }
 
-
+  /**
+   * trait that  represent a standard Creature in the simulation.
+   */
   trait Creature{
     val name : String
     def boundingBox: BoundingBox
   }
 
-
+/** trait that represent an Creature in the simulation that can live or die.*/
   sealed trait Living extends Creature {
     def life: Life
     def lifeCycle: LifeCycle
 
   }
 
+  /**trait represent an entity in the simulation that can move in the world boundaries*/
   sealed trait Moving extends Creature {
     def velocity: Velocity
   }
-  //volare
-  sealed trait fliying extends Creature {
-    def velocity: Velocity
-  }
 
-  // trait that represent entity that react to an evenmemt in the environemt
-  sealed trait eating extends Creature {
+  /** Trait that represent creature that react to an evenmemt in the environemt*/
+  sealed trait Colliding extends Creature {
     def collisionEffect: Collision
   }
 
-
+/**This trait represent an creature in the simulation that has the ability move in different directions*/
   sealed trait Intelligent extends Creature with Moving {
     def movementStrategy: MovementStrategy
     def direction: Direction
-   // def changeStage : ChangingStage
   }
 
   trait Butterfly extends Creature with Living with Moving with Intelligent {
@@ -57,35 +55,17 @@ object CreatureObject {
     def changeStage: Increase[Butterfly]
   }
 
-  trait ButterflyWithTemporaryStatus extends Butterfly {
-    def tochange: ToChange
-  }
-
-//trait Predator extends Creature with Living with Moving with eating {
-//    override def boundingBox: Rectangle
-//  }
-
-  trait Predator extends Creature with Living  with eating with Intelligent {
+/**This trait represent a Predator abstraction entity.*/
+  trait Predator extends Creature with Living  with Colliding with Intelligent {
     override def boundingBox: Rectangle
     def degradationEffect: Degeneration[Predator]
   }
 
-  trait Plant extends Creature with Living  with eating{
+  /**This trait represent a Food abstraction entity.*/
+  trait Plant extends Creature with Living  with Colliding{
     override def boundingBox: BoundingBox
     def degradationEffect: Degeneration[Plant]
   }
-
-/*
-*   trait Plant extends Creature {
-    override def boundingBox: Rectangle
-    def lifeCycle: LifeCycle
-  }*/
-
-
-
-
-
-
 }
 
 
