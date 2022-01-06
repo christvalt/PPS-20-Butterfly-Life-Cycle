@@ -32,17 +32,10 @@ object Point2D {
   /**
    * @return a new Point2D in a random position in the World [model.reaction.World].
    */
-  def randomPositionForEgg(): Point2D = Point2D(new scala.util.Random().nextInt(900.+(1)),
-    new scala.util.Random().nextInt(400.+(1)))
+  def randomPositionForEgg(): Point2D = Point2D(new scala.util.Random().nextInt(1200.+(1)),
+    new scala.util.Random().nextInt(709.+(1)))
 
 
-
-
-  /*def combinePosition(): Point2D = {
-
-    case e: EggsImpl => randomPositionForEgg()
-    case _ => randomPosition()
-  }*/
 }
 
 
