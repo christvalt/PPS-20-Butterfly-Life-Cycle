@@ -10,26 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3a4c98a-d69c-4fa5-b150-78216fea177d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ButterflyLifeCycle_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/model/common/TemperatureEffect.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/report/comportamento.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/report/mvc.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/report/relazione pps.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/report/struttura Creature.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ButterflyLifeCycle_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ButterflyLifeCycle_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/model/TemperatureEffect.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/model/World.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/World.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/model/common/Point2D.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/common/Point2D.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/model/creature/Behavior.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/creature/Behavior.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/model/creature/CreatureObject.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/creature/CreatureObject.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/model/reaction/EatingEffect.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/model/reaction/EatingEffect.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/view/SettingsView.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/view/SettingsView.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/ButterflyTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/ButterflyTest.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Point2D$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/common/Point2D$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$NectarPlantBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$NectarPlantBehavior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PlantBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PlantBehavior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PredatorBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PredatorBehavior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PuppaImplBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$PuppaImplBehavior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$butterflyBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/Behavior$butterflyBehavior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/CreatureObject$fliying.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/CreatureObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/model/creature/CreatureObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/view/SettingsView$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/view/SettingsView$.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +62,11 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\camerum\Documents\pro\doc\report" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Launcher">
     <configuration name="Launcher" type="Application" factoryName="Application" temporary="true">
