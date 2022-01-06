@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ButterflyLifeCycle.iml" filepath="$PROJECT_DIR$/.idea/modules/ButterflyLifeCycle.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pro-build.iml" filepath="$PROJECT_DIR$/.idea/modules/pro-build.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pro_6364.iml" filepath="$PROJECT_DIR$/.idea/modules/pro_6364.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pro_6364-build.iml" filepath="$PROJECT_DIR$/.idea/modules/pro_6364-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ButterflyLfC.iml" filepath="$PROJECT_DIR$/.idea/modules/ButterflyLfC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ButterflyLfC-build.iml" filepath="$PROJECT_DIR$/.idea/modules/ButterflyLfC-build.iml" />
     </modules>
   </component>
 </project>
