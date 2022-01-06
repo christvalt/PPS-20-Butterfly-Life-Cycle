@@ -33,17 +33,13 @@ object CreatureObject {
 
   }
 
-
   /**trait represent an entity in the simulation that can move in the world boundaries*/
   sealed trait Moving extends Creature {
     def velocity: Velocity
   }
-  sealed trait fliying extends Creature {
-    def velocity: Velocity
-  }
 
   /** Trait that represent creature that react to an evenmemt in the environemt*/
-  sealed trait eating extends Creature {
+  sealed trait Colliding extends Creature {
     def collisionEffect: Collision
   }
 
@@ -60,13 +56,13 @@ object CreatureObject {
   }
 
 /**This trait represent a Predator abstraction entity.*/
-  trait Predator extends Creature with Living  with eating with Intelligent {
+  trait Predator extends Creature with Living  with Colliding with Intelligent {
     override def boundingBox: Rectangle
     def degradationEffect: Degeneration[Predator]
   }
 
   /**This trait represent a Food abstraction entity.*/
-  trait Plant extends Creature with Living  with eating{
+  trait Plant extends Creature with Living  with Colliding{
     override def boundingBox: BoundingBox
     def degradationEffect: Degeneration[Plant]
   }

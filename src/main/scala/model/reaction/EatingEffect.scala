@@ -53,7 +53,7 @@ object EatingEffect {
   }
 
   def spwanEggs[A <:Butterfly](adults :A): SimulableEntity =  adults match {
-    case adults : ButterflyImpl => EggsImpl(name = adults.name + "-son"+Counter.nextValue,
+    case adults : ButterflyImpl => EggsImpl(name = adults.name + "-egg"+Counter.nextValue,
       boundingBox = Circle(adults.boundingBox.point, randomValueChange(5).max(7)),
       movementStrategy = MovingStrategies.baseMovement,
       lifeCycle=adults.lifeCycle,
