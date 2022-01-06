@@ -95,11 +95,11 @@ object Behavior {
     self: PuppaImpl =>
     override def updateState(world:World): Set[SimulableEntity]={
       val newState = self.movementStrategy(self, world)
-      println("puppa"+ life)
+     // println("puppa"+ life)
 
       self.life match {
         case n if n > 0 => self.lifeCycle   match {
-          case  m if m==1150 => Set(DegenerationE.helperPuppaToAdult(self))
+          case  m if m==1280 => Set(DegenerationE.helperPuppaToAdult(self))
           case _ => Set(self.copy(
             boundingBox = Circle(newState.point, self.boundingBox.radius),
             direction = newState.direction,
@@ -131,8 +131,7 @@ object Behavior {
       Set(self.copy(
         boundingBox = Circle(newState.point, self.boundingBox.radius),
         direction = newState.direction,
-        life = self.degradationEffect(self),
-        lifeCycle = self.changeStage(self)
+        life = self.degradationEffect(self)
       ))
     }
     override def collision(other: SimulableEntity):Set[SimulableEntity] = other match{

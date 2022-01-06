@@ -9,17 +9,18 @@ import javax.swing.JOptionPane._
 import javax.swing._
 import scala.concurrent.{Await, Promise}
 import scala.concurrent.duration.Duration
+import scala.language.postfixOps
 
 
 /**
  * View for setup simulation.
  */
 object SettingsView extends Views {
-  private val Iterations = Array("10", "18", "30")
-  private val DefaultEggNumber = 10
+  private val Iterations = Array("18", "10", "30")
+  private val DefaultEggNumber = 11
   private val DefaultOtherNumber = 1
   private val DefaultPredatorNumber = 5
-  private val DefaultPlantNumber = 65
+  private val DefaultPlantNumber = 85
   private val DefaultTemporalGranularity = 1
 
   val frame = new  JFrame ("Butterfly LFC")

@@ -175,15 +175,7 @@ case class ParameterEnv(temperature: Int)
       temperatureUpdated(world.temperature, time))
   }
 
-/**provide a simple conversion from IO instance of updateState of the world to more general cats.date.StteT monad */
-  def wordUpdateToState():Simulation[World] = toStateTWorld{
-    updateState
-  }
-  /**provide a simple conversion from IO instance of checkCollision to more general cats.date.StteT monad */
 
-  def checkCollisionToState():Simulation[World] = toStateTWorld{
-    checkCollision
-  }
 
   /**
    *  Upadates the state of  the world occording of the time of the day and the ininitial parameter
@@ -214,15 +206,15 @@ case class ParameterEnv(temperature: Int)
   def checkCollision(world: World):World = {
 
     val  toTuple = Tuple2( world.creature,world.creature)
-    val  collisionBoundiBox = for{
+    val  collisionBoundsBox = for{
       i <- toTuple._1
       j <- toTuple._2
 
       if i!=j && isCollidingWith(i.boundingBox,j.boundingBox)
     } yield (i,j)
 
-    def allcreatureCollided = collisionBoundiBox.map(_._1)
-    def newCreatureEntitiesAfterCollision = collisionBoundiBox.foldLeft(world.creature -- allcreatureCollided)((entitiesAfterCollision, collision) => entitiesAfterCollision ++ collision._1.collision(collision._2))
+    def creatureCollided = collisionBoundsBox.map(_._1)
+    def newCreatureEntitiesAfterCollision = collisionBoundsBox.foldLeft(world.creature -- creatureCollided)((entitiesAfterCollision, collision) => entitiesAfterCollision ++ collision._1.collision(collision._2))
 
 
     world.copy(
@@ -238,4 +230,20 @@ case class ParameterEnv(temperature: Int)
    * */
   def timeOfTheDay(iteration: Int): Float =
     iteration % ITERATIONS_PER_DAY / ITERATIONS_PER_DAY.toFloat
+
+
+
+
+
+
+  //type conversion
+  /**provide a simple conversion from IO instance of updateState of the world to more general cats.date.StateT monad */
+  def wordUpdateToState():Simulation[World] = toStateTWorld{
+    updateState
+  }
+  /**provide a simple conversion from IO instance of checkCollision to more general cats.date.StteT monad */
+
+  def checkCollisionToState():Simulation[World] = toStateTWorld{
+    checkCollision
+  }
 }

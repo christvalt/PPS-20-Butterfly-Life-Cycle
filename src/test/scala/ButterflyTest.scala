@@ -3,12 +3,10 @@ import model.World
 import model.common.Final.{BUTTERFLY_VELOCITY, DEF_SIMPLE_PLANT_ENERGY, LIFE_ADD_EGG_TO_LARVA, REDUCE_LIFE_Larva, REDUCE_LIFE_Puppa, VELOCITY_ADD_EGG_TO_LARVA}
 import model.creature.CreatureObject.Butterfly
 import model.common.{BoundingBox, Direction, MovingStrategies, Point2D}
-import model.creature.Behavior.SimulableEntity
 import model.reaction.DegenerationE.helperEggToLarva
 import model.reaction.{BeingEatenEffect, DegenerationE, EatingEffect}
 import org.scalatest.funspec.AnyFunSpec
 
-import java.util.AbstractMap.SimpleImmutableEntry
 
 class ButterflyTest extends AnyFunSpec {
 
